@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../Controllers/GuestControllers/AdvertismentListController.dart';
+import '../Controllers/GuestControllers/TeacherListController.dart';
 
 class TeachersListBinding extends Bindings {
   @override

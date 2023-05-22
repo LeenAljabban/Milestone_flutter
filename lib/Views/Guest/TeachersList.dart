@@ -1,4 +1,4 @@
-import 'package:first/Controllers/GuestControllers/AdvertismentListController.dart';
+import 'package:first/Controllers/GuestControllers/TeacherListController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';

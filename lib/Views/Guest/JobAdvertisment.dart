@@ -90,7 +90,7 @@ class JobAdvertisment extends GetView<JobAdvertismentController> {
                             Center(
                               child: Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(vertical: 40.0),
+                                    const EdgeInsets.symmetric(vertical: 50.0),
                                 child: SizedBox(
                                   height: 50,
                                   width: 250,

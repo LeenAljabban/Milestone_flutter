@@ -14,289 +14,284 @@ class GuestHome extends GetView<GuestHomeController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Obx(
-            () =>
-        controller.isLoading.value
+        () => controller.isLoading.value
             ? Scaffold(
-          key: controller.key,
-          drawer: GuestSideBar(),
-          body: SingleChildScrollView(
-            child: Stack(
-              children: [
-                RoundedAppBar(
-                  val: 0,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding:
-                      const EdgeInsets.only(top: 50.0, bottom: 20),
-                      child: Center(
-                        child: Text(
-                          'WELOCOME TO MILESTONE',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'segoepr',
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20),
-                        ),
+                key: controller.key,
+                drawer: GuestSideBar(),
+                body: SingleChildScrollView(
+                  child: Stack(
+                    children: [
+                      RoundedAppBar(
+                        val: 0,
                       ),
-                    ),
-                    CarouselSlider.builder(
-                      itemCount: controller.images.length,
-                      itemBuilder: (BuildContext context, int itemIndex,
-                          int pageViewIndex) =>
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                           Padding(
                             padding:
-                            const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Container(
-                              // height: 300,
-                              // width: 300,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20.0),
-                                child: Image(
-                                  fit: BoxFit.fill,
-                                  image: NetworkImage(
-                                      'http://192.168.1.54:8000/${controller
-                                          .images[itemIndex].filePath}'),
+                                const EdgeInsets.only(top: 50.0, bottom: 20),
+                            child: Center(
+                              child: Text(
+                                'WELOCOME TO MILESTONE',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'segoepr',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20),
+                              ),
+                            ),
+                          ),
+                          CarouselSlider.builder(
+                            itemCount: controller.images.length,
+                            itemBuilder: (BuildContext context, int itemIndex,
+                                    int pageViewIndex) =>
+                                Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Container(
+                                // height: 300,
+                                // width: 300,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  child: Image(
+                                    fit: BoxFit.fill,
+                                    image: NetworkImage(
+                                        'http://192.168.1.106:8000/${controller.images[itemIndex].filePath}'),
+                                  ),
                                 ),
                               ),
                             ),
+                            options: CarouselOptions(
+                                //height: 210,
+                                //  aspectRatio: 18 / 9,
+                                autoPlay: true,
+                                autoPlayCurve: Curves.fastOutSlowIn,
+                                enlargeCenterPage: true,
+                                enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                                enlargeFactor: 0.5,
+                                enableInfiniteScroll: true,
+                                onPageChanged: (index, r) {
+                                  controller.activeIndex.value = index;
+                                }),
                           ),
-                      options: CarouselOptions(
-                        //height: 210,
-                        //  aspectRatio: 18 / 9,
-                          autoPlay: true,
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          enlargeCenterPage: true,
-                          enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                          enlargeFactor: 0.5,
-                          enableInfiniteScroll: true,
-                          onPageChanged: (index, r) {
-                            controller.activeIndex.value = index;
-                          }),
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Obx(
-                          () => buildIndicatot(),
-                    ),
-                    Padding(
-                      padding:
-                      const EdgeInsets.only(left: 22.0, bottom: 15),
-                      child: Text(
-                        'Advertisment ',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'segoepr',
-                          color: controller.blue,
-                        ),
-                      ),
-                    ),
-                    CarouselSlider.builder(
-                      itemCount: controller.advertisments.length,
-                      itemBuilder: (BuildContext context, int itemIndex,
-                          int pageViewIndex) =>
+                          SizedBox(
+                            height: 25,
+                          ),
+                          Obx(
+                            () => buildIndicatot(),
+                          ),
                           Padding(
                             padding:
-                            const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: InkWell(
-                              child: Obx(
-                                    () =>
-                                controller.isLoading2.value
-                                    ? Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                    BorderRadius.circular(30.0),
-                                    border: Border.all(
-                                        color: controller.blue,
-                                        width: 8),
-                                  ),
-                                  width: 230,
-                                  child: ClipRRect(
-                                    borderRadius:
-                                    BorderRadius.circular(20.0),
-                                    child: Image(
-                                      fit: BoxFit.fill,
-                                      image: NetworkImage(
-                                          'http://192.168.1.54:8000/${controller
-                                              .advertisments[itemIndex]
-                                              .image}'),
-                                    ),
-                                  ),
-                                )
-                                    : Center(
-                                    child: CircularProgressIndicator()),
-                              ),
-                              onTap: () {
-                                if (controller.advertisments[itemIndex]
-                                    .advertismentTypeId ==
-                                    1) {
-                                  Get.toNamed('/JobAdvertisment',
-                                      arguments: controller
-                                          .advertisments[itemIndex]);
-                                }
-                              },
-                            ),
-                          ),
-                      options: CarouselOptions(
-                        height: 177,
-                        viewportFraction: 0.6,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 22),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Our Teachers',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'segoepr',
-                              color: controller.blue,
-                            ),
-                          ),
-                          InkWell(
+                                const EdgeInsets.only(left: 22.0, bottom: 15),
                             child: Text(
-                              'see all',
+                              'Advertisment ',
                               style: TextStyle(
-                                decoration: TextDecoration.underline,
-                                fontSize: 15,
+                                fontSize: 20,
+                                fontFamily: 'segoepr',
                                 color: controller.blue,
                               ),
                             ),
-                            onTap: () {
-                              Get.toNamed('/TeachersList',
-                                  arguments: controller.teachers);
-                            },
+                          ),
+                          CarouselSlider.builder(
+                            itemCount: controller.advertisments.length,
+                            itemBuilder: (BuildContext context, int itemIndex,
+                                    int pageViewIndex) =>
+                                Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: InkWell(
+                                child: Obx(
+                                  () => controller.isLoading2.value
+                                      ? Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(30.0),
+                                            border: Border.all(
+                                                color: controller.blue,
+                                                width: 8),
+                                          ),
+                                          width: 230,
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(20.0),
+                                            child: Image(
+                                              fit: BoxFit.fill,
+                                              image: NetworkImage(
+                                                  'http://192.168.1.106:8000/${controller.advertisments[itemIndex].image}'),
+                                            ),
+                                          ),
+                                        )
+                                      : Center(
+                                          child: CircularProgressIndicator()),
+                                ),
+                                onTap: () {
+                                  if (controller.advertisments[itemIndex]
+                                          .advertismentTypeId ==
+                                      1) {
+                                    Get.toNamed('/JobAdvertisment',
+                                        arguments: controller
+                                            .advertisments[itemIndex]);
+                                  }
+                                },
+                              ),
+                            ),
+                            options: CarouselOptions(
+                              height: 177,
+                              viewportFraction: 0.6,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 15, horizontal: 22),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Our Teachers',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: 'segoepr',
+                                    color: controller.blue,
+                                  ),
+                                ),
+                                InkWell(
+                                  child: Text(
+                                    'see all',
+                                    style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      fontSize: 15,
+                                      color: controller.blue,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Get.toNamed('/TeachersList',
+                                        arguments: controller.teachers);
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                          Obx(
+                            () => controller.isLoading3.value
+                                ? Container(
+                                    child: ListView.builder(
+                                        shrinkWrap: true,
+                                        physics: NeverScrollableScrollPhysics(),
+                                        itemCount: 2,
+                                        itemBuilder: (context, index) {
+                                          return Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 20.0,
+                                                      vertical: 7),
+                                              child: Container(
+                                                height: 100,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.white,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        color: controller.blue,
+                                                        blurRadius: 5.0,
+                                                      )
+                                                    ],
+                                                    border: Border.all(
+                                                        color: controller.blue,
+                                                        width: 2)),
+                                                child: Row(
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 5.0),
+                                                      child: Container(
+                                                        height: 90,
+                                                        width: 100,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
+                                                          image: DecorationImage(
+                                                              image: NetworkImage(
+                                                                'http://192.168.1.106:8000/${controller.teachers[index].image}',
+                                                              ),
+                                                              fit: BoxFit.fill),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 12,
+                                                    ),
+                                                    Container(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 5),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: <Widget>[
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .symmetric(
+                                                                    vertical:
+                                                                        8.0),
+                                                            child: Text(
+                                                              controller
+                                                                      .teachers[
+                                                                          index]
+                                                                      .firstName +
+                                                                  ' ' +
+                                                                  controller
+                                                                      .teachers[
+                                                                          index]
+                                                                      .lastName,
+                                                              style: TextStyle(
+                                                                color:
+                                                                    controller
+                                                                        .blue,
+                                                                fontSize: 20.0,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Text(
+                                                            controller
+                                                                .teachers[index]
+                                                                .email,
+                                                            style: TextStyle(
+                                                                fontSize: 14.0,
+                                                                color: Colors
+                                                                    .grey
+                                                                    .shade600),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ));
+                                        }),
+                                  )
+                                : Center(child: CircularProgressIndicator()),
                           ),
                         ],
                       ),
-                    ),
-                    Obx(
-                          () =>
-                      controller.isLoading3.value
-                          ? Container(
-                        child: ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: 2,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20.0, vertical: 7),
-                                  child: Container(
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius:
-                                        BorderRadius.circular(20),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: controller.blue,
-                                            blurRadius: 5.0,
-                                          )
-                                        ],
-                                        border: Border.all(
-                                            color: controller.blue,
-                                            width: 2)),
-                                    child: Row(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                          const EdgeInsets.only(
-                                              left: 5.0),
-                                          child: Container(
-                                            height: 90,
-                                            width: 100,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                              BorderRadius
-                                                  .circular(20),
-                                              image: DecorationImage(
-                                                  image: NetworkImage(
-                                                    'http://192.168.1.54:8000/${controller
-                                                        .teachers[index]
-                                                        .image}',
-                                                  ),
-                                                  fit: BoxFit.fill),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 12,
-                                        ),
-                                        Container(
-                                          padding:
-                                          const EdgeInsets.only(
-                                              top: 5),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment
-                                                .start,
-                                            children: <Widget>[
-                                              Padding(
-                                                padding:
-                                                const EdgeInsets
-                                                    .symmetric(
-                                                    vertical:
-                                                    8.0),
-                                                child: Text(
-                                                  controller
-                                                      .teachers[
-                                                  index]
-                                                      .firstName +
-                                                      ' ' +
-                                                      controller
-                                                          .teachers[
-                                                      index]
-                                                          .lastName,
-                                                  style: TextStyle(
-                                                    color: controller
-                                                        .blue,
-                                                    fontSize: 20.0,
-                                                  ),
-                                                ),
-                                              ),
-                                              Text(
-                                                controller
-                                                    .teachers[index]
-                                                    .email,
-                                                style: TextStyle(
-                                                    fontSize: 14.0,
-                                                    color: Colors.grey
-                                                        .shade600),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-
-                              );
-                            }),
-                      ) : Center(
-                          child:
-                          CircularProgressIndicator()),
-                    ),
-                  ],
+                      IconContainer(
+                        icon: Icons.menu,
+                        iconColor: controller.blue,
+                        containerColor: Colors.white,
+                        press: () {
+                          controller.key.currentState?.openDrawer();
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                IconContainer(
-                  icon: Icons.menu,
-                  iconColor: controller.blue,
-                  containerColor: Colors.white,
-                  press: () {
-                    controller.key.currentState?.openDrawer();
-                  },
-                ),
-              ],
-            ),
-          ),
-        )
+              )
             : Scaffold(body: Center(child: CircularProgressIndicator())),
       ),
     );

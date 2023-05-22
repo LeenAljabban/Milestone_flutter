@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ContinuePlacment extends StatelessWidget {
+class Timeup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,19 +41,32 @@ class ContinuePlacment extends StatelessWidget {
                 ),
                 width: 340,
                 height: 350,
-                child: Center(
-                  child: Text(
-                    'wishing you best of luck! \n \n wait for us to contact'
-                    'you and make oral'
-                    'test appointment ',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color(0xff2D527E),
-                      fontFamily: 'segoepr',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Time is up ! \n ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xffEF5432),
+                        fontFamily: 'segoepr',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
+                    Text(
+                      ' wait for us to contact'
+                      'you and make oral'
+                      'test appointment ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Color(0xff2D527E),
+                        fontFamily: 'segoepr',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               shape: RoundedRectangleBorder(

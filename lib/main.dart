@@ -31,6 +31,7 @@ import 'Views/Guest/ContinuePlacment.dart';
 import 'Views/Guest/JobAdvertisment.dart';
 import 'Views/Guest/PlacementTest.dart';
 import 'Views/Guest/Teacher.dart';
+import 'Views/Guest/Timeup.dart';
 import 'Views/GuestHome.dart';
 import 'Views/Student/EditStudentProfile.dart';
 import 'Views/Student/Homeworks.dart';
@@ -62,20 +63,56 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         //use MaterialApp() widget like this
-        initialRoute: "/WhoAreYou",
+        initialRoute: "/PlacementTest",
         getPages: [
-          GetPage(name: "/WhoAreYou", page: () => WhoAreYou()),
-          GetPage(name: "/AboutUs", page: () => AboutUs()),
-          GetPage(name: "/GuestSideBar", page: () => GuestSideBar()),
-          GetPage(name: "/OurServices", page: () => OurServices()),
-          GetPage(name: "/ContactUs", page: () => ContactUs()),
-          GetPage(name: "/StudentHome", page: () => StudentHome()),
-          GetPage(name: "/OurTeachers", page: () => OurTeachers()),
-          GetPage(name: "/Marks", page: () => Marks()),
-          GetPage(name: "/MarkDetailes", page: () => MarkDetailes()),
-          GetPage(name: "/Rate", page: () => Rate()),
-          GetPage(name: "/SpecificCourse", page: () => SpecificCourse()),
-          GetPage(name: "/MyRequests", page: () => MyRequests()),
+          GetPage(
+            name: "/WhoAreYou",
+            page: () => WhoAreYou(),
+          ),
+          GetPage(
+            name: "/AboutUs",
+            page: () => AboutUs(),
+          ),
+          GetPage(
+            name: "/GuestSideBar",
+            page: () => GuestSideBar(),
+          ),
+          GetPage(
+            name: "/OurServices",
+            page: () => OurServices(),
+          ),
+          GetPage(
+            name: "/ContactUs",
+            page: () => ContactUs(),
+          ),
+          GetPage(
+            name: "/StudentHome",
+            page: () => StudentHome(),
+          ),
+          GetPage(
+            name: "/OurTeachers",
+            page: () => OurTeachers(),
+          ),
+          GetPage(
+            name: "/Marks",
+            page: () => Marks(),
+          ),
+          GetPage(
+            name: "/MarkDetailes",
+            page: () => MarkDetailes(),
+          ),
+          GetPage(
+            name: "/Rate",
+            page: () => Rate(),
+          ),
+          GetPage(
+            name: "/SpecificCourse",
+            page: () => SpecificCourse(),
+          ),
+          GetPage(
+            name: "/MyRequests",
+            page: () => MyRequests(),
+          ),
           GetPage(
             name: "/TeachersList",
             page: () => TeachersList(),
@@ -86,18 +123,20 @@ class MyApp extends StatelessWidget {
               page: () => Attendent(),
               binding: AttendentBinding()),
           GetPage(
-              name: "/UploadHomework",
-              page: () => UploadHomework(),
-              binding: UploadHomeworkBinding()),
+            name: "/UploadHomework",
+            page: () => UploadHomework(),
+            binding: UploadHomeworkBinding(),
+          ),
           GetPage(
             name: "/LeaveRequest",
             page: () => LeaveRequest(),
             binding: LeaveRequestBinding(),
           ),
           GetPage(
-              name: "/QrScanner",
-              page: () => QrScanner(),
-              binding: QrScannerBinding()),
+            name: "/QrScanner",
+            page: () => QrScanner(),
+            binding: QrScannerBinding(),
+          ),
           GetPage(
             name: "/BottomNavigation",
             page: () => BottomNavigation(),
@@ -108,47 +147,86 @@ class MyApp extends StatelessWidget {
             page: () => BottomNavigationTeacher(),
             binding: BottomNavigationTeacherBinding(),
           ),
-          GetPage(name: "/AdvertismentImage", page: () => AdvertismentImage()),
-          GetPage(name: "/StudentProfile", page: () => StudentProfile()),
-          GetPage(name: "/TeacherProfile", page: () => TeacherProfile()),
           GetPage(
-              name: "/EditStudentProfile",
-              page: () => EditStudentProfile(),
-              binding: EditStudentProfileBinding()),
+            name: "/AdvertismentImage",
+            page: () => AdvertismentImage(),
+          ),
           GetPage(
-              name: "/EditTeacherProfile",
-              page: () => EditTeacherProfile(),
-              binding: EditTeacherProfileBinding()),
+            name: "/StudentProfile",
+            page: () => StudentProfile(),
+          ),
           GetPage(
-              name: "/VerificationCode",
-              page: () => VerificationCode(),
-              binding: VerificationCodeBinding()),
-          GetPage(name: "/ContinuePlacment", page: () => ContinuePlacment()),
+            name: "/TeacherProfile",
+            page: () => TeacherProfile(),
+          ),
           GetPage(
-              name: "/JobAdvertisment",
-              page: () => JobAdvertisment(),
-              binding: JobAdvertismentBinding()),
-          GetPage(name: "/Teacher", page: () => Teacher()),
+            name: "/EditStudentProfile",
+            page: () => EditStudentProfile(),
+            binding: EditStudentProfileBinding(),
+          ),
           GetPage(
-              name: "/PlacementTest",
-              page: () => PlacementTest(),
-              binding: PlacementTestBinding()),
-          GetPage(name: "/HomeWorks", page: () => HomeWorks()),
-          GetPage(name: "/Notifications", page: () => Notifications()),
+            name: "/EditTeacherProfile",
+            page: () => EditTeacherProfile(),
+            binding: EditTeacherProfileBinding(),
+          ),
           GetPage(
-              name: "/ReserveAdvertisment", page: () => ReserveAdvertisment()),
+            name: "/VerificationCode",
+            page: () => VerificationCode(),
+            binding: VerificationCodeBinding(),
+          ),
           GetPage(
-              name: "/PlacementTestRules", page: () => PlacementTestRules()),
-          GetPage(name: "/Login", page: () => Login(), binding: LoginBinding()),
+            name: "/ContinuePlacment",
+            page: () => ContinuePlacment(),
+          ), GetPage(
+            name: "/Timeup",
+            page: () => Timeup(),
+          ),
+
+          GetPage(
+            name: "/JobAdvertisment",
+            page: () => JobAdvertisment(),
+            binding: JobAdvertismentBinding(),
+          ),
+          GetPage(
+            name: "/Teacher",
+            page: () => Teacher(),
+          ),
+          GetPage(
+            name: "/PlacementTest",
+            page: () => PlacementTest(),
+            binding: PlacementTestBinding(),
+          ),
+          GetPage(
+            name: "/HomeWorks",
+            page: () => HomeWorks(),
+          ),
+          GetPage(
+            name: "/Notifications",
+            page: () => Notifications(),
+          ),
+          GetPage(
+            name: "/ReserveAdvertisment",
+            page: () => ReserveAdvertisment(),
+          ),
+          GetPage(
+            name: "/PlacementTestRules",
+            page: () => PlacementTestRules(),
+          ),
+          GetPage(
+            name: "/Login",
+            page: () => Login(),
+            binding: LoginBinding(),
+          ),
           GetPage(
             name: "/GuestInformation",
             page: () => GuestInformation(),
             binding: GuestInformationBinding(),
           ),
           GetPage(
-              name: "/GuestHome",
-              page: () => GuestHome(),
-              binding: GuestHomeBinding()),
+            name: "/GuestHome",
+            page: () => GuestHome(),
+            binding: GuestHomeBinding(),
+          ),
         ]);
   }
 }
