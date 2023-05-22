@@ -1,10 +1,12 @@
 import 'package:first/Component/RoundedAppbar.dart';
+import 'package:first/Models/GetInfoModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../Component/IconContainer.dart';
+import '../Controllers/GuestControllers/GetInfoController.dart';
 
-class OurServices extends StatelessWidget {
+class OurServices extends GetView<GetInfoController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -70,13 +72,7 @@ class OurServices extends StatelessWidget {
                                 left: 20.0,
                               ),
                               child: Text(
-                                '- General English Language Training.\n'
-                                '- TESOL.\n'
-                                '- HR Courses.\n'
-                                '- Presentation Skills.\n'
-                                '-  Business English.\n'
-                                '-  IELTS preparation.\n'
-                                '-  Conversation Courses.\n',
+                                controller.getInfoModel!.services,
                                 style: TextStyle(
                                     fontSize: 20,
                                     color: Color(0xff2D527E),

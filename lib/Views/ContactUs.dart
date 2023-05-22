@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../Component/IconContainer.dart';
+import '../Controllers/GuestControllers/GetInfoController.dart';
 
-class ContactUs extends StatelessWidget {
+class ContactUs extends GetView<GetInfoController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -71,7 +72,7 @@ class ContactUs extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
-                                  '0936 118 114',
+                                  controller.getInfoModel!.contactUs,
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Color(0xff2D527E),

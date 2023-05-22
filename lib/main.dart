@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         //use MaterialApp() widget like this
-        initialRoute: "/PlacementTest",
+        initialRoute: "/OurServices",
         getPages: [
           GetPage(
             name: "/WhoAreYou",
@@ -177,11 +177,11 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: "/ContinuePlacment",
             page: () => ContinuePlacment(),
-          ), GetPage(
+          ),
+          GetPage(
             name: "/Timeup",
             page: () => Timeup(),
           ),
-
           GetPage(
             name: "/JobAdvertisment",
             page: () => JobAdvertisment(),
