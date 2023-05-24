@@ -91,7 +91,7 @@ class TeachersList extends GetView<TeachersListController> {
                   child: Padding(
                 padding: const EdgeInsets.only(bottom: 40.0),
                 child: Text(
-                  "Advertisments",
+                  "All Teachers",
                   style: TextStyle(
                     fontSize: 30,
                     color: Colors.white,

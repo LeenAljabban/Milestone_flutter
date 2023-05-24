@@ -33,7 +33,7 @@ class QrScanner extends StatelessWidget {
               primary: controller.blue, // Background color
             ),
             onPressed: () {
-              controller.startBarcodeScanStream();
+              controller.scanQR();
             },
             child: Text('Scan Qr'
                 // color: Colors.deepPurple,

@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         //use MaterialApp() widget like this
-        initialRoute: "/OurServices",
+        initialRoute: "/BottomNavigation",
         getPages: [
           GetPage(
             name: "/WhoAreYou",

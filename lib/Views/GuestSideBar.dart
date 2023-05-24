@@ -50,7 +50,9 @@ class GuestSideBar extends StatelessWidget {
                 color: Color(0xff2D527E),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Get.toNamed('/OurServices');
+            },
           ),
           ListTile(
             leading: Icon(
@@ -64,7 +66,9 @@ class GuestSideBar extends StatelessWidget {
                 color: Color(0xff2D527E),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Get.toNamed('/ContactUs');
+            },
           ),
           ListTile(
             // trailing: InkWell(
