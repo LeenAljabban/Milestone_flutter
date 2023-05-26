@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Models/AdvertismentModel.dart';
+import '../../Models/CourseInfoModel.dart';
+import '../../Services/CourseInfoService.dart';
 
 class StudentHomeController extends GetxController {
   Color blue = Color(0xff2D527E);
@@ -13,6 +15,7 @@ class StudentHomeController extends GetxController {
 
   @override
   void onInit() {
+    CallGetCourseInfo();
     CallStudentHomeAdvertisment();
   }
 
@@ -29,5 +32,20 @@ class StudentHomeController extends GetxController {
     } finally {
       isLoading(true);
     }
+  }
+
+  CourseInfo? courseinfo;
+
+  CallGetCourseInfo() async {
+    try {
+      var data = await CourseInfoService.getCourseInfo(
+        'student/get/attendenceDays',
+      );
+      if (data != null) {
+        courseinfo = data;
+      } else {
+        print('there is a problem');
+      }
+    } finally {}
   }
 }

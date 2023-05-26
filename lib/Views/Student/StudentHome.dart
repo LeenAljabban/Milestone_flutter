@@ -241,7 +241,7 @@ class StudentHome extends StatelessWidget {
                       SizedBox(
                         height: 30,
                         child: Text(
-                          '4:30 - 6:30',
+                          '3 - 5',
                           style: TextStyle(
                               color: Colors.white,
                               fontFamily: 'segoepr',
