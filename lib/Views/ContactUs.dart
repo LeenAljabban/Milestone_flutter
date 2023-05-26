@@ -5,8 +5,6 @@ import '../Component/IconContainer.dart';
 import '../Controllers/GuestControllers/GetInfoController.dart';
 
 class ContactUs extends GetView<GetInfoController> {
-  GetInfoController controller = Get.put(GetInfoController());
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(

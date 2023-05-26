@@ -16,6 +16,7 @@ class AdvertismentModel {
   late int isShown;
   late int advertismentTypeId;
   late dynamic publishData;
+  late int course_id;
 
   AdvertismentModel();
 
@@ -28,6 +29,7 @@ class AdvertismentModel {
     isShown = json["is_shown"];
     advertismentTypeId = json["advertisment_type_id"];
     publishData = json["publish_data"];
+    course_id = json['course_id'];
   }
 
   Map<String, dynamic> toJson() =>
@@ -40,5 +42,7 @@ class AdvertismentModel {
         "is_shown": isShown,
         "advertisment_type_id": advertismentTypeId,
         "publish_data": publishData,
+        "course_id": course_id,
+
       };
 }

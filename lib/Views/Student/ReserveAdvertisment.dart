@@ -1,9 +1,10 @@
+import 'package:first/Controllers/StudentsControllers/ReserveController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Component/IconContainer.dart';
 
-class ReserveAdvertisment extends StatelessWidget {
+class ReserveAdvertisment extends GetView<ReserveController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(

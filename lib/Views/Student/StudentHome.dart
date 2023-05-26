@@ -324,19 +324,14 @@ class StudentHome extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 20.0, vertical: 10),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Educational Content :',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'segoepr',
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xff2D527E),
-                        ),
-                      ),
-                    ],
+                  child: Text(
+                    'Educational Content :',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'segoepr',
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xff2D527E),
+                    ),
                   ),
                 ),
                 CarouselSlider.builder(
@@ -378,7 +373,7 @@ class StudentHome extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Special Presentations :',
+                        'Our Advertisment :',
                         style: TextStyle(
                           fontSize: 20,
                           fontFamily: 'segoepr',
@@ -400,72 +395,85 @@ class StudentHome extends StatelessWidget {
                     ],
                   ),
                 ),
-                CarouselSlider.builder(
-                  itemCount: 5,
-                  itemBuilder: (BuildContext context, int itemIndex,
-                          int pageViewIndex) =>
-                      Container(
-                    decoration: BoxDecoration(
-                      // borderRadius: BorderRadius.circular(10.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.shade200,
-                          blurRadius: 1.0,
-                        )
-                      ],
-                      border: Border.all(color: Color(0xff2D527E), width: 1),
-                    ),
-                    width: 330,
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          //borderRadius: BorderRadius.circular(10.0),
-                          child: Image(
-                            height: 200,
-                            width: 330,
-                            fit: BoxFit.fill,
-                            image: AssetImage('Images/hiring.png'),
-                          ),
-                        ),
-                        Container(
-                          height: 38,
-                          width: 330,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              //borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xff2D527E),
-                                  blurRadius: 7.0,
-                                )
-                              ],
-                              border: Border.all(
-                                  color: Color(0xff2D527E), width: 3)),
-                          child: Center(
-                            child: Text(
-                              'Self Confidence',
-                              style: TextStyle(
-                                fontSize: 17,
-                                fontFamily: 'segoepr',
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xff2D527E),
+                Obx(
+                  () => controller.isLoading.value
+                      ? CarouselSlider.builder(
+                          itemCount: controller.advertisments.length,
+                          itemBuilder: (BuildContext context, int itemIndex,
+                                  int pageViewIndex) =>
+                              InkWell(
+                            onTap: () => Get.toNamed('/ReserveAdvertisment'),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                // borderRadius: BorderRadius.circular(10.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.shade200,
+                                    blurRadius: 1.0,
+                                  )
+                                ],
+                                border: Border.all(
+                                    color: Color(0xff2D527E), width: 1),
+                              ),
+                              width: 330,
+                              child: Column(
+                                children: [
+                                  ClipRRect(
+                                    //borderRadius: BorderRadius.circular(10.0),
+                                    child: Image(
+                                      height: 200,
+                                      width: 330,
+                                      fit: BoxFit.fill,
+                                      image: NetworkImage(
+                                          'http://192.168.0.101:8000/${controller.advertisments[itemIndex].image}'),
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 38,
+                                    width: 330,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        //borderRadius: BorderRadius.circular(10),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Color(0xff2D527E),
+                                            blurRadius: 7.0,
+                                          )
+                                        ],
+                                        border: Border.all(
+                                            color: Color(0xff2D527E),
+                                            width: 3)),
+                                    child: Center(
+                                      child: Text(
+                                        controller
+                                            .advertisments[itemIndex].title,
+                                        style: TextStyle(
+                                          fontSize: 17,
+                                          fontFamily: 'segoepr',
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xff2D527E),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                           ),
+                          options: CarouselOptions(
+                            height: 240,
+                            viewportFraction: 0.9,
+                            autoPlay: true,
+                            autoPlayCurve: Curves.fastOutSlowIn,
+                            //enlargeCenterPage: true,
+                            enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                            // enlargeFactor: 0.5,
+                            enableInfiniteScroll: true,
+                          ),
                         )
-                      ],
-                    ),
-                  ),
-                  options: CarouselOptions(
-                    height: 240,
-                    viewportFraction: 0.9,
-                    autoPlay: true,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    //enlargeCenterPage: true,
-                    enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                    // enlargeFactor: 0.5,
-                    enableInfiniteScroll: true,
-                  ),
+                      : Container(
+                          child: CircularProgressIndicator(),
+                        ),
                 ),
                 SizedBox(
                   height: 40,

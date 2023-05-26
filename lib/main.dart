@@ -2,6 +2,7 @@ import 'package:first/Binding/AdvertismentListBinding.dart';
 import 'package:first/Binding/AttendentBinding.dart';
 import 'package:first/Binding/EditStudentProfileBinding.dart';
 import 'package:first/Binding/EditTeacherProfileBinding.dart';
+import 'package:first/Binding/GetInfoBinding.dart';
 import 'package:first/Binding/GuestInformationBinding.dart';
 import 'package:first/Binding/LoginBinding.dart';
 import 'package:first/Binding/QrScannerBinding.dart';
@@ -24,7 +25,9 @@ import 'Binding/GuestHomeBinding.dart';
 import 'Binding/JobAdvertismentBinding.dart';
 import 'Binding/LeaveRequestBinding.dart';
 import 'Binding/PlacmentTestBinding.dart';
+import 'Binding/ReserveBinding.dart';
 import 'Binding/VerificationCodeBinding.dart';
+import 'Controllers/StudentsControllers/ReserveController.dart';
 import 'Views/Guest/AdvertismentImage.dart';
 import 'Views/Guest/TeachersList.dart';
 import 'Views/Guest/ContinuePlacment.dart';
@@ -63,28 +66,28 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         //use MaterialApp() widget like this
-        initialRoute: "/BottomNavigation",
+        initialRoute: "/WhoAreYou",
         getPages: [
           GetPage(
             name: "/WhoAreYou",
             page: () => WhoAreYou(),
           ),
           GetPage(
-            name: "/AboutUs",
-            page: () => AboutUs(),
-          ),
+              name: "/AboutUs",
+              page: () => AboutUs(),
+              binding: GetInfoBinding()),
           GetPage(
             name: "/GuestSideBar",
             page: () => GuestSideBar(),
           ),
           GetPage(
-            name: "/OurServices",
-            page: () => OurServices(),
-          ),
+              name: "/OurServices",
+              page: () => OurServices(),
+              binding: GetInfoBinding()),
           GetPage(
-            name: "/ContactUs",
-            page: () => ContactUs(),
-          ),
+              name: "/ContactUs",
+              page: () => ContactUs(),
+              binding: GetInfoBinding()),
           GetPage(
             name: "/StudentHome",
             page: () => StudentHome(),
@@ -207,6 +210,7 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: "/ReserveAdvertisment",
             page: () => ReserveAdvertisment(),
+            binding: ReserveBinding(),
           ),
           GetPage(
             name: "/PlacementTestRules",

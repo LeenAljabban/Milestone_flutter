@@ -7,14 +7,6 @@ class QrScannerController extends GetxController {
   Color blue = Color(0xff2D527E);
   String barcodeScanRes = '';
 
-
-  // // @override
-  // // void dispose() {
-  // //   controller?.dispose();
-  // //   super.dispose();
-  // // }
-
-
   Future<void> scanQR() async {
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(

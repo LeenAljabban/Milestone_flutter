@@ -6,8 +6,6 @@ import '../Component/RoundedAppbar.dart';
 import '../Controllers/GuestControllers/GetInfoController.dart';
 
 class AboutUs extends GetView<GetInfoController> {
-  GetInfoController controller = Get.put(GetInfoController());
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(

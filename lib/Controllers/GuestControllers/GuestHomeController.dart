@@ -44,7 +44,7 @@ class GuestHomeController extends GetxController {
   CallGuestHomeAdvertisment() async {
     try {
       var data = await GuestHomeService.GuestHomeAdvertisment(
-        'getAdvertisment',
+        'advertisements',
       );
       if (data != null) {
         advertisments.addAll(data);
