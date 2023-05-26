@@ -18,6 +18,7 @@ class StudentHome extends StatelessWidget {
         body: SingleChildScrollView(
           child: Stack(children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
@@ -253,71 +254,71 @@ class StudentHome extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Container(
-                    width: 340,
-                    height: 60,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xff2D527E),
-                            blurRadius: 7.0,
-                          )
-                        ],
-                        border: Border.all(color: Color(0xff2D527E), width: 2)),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: TextField(
-                              decoration: InputDecoration(
-                                labelText: 'Search...',
-                                labelStyle:
-                                    TextStyle(color: Colors.grey.shade400),
-                                suffixIcon: Icon(
-                                  Icons.search,
-                                  color: Color(0xff2D527E),
-                                  size: 30,
-                                ),
-                                enabledBorder: UnderlineInputBorder(),
+                  child: Center(
+                    child: Container(
+                      width: 340,
+                      height: 60,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xff2D527E),
+                              blurRadius: 7.0,
+                            )
+                          ],
+                          border:
+                              Border.all(color: Color(0xff2D527E), width: 2)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Expanded(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              labelText: 'Search...',
+                              labelStyle:
+                                  TextStyle(color: Colors.grey.shade400),
+                              suffixIcon: Icon(
+                                Icons.search,
+                                color: Color(0xff2D527E),
+                                size: 30,
                               ),
+                              enabledBorder: UnderlineInputBorder(),
                             ),
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-                Container(
-                  width: 340,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      color: Color(0xff2D527E),
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color(0xff2D527E),
-                          blurRadius: 5.0,
-                        )
-                      ],
-                      border: Border.all(color: Color(0xff2D527E), width: 2)),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('View HomeWorks',
-                            style: TextStyle(
-                              fontFamily: 'segoepr',
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              //height: -1.5
-                            )),
-                      ],
+                Center(
+                  child: Container(
+                    width: 340,
+                    height: 60,
+                    decoration: BoxDecoration(
+                        color: Color(0xff2D527E),
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0xff2D527E),
+                            blurRadius: 5.0,
+                          )
+                        ],
+                        border: Border.all(color: Color(0xff2D527E), width: 2)),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('View HomeWorks',
+                              style: TextStyle(
+                                fontFamily: 'segoepr',
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                //height: -1.5
+                              )),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -402,7 +403,9 @@ class StudentHome extends StatelessWidget {
                           itemBuilder: (BuildContext context, int itemIndex,
                                   int pageViewIndex) =>
                               InkWell(
-                            onTap: () => Get.toNamed('/ReserveAdvertisment'),
+                            onTap: () => Get.toNamed('/ReserveAdvertisment',
+                                arguments:
+                                    controller.advertisments[itemIndex].id),
                             child: Container(
                               decoration: BoxDecoration(
                                 // borderRadius: BorderRadius.circular(10.0),
@@ -425,7 +428,7 @@ class StudentHome extends StatelessWidget {
                                       width: 330,
                                       fit: BoxFit.fill,
                                       image: NetworkImage(
-                                          'http://192.168.0.101:8000/${controller.advertisments[itemIndex].image}'),
+                                          'http://192.168.1.106:8000/${controller.advertisments[itemIndex].image}'),
                                     ),
                                   ),
                                   Container(

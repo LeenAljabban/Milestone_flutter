@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:first/Models/AdvertismentModel.dart';
 
 import 'package:first/global.dart';
@@ -16,8 +18,14 @@ class StudentHomeService {
     print(response.body);
 
     if (response.statusCode == 200) {
-      var obj = response.body;
-      return advertismentModelFromJson(obj);
+      List<AdvertismentModel> list = [];
+
+      var item = json.decode(response.body);
+
+      for (var i in item) {
+        list.add(AdvertismentModel.fromJson(i));
+      }
+      return list;
     } else
       return null;
   }

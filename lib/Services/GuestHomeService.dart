@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 class GuestHomeService {
   static GuestHomePhotos(endpoint) async {
     http.Response response =
-        await http.get(Uri.parse(baseApi + endpoint), headers: {
+    await http.get(Uri.parse(baseApi + endpoint), headers: {
       'Content-type': 'application/json',
       'Accept': 'application/json',
     });
@@ -25,7 +25,7 @@ class GuestHomeService {
 
   static GuestHomeAdvertisment(endpoint) async {
     http.Response response =
-        await http.get(Uri.parse(baseApi + endpoint), headers: {
+    await http.get(Uri.parse(baseApi + endpoint), headers: {
       'Content-type': 'application/json',
       'Accept': 'application/json',
     });
@@ -33,15 +33,22 @@ class GuestHomeService {
     print(response.body);
 
     if (response.statusCode == 200) {
-      var obj = response.body;
-      return advertismentModelFromJson(obj);
+      List<AdvertismentModel> list = [];
+
+      var item = json.decode(response.body);
+
+      for (var i in item) {
+        list.add(AdvertismentModel.fromJson(i));
+      }
+
+      return list;
     } else
       return null;
   }
 
   static GuestHomeTeachers(endpoint) async {
     http.Response response =
-        await http.get(Uri.parse(baseApi + endpoint), headers: {
+    await http.get(Uri.parse(baseApi + endpoint), headers: {
       'Content-type': 'application/json',
       'Accept': 'application/json',
     });

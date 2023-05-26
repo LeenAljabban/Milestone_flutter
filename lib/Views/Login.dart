@@ -49,8 +49,8 @@ class Login extends GetView<LoginController> {
                               ),
                             ],
                           ),
-                          width: 350,
-                          height: 350,
+                          width: Get.width * 0.9,
+                          height: 330,
                           child: Column(
                             children: [
                               Padding(

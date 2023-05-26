@@ -1,8 +1,9 @@
 import 'dart:convert';
 
-List<AdvertismentModel> advertismentModelFromJson(String str) =>
-    List<AdvertismentModel>.from(
-        json.decode(str).map((x) => AdvertismentModel.fromJson(x)));
+import 'package:first/Models/CourseModel.dart';
+
+AdvertismentModel advertismentModelFromJson(String str) =>
+    AdvertismentModel.fromJson(json.decode(str));
 
 String advertismentModelToJson(AdvertismentModel data) =>
     json.encode(data.toJson());
@@ -17,6 +18,7 @@ class AdvertismentModel {
   late int advertismentTypeId;
   late dynamic publishData;
   late int course_id;
+  late CourseModel course;
 
   AdvertismentModel();
 
@@ -30,10 +32,10 @@ class AdvertismentModel {
     advertismentTypeId = json["advertisment_type_id"];
     publishData = json["publish_data"];
     course_id = json['course_id'];
+    if (json["course"] != null) course = CourseModel.fromJson(json["course"]);
   }
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "title": title,
         "image": image,
@@ -43,6 +45,6 @@ class AdvertismentModel {
         "advertisment_type_id": advertismentTypeId,
         "publish_data": publishData,
         "course_id": course_id,
-
+        "course": course.toJson(), //
       };
 }
