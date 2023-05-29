@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:first/Models/CourseLevelsModel.dart';
 import 'package:first/Services/StudentHomeService.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +13,9 @@ class StudentHomeController extends GetxController {
   RxInt activeIndex = 0.obs;
   var isLoading = false.obs;
   var isLoading2 = false.obs;
+  var isLoading3 = false.obs;
   List<AdvertismentModel> advertisments = [];
+  List<CourseLevelsModel> courselevels_list = [];
   GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
   var is_sun = false;
   var is_mon = false;
@@ -26,6 +29,7 @@ class StudentHomeController extends GetxController {
     try {
       CallGetCourseInfo();
       CallStudentHomeAdvertisment();
+      CallCourseLevels();
     } finally {}
   }
 
@@ -81,6 +85,21 @@ class StudentHomeController extends GetxController {
         }
       }
       isLoading2(true);
+    }
+  }
+
+  CallCourseLevels() async {
+    try {
+      var data = await StudentHomeService.getAllCourses(
+        'student/get/courseName',
+      );
+      if (data != null) {
+        courselevels_list.addAll(data);
+      } else {
+        print('there is a problem');
+      }
+    } finally {
+      isLoading3(true);
     }
   }
 }

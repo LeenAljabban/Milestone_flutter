@@ -3,11 +3,14 @@ import 'package:first/Views/Student/StudentSideBar.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 import 'package:flutter/material.dart';
 import '../../Component/IconContainer.dart';
+import '../../Controllers/StudentsControllers/EducationalContentController.dart';
 import '../../Controllers/StudentsControllers/StudentHomeController.dart';
 import 'package:get/get.dart';
 
 class StudentHome extends StatelessWidget {
   StudentHomeController controller = Get.put(StudentHomeController());
+  EducationalContentController controller2 =
+      Get.put(EducationalContentController());
 
   @override
   Widget build(BuildContext context) {
@@ -377,38 +380,55 @@ class StudentHome extends StatelessWidget {
                           ),
                         ),
                       ),
-                      CarouselSlider.builder(
-                        itemCount: 12,
-                        itemBuilder: (BuildContext context, int itemIndex,
-                                int pageViewIndex) =>
-                            Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20.0),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.shade200,
-                                blurRadius: 1.0,
+                      Obx(
+                        () => controller.isLoading3.value
+                            ? CarouselSlider.builder(
+                                itemCount: controller.courselevels_list.length,
+                                itemBuilder: (BuildContext context,
+                                        int itemIndex, int pageViewIndex) =>
+                                    InkWell(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.shade200,
+                                          blurRadius: 1.0,
+                                        )
+                                      ],
+                                      border: Border.all(
+                                          color: Color(0xff2D527E), width: 3),
+                                    ),
+                                    width: 80,
+                                    child: Center(
+                                      child: Text(
+                                        controller
+                                            .courselevels_list[itemIndex].name,
+                                        style: TextStyle(
+                                            color: Color(0xff2D527E),
+                                            fontFamily: 'segoepr',
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 25),
+                                      ),
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Get.toNamed(
+                                      '/EducationalContent',
+                                      arguments:
+                                          controller2.CallEducationalContent(
+                                              controller
+                                                  .courselevels_list[itemIndex]
+                                                  .id),
+                                    );
+                                  },
+                                ),
+                                options: CarouselOptions(
+                                  height: 80,
+                                  viewportFraction: 0.25,
+                                ),
                               )
-                            ],
-                            border:
-                                Border.all(color: Color(0xff2D527E), width: 3),
-                          ),
-                          width: 80,
-                          child: Center(
-                            child: Text(
-                              'A1',
-                              style: TextStyle(
-                                  color: Color(0xff2D527E),
-                                  fontFamily: 'segoepr',
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 25),
-                            ),
-                          ),
-                        ),
-                        options: CarouselOptions(
-                          height: 80,
-                          viewportFraction: 0.25,
-                        ),
+                            : Center(child: CircularProgressIndicator()),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(

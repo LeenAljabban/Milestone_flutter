@@ -35,109 +35,126 @@ class EducationalContent extends StatelessWidget {
                   width: 420.0, // width of the button
                 ),
               )),
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.only(right: 10.0, left: 10, top: 55),
-                  child: Container(
-                    height: 60,
-                    width: 350,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xff2D527E),
-                            blurRadius: 5.0,
-                          )
-                        ],
-                        border: Border.all(color: Color(0xff2D527E), width: 2)),
-                    child: Text(
-                      'Educational Content',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 26,
-                        color: Color(0xff2D527E),
-                        fontWeight: FontWeight.bold,
-                        // wordSpacing: 2.5,
-                        fontFamily: 'segoepr',
-                      ),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 10.0, left: 10, top: 55),
+                child: Container(
+                  height: 60,
+                  width: 350,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xff2D527E),
+                          blurRadius: 5.0,
+                        )
+                      ],
+                      border: Border.all(color: Color(0xff2D527E), width: 2)),
+                  child: Text(
+                    'Educational Content',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 26,
+                      color: Color(0xff2D527E),
+                      fontWeight: FontWeight.bold,
+                      // wordSpacing: 2.5,
+                      fontFamily: 'segoepr',
                     ),
                   ),
                 ),
-                Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Obx(
-                      () => controller.isLoading.value
-                          ? GridView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount:
-                                  controller.educationalcontent_list.length,
-                              itemBuilder: (BuildContext ctx, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.only(top: 20.0),
-                                  child: SizedBox(
-                                    child: Column(
-                                      children: [
-                                        InkWell(
-                                          child: Container(
-                                            height: 80,
-                                            width: 80,
-                                            child: Icon(
-                                              Icons.volume_down_outlined,
-                                              color: Color(0xff2D527E),
-                                              size: 80,
+              ),
+              Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Obx(
+                    () => controller.isLoading.value
+                        ? SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                GridView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount:
+                                      controller.educationalcontent_list.length,
+                                  itemBuilder: (BuildContext ctx, index) {
+                                    return Padding(
+                                      padding: const EdgeInsets.only(top: 20.0),
+                                      child: SizedBox(
+                                        child: Column(
+                                          children: [
+                                            InkWell(
+                                              child: Container(
+                                                height: 80,
+                                                width: 80,
+                                                child: Icon(
+                                                  Icons.volume_down_outlined,
+                                                  color: Color(0xff2D527E),
+                                                  size: 80,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                    color: Colors.white,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        color:
+                                                            Color(0xff2D527E),
+                                                        blurRadius: 5.0,
+                                                      )
+                                                    ],
+                                                    border: Border.all(
+                                                        color: Colors.grey,
+                                                        width: 1)),
+                                              ),
+                                              onTap: () {
+                                                // controller.educationalcontent_list[0].file
+                                              },
                                             ),
-                                            decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(15),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Color(0xff2D527E),
-                                                    blurRadius: 5.0,
-                                                  )
-                                                ],
-                                                border: Border.all(
-                                                    color: Colors.grey,
-                                                    width: 1)),
-                                          ),
-                                          onTap: () {
-                                            // controller.educationalcontent_list[0].file
-                                          },
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10),
+                                              child: Text(
+                                                controller
+                                                    .educationalcontent_list[
+                                                        index]
+                                                    .file
+                                                    .toString(),
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  fontSize: 13,
+                                                  color: Color(0xff2D527E),
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'segoepr',
+                                                ),
+                                              ),
+                                            )
+                                          ],
                                         ),
-                                        Text(
-                                          'Unit 1 audio',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: Color(0xff2D527E),
-                                            fontWeight: FontWeight.bold,
-                                            fontFamily: 'segoepr',
-                                          ),
-                                        )
-                                      ],
-                                    ),
+                                      ),
+                                    );
+                                  },
+                                  gridDelegate:
+                                      SliverGridDelegateWithMaxCrossAxisExtent(
+                                    maxCrossAxisExtent: 200,
                                   ),
-                                );
-                              },
-                              gridDelegate:
-                                  SliverGridDelegateWithMaxCrossAxisExtent(
-                                maxCrossAxisExtent: 200,
-                              ),
-                            )
-                          : Center(child: CircularProgressIndicator()),
-                    )),
-              ],
-            ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : Center(child: CircularProgressIndicator()),
+                  )),
+            ],
           ),
           IconContainer(
             icon: Icons.arrow_back_ios_new,
             iconColor: Colors.white,
             containerColor: Color(0xff2D527E),
-            press: () {},
+            press: () {
+              Get.toNamed('/BottomNavigation');
+            },
           ),
         ],
       ),

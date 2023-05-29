@@ -7,11 +7,11 @@ import '../../Services/EducationalContentService.dart';
 class EducationalContentController extends GetxController {
   var isLoading = false.obs;
   List<EducationalContentModel> educationalcontent_list = [];
-  CallStudentHomeAdvertisment() async {
+
+  CallEducationalContent(int index) async {
     try {
       var data = await EducationalContentService.GetEducationalContent(
-        'student/get/educationFile',
-      );
+          'student/get/educationFile', index);
       if (data != null) {
         educationalcontent_list.addAll(data);
       } else {
