@@ -10,7 +10,7 @@ String placementTestModelToJson(PlacementTestModel data) =>
 
 class PlacementTestModel {
   late int id;
-  late DateTime startDate;
+  late DateTime? startDate;
   late DateTime endDate;
   late QuestionsModel questions;
   late DateTime createdAt;
@@ -29,8 +29,6 @@ class PlacementTestModel {
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "start_date":
-            "${startDate.year.toString().padLeft(4, '0')}-${startDate.month.toString().padLeft(2, '0')}-${startDate.day.toString().padLeft(2, '0')}",
         "end_date":
             "${endDate.year.toString().padLeft(4, '0')}-${endDate.month.toString().padLeft(2, '0')}-${endDate.day.toString().padLeft(2, '0')}",
         "questions": questions.toJson(),

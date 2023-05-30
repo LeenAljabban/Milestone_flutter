@@ -31,7 +31,7 @@ class AdvertismentModel {
     isShown = json["is_shown"];
     advertismentTypeId = json["advertisment_type_id"];
     publishData = json["publish_data"];
-    course_id = json['course_id'];
+    if (json["course_id"] != null) course_id = json['course_id'];
     if (json["course"] != null) course = CourseModel.fromJson(json["course"]);
   }
 
