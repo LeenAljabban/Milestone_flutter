@@ -59,7 +59,7 @@ class BottomNavigation extends GetView<BottomNavigationController> {
                 Icons.notifications_active,
                 color: Colors.white,
               ),
-              title: 'Notification'),
+              title: 'Notifi'),
           TabItem(
               icon: Icon(
                 Icons.person,
