@@ -1,11 +1,17 @@
+// To parse this JSON data, do
+//
+//     final teacherCourses = teacherCoursesFromJson(jsonString);
+
 import 'dart:convert';
 
-CourseInfo courseInfoFromJson(String str) =>
-    CourseInfo.fromJson(json.decode(str));
+List<TeacherCourses> teacherCoursesFromJson(String str) =>
+    List<TeacherCourses>.from(
+        json.decode(str).map((x) => TeacherCourses.fromJson(x)));
 
-String courseInfoToJson(CourseInfo data) => json.encode(data.toJson());
+String teacherCoursesToJson(List<TeacherCourses> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class CourseInfo {
+class TeacherCourses {
   int id;
   DateTime startDay;
   DateTime endDay;
@@ -17,11 +23,12 @@ class CourseInfo {
   DateTime updatedAt;
   int teacherId;
   int periodId;
+  String name;
   String startHour;
   String endHour;
-  int isAvailable;
+  String? className;
 
-  CourseInfo({
+  TeacherCourses({
     required this.id,
     required this.startDay,
     required this.endDay,
@@ -33,12 +40,13 @@ class CourseInfo {
     required this.updatedAt,
     required this.teacherId,
     required this.periodId,
+    required this.name,
     required this.startHour,
     required this.endHour,
-    required this.isAvailable,
+    this.className,
   });
 
-  factory CourseInfo.fromJson(Map<String, dynamic> json) => CourseInfo(
+  factory TeacherCourses.fromJson(Map<String, dynamic> json) => TeacherCourses(
         id: json["id"],
         startDay: DateTime.parse(json["start_day"]),
         endDay: DateTime.parse(json["end_day"]),
@@ -50,9 +58,10 @@ class CourseInfo {
         updatedAt: DateTime.parse(json["updated_at"]),
         teacherId: json["teacher_id"],
         periodId: json["period_id"],
+        name: json["name"],
         startHour: json["start_hour"],
         endHour: json["end_hour"],
-        isAvailable: json["is_available"],
+        className: json["class_name"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -69,9 +78,10 @@ class CourseInfo {
         "updated_at": updatedAt.toIso8601String(),
         "teacher_id": teacherId,
         "period_id": periodId,
+        "name": name,
         "start_hour": startHour,
         "end_hour": endHour,
-        "is_available": isAvailable,
+        "class_name": className,
       };
 }
 

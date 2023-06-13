@@ -4,16 +4,16 @@ import 'package:audioplayers/audioplayers.dart';
 import '../../Models/EducationalContentModel.dart';
 import '../../Services/EducationalContentService.dart';
 
-class EducationalContentController extends GetxController {
+class EducationalContentTeacherController extends GetxController {
   var isLoading = false.obs;
   List<EducationalContentModel> educationalcontent_list = [];
   late Uri mp3Url;
   AudioPlayer audioPlayer = AudioPlayer();
 
-  CallEducationalContent(int index) async {
+  CallEducationalContentForTeacher(int index) async {
     try {
-      var data = await EducationalContentService.GetEducationalContent(
-          'student/get/educationFile', index);
+      var data = await EducationalContentService.GetEducationalContentTeacher(
+          'teacher/get/EducationFile/CoursenameById/' + index.toString());
       if (data != null) {
         educationalcontent_list.addAll(data);
         // String url =
@@ -33,7 +33,7 @@ class EducationalContentController extends GetxController {
 
   void onInit() {
     try {
-      CallEducationalContent(Get.arguments);
+      CallEducationalContentForTeacher(Get.arguments);
     } finally {}
   }
 

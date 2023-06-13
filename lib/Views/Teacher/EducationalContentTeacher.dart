@@ -5,10 +5,11 @@ import 'package:get/get.dart';
 
 import '../../Component/IconContainer.dart';
 import '../../Component/RoundedAppbar.dart';
+import '../../Controllers/TeacherControllers/EducationalContentTeacherController.dart';
 
-class EducationalContent extends StatelessWidget {
-  EducationalContentController controller =
-      Get.put(EducationalContentController());
+class EducationalContentTeacher extends StatelessWidget {
+  EducationalContentTeacherController controller =
+      Get.put(EducationalContentTeacherController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(

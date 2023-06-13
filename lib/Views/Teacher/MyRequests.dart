@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
 import '../../Component/IconContainer.dart';
+import '../../Controllers/TeacherControllers/AllRequestController.dart';
 
 class MyRequests extends StatelessWidget {
+  AllRequestController controller = Get.put(AllRequestController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,7 +20,7 @@ class MyRequests extends StatelessWidget {
                     child: ListView.builder(
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
-                        itemCount: 3,
+                        itemCount: controller.teacherrequest_list.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.fromLTRB(20.0, 14, 20, 0),
@@ -43,27 +45,79 @@ class MyRequests extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('Leave request',
-                                        //textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontFamily: 'segoepr',
-                                          color: Color(0xff2D527E),
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16,
-                                          //height: -1.5
-                                        )),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                              controller
+                                                      .teacherrequest_list[
+                                                          index]
+                                                      .type +
+                                                  ' Request',
+                                              //textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontFamily: 'segoepr',
+                                                color: Color(0xff2D527E),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                                //height: -1.5
+                                              )),
+                                          Container(
+                                            height: 20,
+                                            width: 110,
+                                            color: Colors.green,
+                                            child: Center(
+                                              child: Text(
+                                                  controller
+                                                      .teacherrequest_list[
+                                                          index]
+                                                      .status
+                                                      .name
+                                                      .toString(),
+                                                  style: TextStyle(
+                                                    fontFamily: 'segoepr',
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 12,
+                                                    //height: -1.5
+                                                  )),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
                                     SizedBox(
                                       height: 8,
                                     ),
-                                    Text('26-1-2023',
-                                        //textAlign: TextAlign.center,
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 3.0),
+                                      child: Text(
+                                        controller.teacherrequest_list[index]
+                                                .from.day
+                                                .toString() +
+                                            '/' +
+                                            controller
+                                                .teacherrequest_list[index]
+                                                .from
+                                                .month
+                                                .toString() +
+                                            '/' +
+                                            controller
+                                                .teacherrequest_list[index]
+                                                .from
+                                                .year
+                                                .toString(),
                                         style: TextStyle(
-                                          //fontFamily: 'segoepr',
                                           color: Colors.grey.shade500,
-                                          // fontWeight: FontWeight.bold,
                                           fontSize: 12,
-                                          //height: -1.5
-                                        ))
+                                        ),
+                                      ),
+                                    )
                                   ],
                                 ),
                               ),
@@ -105,15 +159,15 @@ class MyRequests extends StatelessWidget {
                 )),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 5.0),
-              child: IconContainer(
-                icon: Icons.arrow_back_ios_new,
-                iconColor: Color(0xff2D527E),
-                containerColor: Colors.white,
-                press: () {},
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 5.0),
+            //   child: IconContainer(
+            //     icon: Icons.arrow_back_ios_new,
+            //     iconColor: Color(0xff2D527E),
+            //     containerColor: Colors.white,
+            //     press: () {},
+            //   ),
+            // ),
           ],
         ),
       ),

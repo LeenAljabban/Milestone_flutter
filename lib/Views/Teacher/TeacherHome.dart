@@ -72,60 +72,74 @@ class TeacherHome extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 160,
-                        height: 120,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0xff2D527E),
-                                blurRadius: 5.0,
-                              )
-                            ],
-                            border:
-                                Border.all(color: Color(0xff2D527E), width: 2)),
-                        child: Center(
-                          child: Text(' Retirement\n Request',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'segoepr',
-                                color: Color(0xff2D527E),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                //height: -1.5
-                              )),
+                      InkWell(
+                        child: Container(
+                          width: 160,
+                          height: 120,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0xff2D527E),
+                                  blurRadius: 5.0,
+                                )
+                              ],
+                              border: Border.all(
+                                  color: Color(0xff2D527E), width: 2)),
+                          child: Center(
+                            child: Text(' Resignation\n Request',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: 'segoepr',
+                                  color: Color(0xff2D527E),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  //height: -1.5
+                                )),
+                          ),
                         ),
+                        onTap: () {
+                          Get.toNamed(
+                            '/ResignationRequest',
+                          );
+                        },
                       ),
                       SizedBox(
                         width: 20,
                       ),
-                      Container(
-                        width: 160,
-                        height: 120,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0xff2D527E),
-                                blurRadius: 5.0,
-                              )
-                            ],
-                            border:
-                                Border.all(color: Color(0xff2D527E), width: 2)),
-                        child: Center(
-                          child: Text('Vacation \n Request',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontFamily: 'segoepr',
-                                color: Color(0xff2D527E),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                //height: -1.5
-                              )),
+                      InkWell(
+                        child: Container(
+                          width: 160,
+                          height: 120,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0xff2D527E),
+                                  blurRadius: 5.0,
+                                )
+                              ],
+                              border: Border.all(
+                                  color: Color(0xff2D527E), width: 2)),
+                          child: Center(
+                            child: Text('Vacation \n Request',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: 'segoepr',
+                                  color: Color(0xff2D527E),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  //height: -1.5
+                                )),
+                          ),
                         ),
+                        onTap: () {
+                          Get.toNamed(
+                            '/LeaveRequest',
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -160,40 +174,51 @@ class TeacherHome extends StatelessWidget {
                           )
                         ],
                         border: Border.all(color: Colors.grey, width: 2)),
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: 5,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10.0, vertical: 7),
-                            child: Container(
-                              width: 300,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                  color: Color(0xff2D527E),
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color(0xff2D527E),
-                                      blurRadius: 4.0,
-                                    )
-                                  ],
-                                  border: Border.all(
-                                      color: Color(0xff2D527E), width: 5)),
-                              child: Center(
-                                child: Text(
-                                  'A1',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: 'segoepr',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 25),
+                    child: Obx(() => controller.isLoading3.value
+                        ? ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: controller.teachercourses_list.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10.0, vertical: 7),
+                                child: InkWell(
+                                  child: Container(
+                                    width: 300,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xff2D527E),
+                                        borderRadius: BorderRadius.circular(10),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Color(0xff2D527E),
+                                            blurRadius: 4.0,
+                                          )
+                                        ],
+                                        border: Border.all(
+                                            color: Color(0xff2D527E),
+                                            width: 5)),
+                                    child: Center(
+                                      child: Text(
+                                        controller
+                                            .teachercourses_list[index].name,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: 'segoepr',
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 25),
+                                      ),
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Get.toNamed('/SpecificCourse',
+                                        arguments: controller
+                                            .teachercourses_list[index].id);
+                                  },
                                 ),
-                              ),
-                            ),
-                          );
-                        }),
+                              );
+                            })
+                        : Center(child: CircularProgressIndicator())),
                     /*
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 15),
@@ -226,7 +251,9 @@ class TeacherHome extends StatelessWidget {
                 icon: Icons.list,
                 iconColor: Colors.white,
                 containerColor: Color(0xff2D527E),
-                press: () {}),
+                press: () {
+                  controller.key.currentState?.openDrawer();
+                }),
           ],
         ),
       ),
