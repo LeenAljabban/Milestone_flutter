@@ -6,8 +6,6 @@ import '../../Component/IconContainer.dart';
 import '../../Controllers/TeacherControllers/LeaveRequestController.dart';
 
 class LeaveRequest extends GetView<LeaveRequestController> {
-  const LeaveRequest({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -59,7 +57,9 @@ class LeaveRequest extends GetView<LeaveRequestController> {
                       icon: Icons.arrow_back_ios_new,
                       iconColor: Color(0xff2D527E),
                       containerColor: Colors.white,
-                      press: () {},
+                      press: () {
+                        Get.back();
+                      },
                     ),
                   ],
                 ),
@@ -113,14 +113,15 @@ class LeaveRequest extends GetView<LeaveRequestController> {
                             ),
                             floatingLabelBehavior: FloatingLabelBehavior.never,
                           ),
-                          controller: controller.dateController,
+                          controller: controller.startdateController,
                           onTap: () {
-                            controller.chooseDate();
+                            controller
+                                .chooseDate(controller.startdateController);
                           },
                         ),
                       ),
                       Text(
-                        'Total leave days',
+                        'Leave start date',
                         style: TextStyle(
                           color: Color(0xff2D527E),
                           fontSize: 17,
@@ -130,50 +131,44 @@ class LeaveRequest extends GetView<LeaveRequestController> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15.0),
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border:
-                                Border.all(color: Color(0xff2D527E), width: 2),
+                        child: TextField(
+                          textAlign: TextAlign.center,
+                          readOnly: true,
+                          style: TextStyle(
+                              color: Colors.grey.shade500,
+                              fontFamily: 'segoepr',
+                              fontSize: 15),
+                          decoration: InputDecoration(
+                            labelText: 'select date',
+                            labelStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey.shade400,
+                            ),
+                            contentPadding: EdgeInsets.only(left: 20),
+                            suffixIcon: Icon(
+                              Icons.calendar_month,
+                              color: Colors.grey.shade500,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Color(0xff2D527E),
+                                width: 2,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Color(0xff2D527E),
+                                width: 2,
+                              ),
+                            ),
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  Icons.remove,
-                                  color: Color(0xff2D527E),
-                                ),
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 4.0, horizontal: 18.0),
-                                iconSize: 32.0,
-                                onPressed: controller.DecraeseDays,
-                              ),
-                              Obx(
-                                () => Text(
-                                  '${controller.NumDays.value}',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.grey.shade500,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 17,
-                                    fontFamily: 'segoepr',
-                                  ),
-                                ),
-                              ),
-                              IconButton(
-                                icon: Icon(
-                                  Icons.add,
-                                  color: Color(0xff2D527E),
-                                ),
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 4.0, horizontal: 18.0),
-                                iconSize: 32.0,
-                                onPressed: controller.IncreaseDays,
-                              ),
-                            ],
-                          ),
+                          controller: controller.enddateController,
+                          onTap: () {
+                            controller.chooseDate(controller.enddateController);
+                          },
                         ),
                       ),
                       Text(
@@ -237,6 +232,7 @@ class LeaveRequest extends GetView<LeaveRequestController> {
                         child: SizedBox(
                           width: 320,
                           child: TextFormField(
+                            controller: controller.commentController,
                             maxLines: 4,
                             style: TextStyle(
                                 color: Colors.grey.shade500,
@@ -280,7 +276,9 @@ class LeaveRequest extends GetView<LeaveRequestController> {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.CallLeaveRequest();
+                    },
                     child: Text(
                       'Submit Request',
                       style: TextStyle(

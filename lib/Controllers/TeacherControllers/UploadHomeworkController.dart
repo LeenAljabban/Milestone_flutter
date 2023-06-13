@@ -36,27 +36,46 @@ class UploadHomeworkController extends GetxController {
           'teacher/upload/Homework', 2, path, noteController.text);
       if (data != null) {
         Get.defaultDialog(
-          title: 'Home work Uploaded Secssuflly!',
-          titlePadding: EdgeInsets.only(top: 50),
-          contentPadding: EdgeInsets.symmetric(horizontal: 20),
+          title: 'Home work Uploaded Secssuflly',
+          titlePadding: EdgeInsets.only(top: 20, left: 7, right: 7),
           titleStyle: TextStyle(
-            color: Color(0xffEF5432),
-          ),
+              color: Color(0xffEF5432),
+              fontFamily: 'segoepr',
+              fontWeight: FontWeight.bold),
           radius: 20,
-          // barrierDismissible: false,
-          // content: Container(
-          //   height: 200,
-          //   child: Center(
-          //     child: Text(
-          //       "We will send you another code in 15 seconds \n please wait... ",
-          //       textAlign: TextAlign.center,
-          //       style: TextStyle(
-          //           color: Color(0xff2D527E),
-          //           fontFamily: 'segoepr',
-          //           fontWeight: FontWeight.bold),
-          //     ),
-          //   ),
-          // ),
+          content: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 18.0),
+                child: TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                      Color(0xff2D527E),
+                    ),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(22),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    Get.back();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Text(
+                      'OK',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontFamily: 'segoepr',
+                          fontSize: 20),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         );
       } else {
         print('there is a problem');

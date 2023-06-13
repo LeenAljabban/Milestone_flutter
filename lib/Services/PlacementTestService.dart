@@ -7,7 +7,7 @@ import '../Models/PlacementTestModel.dart';
 class PlacementTestService {
   static getquestionslist(endpoint) async {
     http.Response response =
-        await http.get(Uri.parse(baseApi + endpoint), headers: {
+    await http.get(Uri.parse(baseApi + endpoint), headers: {
       'Content-type': 'application/json',
       'Accept': 'application/json',
     });
@@ -16,28 +16,32 @@ class PlacementTestService {
 
     if (response.statusCode == 200) {
       var obj = response.body;
+
       return placementTestModelFromJson(obj);
-    } else
+    } else {
       return null;
+    }
   }
 
-  static SubmitAnswers(
-    endpoint,
-    testid,
-    answersList,
-  ) async {
+  static SubmitAnswers(endpoint,
+      testid,
+      answersList,) async {
+    var deviceId = await getFromSharedPreferences('device_id');
+
     http.Response response = await http.post(Uri.parse(baseApi + endpoint),
         body: jsonEncode({
           'guest_id': 1,
           'test_id': testid,
           'mark': '',
           'answers': answersList,
+          'device_id': deviceId,
         }),
         headers: {
           'Content-type': 'application/json',
           'Accept': 'application/json',
         });
     print(response.body);
+    print(response.statusCode);
 
     if (response.statusCode == 200) {
       var obj = jsonDecode(response.body);

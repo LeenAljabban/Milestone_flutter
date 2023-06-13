@@ -53,7 +53,7 @@ class TeachersList extends GetView<TeachersListController> {
                                   width: 50,
                                   height: 100,
                                   child: Image.network(
-                                    'http://192.168.1.54:8000/${controller.list[index].image}',
+                                    'http://192.168.1.106:8000/${controller.list[index].image}',
                                     fit: BoxFit.fill,
                                   ),
                                 ),

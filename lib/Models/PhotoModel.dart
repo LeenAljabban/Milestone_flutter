@@ -25,9 +25,9 @@ class PhotoModel {
 
   factory PhotoModel.fromJson(Map<String, dynamic> json) => PhotoModel(
         id: json["id"],
-        filePath: json["file_path"],
-        publishDate: DateTime.parse(json["publish_date"]),
-        isAppear: json["is_appear"],
+        filePath: json["image"],
+        publishDate: DateTime.parse(json["published_at"]),
+        isAppear: json["is_show"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
       );

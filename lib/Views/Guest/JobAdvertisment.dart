@@ -138,7 +138,9 @@ class JobAdvertisment extends GetView<JobAdvertismentController> {
                 icon: Icons.arrow_back_ios_new,
                 iconColor: Color(0xff2D527E),
                 containerColor: Colors.white,
-                press: () {},
+                press: () {
+                  Get.back();
+                },
               ),
             ],
           ),

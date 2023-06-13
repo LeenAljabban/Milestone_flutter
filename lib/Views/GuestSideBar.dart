@@ -70,34 +70,34 @@ class GuestSideBar extends StatelessWidget {
               Get.toNamed('/ContactUs');
             },
           ),
-          ListTile(
-            // trailing: InkWell(
-            //   onTap: () {
-            //     Get.changeTheme(
-            //         Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
-            //   },
-            //   child: Icon(
-            //     Get.isDarkMode ? Icons.dark_mode : Icons.dark_mode_outlined,
-            //   ),
-            // ),
-            // Switch.adaptive(
-            //     value: ,
-            //     onChanged: (d) {
-            //
-            //     }),
-            leading: Icon(
-              Icons.dark_mode,
-              color: Color(0xff2D527E),
-            ),
-            title: Text(
-              'Dark Mode',
-              style: TextStyle(
-                fontFamily: 'segoepr',
-                color: Color(0xff2D527E),
-              ),
-            ),
-            onTap: () {},
-          ),
+          // ListTile(
+          //   // trailing: InkWell(
+          //   //   onTap: () {
+          //   //     Get.changeTheme(
+          //   //         Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+          //   //   },
+          //   //   child: Icon(
+          //   //     Get.isDarkMode ? Icons.dark_mode : Icons.dark_mode_outlined,
+          //   //   ),
+          //   // ),
+          //   // Switch.adaptive(
+          //   //     value: ,
+          //   //     onChanged: (d) {
+          //   //
+          //   //     }),
+          //   leading: Icon(
+          //     Icons.dark_mode,
+          //     color: Color(0xff2D527E),
+          //   ),
+          //   title: Text(
+          //     'Dark Mode',
+          //     style: TextStyle(
+          //       fontFamily: 'segoepr',
+          //       color: Color(0xff2D527E),
+          //     ),
+          //   ),
+          //   onTap: () {},
+          // ),
           ExpansionTile(
             title: Text(
               'Languages',

@@ -12,6 +12,7 @@ class UploadHomeworkService {
       request.files.add(await http.MultipartFile.fromPath('file', file));
     } else
       request.fields['file'] = '';
+    /////////////////////////////////////////////////////////////////////////
     request.fields['course_id'] = 3.toString();
     if (text != '') {
       request.fields['text'] = text;
@@ -21,8 +22,7 @@ class UploadHomeworkService {
     request.headers.addAll({
       "content-type": "application/json",
       "Accept": "application/json",
-      "Authorization":
-          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODUzMTAyMjAsImV4cCI6MTY4NTMxMzgyMCwibmJmIjoxNjg1MzEwMjIwLCJqdGkiOiJaUEpjQjFRd1RvUXRZejVsIiwic3ViIjoiMyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.bogRex9XyeWt979InUtDhrxeHPCgbv_coQ2tB_8yw14"
+      "Authorization": "Bearer $token"
     });
     var response = await request.send();
     print(await response.stream.bytesToString());

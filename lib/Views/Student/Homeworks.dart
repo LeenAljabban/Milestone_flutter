@@ -23,61 +23,43 @@ class HomeWorks extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.fromLTRB(20.0, 14, 20, 0),
-                          child: InkWell(
-                            onTap: () async {
-                              // controller.downloadFile(
-                              //     'http://192.168.1.106:8000/${controller.homework[index].file}',
-                              //     "Internal storage/leenoo");
-                              controller.downloadFile(
-                                  'http://192.168.1.106:8000/${controller.homework[index].file}');
-                            },
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(minHeight: 80),
                             child: Container(
-                                width: double.infinity,
-                                height: 80,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0xff2D527E),
-                                        blurRadius: 5.0,
-                                      )
-                                    ],
-                                    border: Border.all(
-                                        color: Color(0xff2D527E), width: 2)),
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.only(left: 20, top: 5),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      controller.homework[index].text != null
-                                          ? Text(
-                                              controller.homework[index].text!,
-                                              //textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontFamily: 'segoepr',
-                                                color: Color(0xff2D527E),
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 16,
-                                                //height: -1.5
-                                              ),
-                                            )
-                                          : Text(
-                                              controller.homework[index].file!
-                                                  .substring(6),
-                                              maxLines: 1,
-                                              // textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontFamily: 'segoepr',
-                                                color: Color(0xff2D527E),
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 16,
-                                                //height: -1.5
-                                              ),
-                                            ),
-                                      Text(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: controller.blue,
+                                    blurRadius: 5.0,
+                                  )
+                                ],
+                                border: Border.all(
+                                    color: controller.blue, width: 2),
+                              ),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 20, top: 5),
+                                child: controller.homework[index].file != null
+                                    ? ListTile(
+                                        title: Text(
+                                          controller.homework[index].text !=
+                                                  null
+                                              ? controller.homework[index].text!
+                                              : controller
+                                                  .homework[index].file!,
+                                          //textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontFamily: 'segoepr',
+                                            color: controller.blue,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                            //height: -1.5
+                                          ),
+                                        ),
+                                        subtitle: Text(
                                           controller.homework[index].createdAt!
                                               .toString()
                                               .substring(0, 10),
@@ -88,10 +70,43 @@ class HomeWorks extends StatelessWidget {
                                             // fontWeight: FontWeight.bold,
                                             fontSize: 14,
                                             //height: -1.5
-                                          ))
-                                    ],
-                                  ),
-                                )),
+                                          ),
+                                        ),
+                                        trailing: IconButton(
+                                            onPressed: () {
+                                              controller.downloadFile(
+                                                  'http://192.168.1.106:8000/${controller.homework[index].file}');
+                                            },
+                                            icon: Icon(Icons.download)),
+                                      )
+                                    : ListTile(
+                                        title: Text(
+                                          controller.homework[index].file!,
+                                          //textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontFamily: 'segoepr',
+                                            color: controller.blue,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                            //height: -1.5
+                                          ),
+                                        ),
+                                        subtitle: Text(
+                                            controller
+                                                .homework[index].createdAt!
+                                                .toString()
+                                                .substring(0, 10),
+                                            //textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontFamily: 'segoepr',
+                                              color: Colors.grey.shade500,
+                                              // fontWeight: FontWeight.bold,
+                                              fontSize: 14,
+                                              //height: -1.5
+                                            )),
+                                      ),
+                              ),
+                            ),
                           ),
                         );
                       })
@@ -130,7 +145,7 @@ class HomeWorks extends StatelessWidget {
             padding: const EdgeInsets.only(top: 5.0),
             child: IconContainer(
               icon: Icons.arrow_back_ios_new,
-              iconColor: Color(0xff2D527E),
+              iconColor: controller.blue,
               containerColor: Colors.white,
               press: () {
                 Get.back();

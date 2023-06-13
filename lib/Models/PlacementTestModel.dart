@@ -23,8 +23,10 @@ class PlacementTestModel {
     startDate = DateTime.parse(json["start_date"]);
     endDate = DateTime.parse(json["end_date"]);
     questions = QuestionsModel.fromJson(json["questions"]);
-    createdAt = DateTime.parse(json["created_at"]);
-    updatedAt = DateTime.parse(json["updated_at"]);
+    if (json["created_at"] != null)
+      createdAt = DateTime.parse(json["created_at"]);
+    if (json["updated_at"] != null)
+      updatedAt = DateTime.parse(json["updated_at"]);
   }
 
   Map<String, dynamic> toJson() => {
@@ -32,7 +34,5 @@ class PlacementTestModel {
         "end_date":
             "${endDate.year.toString().padLeft(4, '0')}-${endDate.month.toString().padLeft(2, '0')}-${endDate.day.toString().padLeft(2, '0')}",
         "questions": questions.toJson(),
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
       };
 }

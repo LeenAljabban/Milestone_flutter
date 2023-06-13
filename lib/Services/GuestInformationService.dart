@@ -3,8 +3,8 @@ import 'package:first/global.dart';
 import 'package:http/http.dart' as http;
 
 class GuestInformationService {
-  static GuestInformation(
-      endpoint, first_name, last_name, phone, email, education) async {
+  static GuestInformation(endpoint, first_name, last_name, phone, email,
+      education, device_id) async {
     http.Response response = await http.post(Uri.parse(baseApi + endpoint),
         body: jsonEncode({
           'first_name': first_name,
@@ -14,7 +14,7 @@ class GuestInformationService {
           'education': education,
           'city_id': 1.toString(),
           'verification_code': '',
-          'password': '522',
+          'device_id': device_id,
         }),
         headers: {
           'Content-type': 'application/json',

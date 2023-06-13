@@ -17,8 +17,8 @@ class QuestionDataModel {
   String level;
   int mark;
   int typeId;
-  dynamic createdAt;
-  dynamic updatedAt;
+  dynamic? createdAt;
+  dynamic? updatedAt;
   List<AnswerModel> answers;
 
   QuestionDataModel({

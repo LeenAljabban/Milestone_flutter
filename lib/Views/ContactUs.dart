@@ -45,77 +45,86 @@ class ContactUs extends GetView<GetInfoController> {
                           height: 10,
                         ),
                         Card(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.blue.shade900,
-                                  blurRadius: 5,
-                                  offset: Offset(0.5, 1), // Shadow position
-                                ),
-                                BoxShadow(
-                                  color: Colors.grey.shade200,
-                                ),
-                                BoxShadow(
-                                  color: Colors.white,
-                                  spreadRadius: -15.0,
-                                  blurRadius: 15.0,
-                                ),
-                              ],
-                            ),
-                            width: 340,
-                            height: 200,
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(minHeight: 200),
                             child: Container(
-                              child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.blue.shade900,
+                                    blurRadius: 5,
+                                    offset: Offset(0.5, 1), // Shadow position
+                                  ),
+                                  BoxShadow(
+                                    color: Colors.grey.shade200,
+                                  ),
+                                  BoxShadow(
+                                    color: Colors.white,
+                                    spreadRadius: -15.0,
+                                    blurRadius: 15.0,
+                                  ),
+                                ],
+                              ),
+                              width: 340,
+                              child: Container(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Text(
-                                        controller.getInfoModel!.contactUs,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              controller
+                                                  .getInfoModel!.contactUs,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Color(0xff2D527E),
+                                                  // fontFamily: 'segoepr',
+                                                  fontSize: 20),
+                                            ),
+                                          ),
+                                          Icon(
+                                            Icons.phone_in_talk,
                                             color: Color(0xff2D527E),
-                                            // fontFamily: 'segoepr',
-                                            fontSize: 20),
+                                            size: 30,
+                                          )
+                                        ],
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            right: 15.0, left: 50),
-                                        child: Icon(
-                                          Icons.phone_in_talk,
-                                          color: Color(0xff2D527E),
-                                          size: 30,
-                                        ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  right: 5.0),
+                                              child: Text(
+                                                controller.getInfoModel!.email,
+                                                textAlign: TextAlign.center,
+                                                // overflow: TextOverflow.ellipsis,
+                                                maxLines: 2,
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Color(0xff2D527E),
+                                                    // fontFamily: 'segoepr',
+                                                    fontSize: 18),
+                                              ),
+                                            ),
+                                          ),
+                                          Icon(
+                                            Icons.email,
+                                            size: 30,
+                                            color: Color(0xff2D527E),
+                                          )
+                                        ],
                                       )
                                     ],
                                   ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        'themilestone.ltc@gmail.com',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Color(0xff2D527E),
-                                            // fontFamily: 'segoepr',
-                                            fontSize: 18),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 15.0),
-                                        child: Icon(
-                                          Icons.email,
-                                          size: 30,
-                                          color: Color(0xff2D527E),
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
+                                ),
                               ),
                             ),
                           ),
