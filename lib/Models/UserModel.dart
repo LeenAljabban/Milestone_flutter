@@ -29,7 +29,7 @@ class UserModel {
     if (json['username'] != null) username = json["username"];
     email = json["email"];
     if (json['phone'] != null) phone = json["phone"];
-    if (json['birthdate'] != null) birthdate = json["birthdate"];
+    if (json['birth'] != null) birthdate = json["birth"];
     if (json['roles'] != null)
       roles = List<String>.from(json["roles"].map((x) => x));
     if (json['token'] != null) token = json["token"];

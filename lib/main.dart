@@ -5,6 +5,7 @@ import 'package:first/Binding/EditTeacherProfileBinding.dart';
 import 'package:first/Binding/GetInfoBinding.dart';
 import 'package:first/Binding/GuestInformationBinding.dart';
 import 'package:first/Binding/LoginBinding.dart';
+import 'package:first/Binding/MarksDetailBinding.dart';
 import 'package:first/Binding/QrScannerBinding.dart';
 import 'package:first/Binding/UploadHomeworkBinding.dart';
 import 'package:first/Views/AboutUs.dart';
@@ -27,7 +28,6 @@ import 'Binding/LeaveRequestBinding.dart';
 import 'Binding/PlacmentTestBinding.dart';
 import 'Binding/ReserveBinding.dart';
 import 'Binding/VerificationCodeBinding.dart';
-import 'Controllers/StudentsControllers/ReserveController.dart';
 import 'Views/Guest/AdvertismentImage.dart';
 import 'Views/Guest/TeachersList.dart';
 import 'Views/Guest/ContinuePlacment.dart';
@@ -56,7 +56,7 @@ import 'Views/Teacher/TeacherProfile.dart';
 import 'Views/Teacher/UploadHomework.dart';
 import 'Views/WhoAreYou.dart';
 
-void main() {
+void main() async {
   runApp(MyApp());
 }
 
@@ -103,6 +103,7 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: "/MarkDetailes",
             page: () => MarkDetailes(),
+            binding: MarksDetailBinding(),
           ),
           GetPage(
             name: "/Rate",
