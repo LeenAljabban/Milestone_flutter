@@ -27,7 +27,7 @@ class AdvertismentModel {
     title = json["title"];
     image = json["image"];
     description = json["description"];
-    tips = json["tips"];
+    if (json["tips"] != null) tips = json["tips"];
     isShown = json["is_shown"];
     advertismentTypeId = json["advertisment_type_id"];
     publishData = json["publish_data"];

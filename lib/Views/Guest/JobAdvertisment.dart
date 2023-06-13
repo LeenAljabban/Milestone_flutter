@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../Component/IconContainer.dart';
 import '../../Controllers/GuestControllers/JobAdvertismentController.dart';
 
@@ -87,39 +86,45 @@ class JobAdvertisment extends GetView<JobAdvertismentController> {
                                   fontFamily: 'segoepr',
                                   fontSize: 20),
                             ),
-                            Center(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 50.0),
-                                child: SizedBox(
-                                  height: 50,
-                                  width: 250,
-                                  child: TextButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                        Color(0xff2D527E),
-                                      ),
-                                      shape: MaterialStateProperty.all(
-                                        RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(22),
+                            controller.token != ''
+                                ? Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 50.0),
+                                      child: SizedBox(
+                                        height: 50,
+                                        width: 250,
+                                        child: TextButton(
+                                          style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                              Color(0xff2D527E),
+                                            ),
+                                            shape: MaterialStateProperty.all(
+                                              RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(22),
+                                              ),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            controller.pickfile();
+                                            controller.CallUploadCv(
+                                                controller.adv.id);
+                                          },
+                                          child: Text(
+                                            'upload cv',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                                fontFamily: 'segoepr',
+                                                fontSize: 20),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                    onPressed: () {},
-                                    child: Text(
-                                      'upload cv',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          fontFamily: 'segoepr',
-                                          fontSize: 20),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+                                  )
+                                : Container(),
                           ],
                         ),
                       ),

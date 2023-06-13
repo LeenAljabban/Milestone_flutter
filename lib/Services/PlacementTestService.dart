@@ -26,12 +26,14 @@ class PlacementTestService {
     testid,
     answersList,
   ) async {
+    var device_id = await getFromSharedPreferences('device_id');
     http.Response response = await http.post(Uri.parse(baseApi + endpoint),
         body: jsonEncode({
           'guest_id': 1,
           'test_id': testid,
           'mark': '',
           'answers': answersList,
+          'device_id': device_id,
         }),
         headers: {
           'Content-type': 'application/json',
