@@ -343,9 +343,7 @@ class GuestInformation extends GetView<GuestInformationController> {
                   icon: Icons.arrow_back_ios_new,
                   iconColor: Color(0xff2D527E),
                   containerColor: Colors.white,
-                  press: () {
-                    Get.back();
-                  },
+                  press: () {},
                 ),
               ],
             ),

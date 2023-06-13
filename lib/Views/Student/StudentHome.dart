@@ -315,58 +315,54 @@ class StudentHome extends StatelessWidget {
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  labelText: 'Search...',
-                                  labelStyle:
-                                      TextStyle(color: Colors.grey.shade400),
-                                  suffixIcon: Icon(
-                                    Icons.search,
-                                    color: Color(0xff2D527E),
-                                    size: 30,
+                              child: Expanded(
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    labelText: 'Search...',
+                                    labelStyle:
+                                        TextStyle(color: Colors.grey.shade400),
+                                    suffixIcon: Icon(
+                                      Icons.search,
+                                      color: Color(0xff2D527E),
+                                      size: 30,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(),
                                   ),
-                                  enabledBorder: UnderlineInputBorder(),
                                 ),
                               ),
                             ),
                           ),
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          Get.toNamed('/HomeWorks');
-                        },
-                        child: Center(
-                          child: Container(
-                            width: 340,
-                            height: 60,
-                            decoration: BoxDecoration(
-                                color: Color(0xff2D527E),
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xff2D527E),
-                                    blurRadius: 5.0,
-                                  )
-                                ],
-                                border: Border.all(
-                                    color: Color(0xff2D527E), width: 2)),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 5),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('View HomeWorks',
-                                      style: TextStyle(
-                                        fontFamily: 'segoepr',
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16,
-                                        //height: -1.5
-                                      )),
-                                ],
-                              ),
+                      Center(
+                        child: Container(
+                          width: 340,
+                          height: 60,
+                          decoration: BoxDecoration(
+                              color: Color(0xff2D527E),
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0xff2D527E),
+                                  blurRadius: 5.0,
+                                )
+                              ],
+                              border: Border.all(
+                                  color: Color(0xff2D527E), width: 2)),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('View HomeWorks',
+                                    style: TextStyle(
+                                      fontFamily: 'segoepr',
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                      //height: -1.5
+                                    )),
+                              ],
                             ),
                           ),
                         ),
@@ -470,16 +466,10 @@ class StudentHome extends StatelessWidget {
                                 itemBuilder: (BuildContext context,
                                         int itemIndex, int pageViewIndex) =>
                                     InkWell(
-                                  onTap: () => controller
-                                              .advertisments[itemIndex]
-                                              .advertismentTypeId ==
-                                          1
-                                      ? Get.toNamed('/ReserveAdvertisment',
-                                          arguments: controller
-                                              .advertisments[itemIndex].id)
-                                      : Get.toNamed('/JobAdvertisment',
-                                          arguments: controller
-                                              .advertisments[itemIndex]),
+                                  onTap: () => Get.toNamed(
+                                      '/ReserveAdvertisment',
+                                      arguments: controller
+                                          .advertisments[itemIndex].id),
                                   child: Container(
                                     decoration: BoxDecoration(
                                       // borderRadius: BorderRadius.circular(10.0),

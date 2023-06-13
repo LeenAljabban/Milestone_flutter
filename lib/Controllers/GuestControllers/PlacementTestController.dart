@@ -56,6 +56,7 @@ class PlacementTestController extends GetxController {
   final seconds = '00'.obs;
   final hours = '02'.obs;
 
+
   void startTimer(int second) {
     Duration duration = Duration(seconds: 1);
     remainingSeconds = second;
@@ -86,6 +87,7 @@ class PlacementTestController extends GetxController {
   }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
   void selectAnswer(int questionIndex, int answerId) {
     _selectedAnswers[questionIndex] = answerId;
@@ -129,17 +131,14 @@ class PlacementTestController extends GetxController {
     update();
   }
 
+
   CallGetquestionslist() async {
     try {
       var data = await PlacementTestService.getquestionslist(
         'getTest?page=${page}',
       );
-      print('/////////////////////////////////////////////////////////////');
-      print(data);
       if (data != null) {
         placementtest = data;
-
-        print(data);
 
         questionsList.addAll(placementtest!.questions.data);
         _selectedAnswers.add(-1);

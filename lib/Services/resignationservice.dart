@@ -2,29 +2,30 @@ import 'dart:convert';
 import 'package:first/global.dart';
 import 'package:http/http.dart' as http;
 
-class RateService {
-  static Rate(endpoint,
-      rate,
-      note,) async {
+import '../Models/PlacementTestModel.dart';
+
+class Resignationsrvice {
+  static SubmitResignation(
+    endpoint,
+    reason,
+  ) async {
     var token = await getFromSharedPreferences('token');
     http.Response response = await http.post(Uri.parse(baseApi + endpoint),
         body: jsonEncode({
-          'rate': rate,
-          'note': note,
-
+          'reason': reason,
         }),
         headers: {
           'Content-type': 'application/json',
           'Accept': 'application/json',
-          "Authorization": "Bearer $token",
+          "Authorization": "Bearer ${token}",
         });
 
-    print(response.body);
+    // print(response.body);
 
     if (response.statusCode == 200) {
-      var obj = jsonDecode(response.body);
-
-      return obj;
+      // var obj = jsonDecode(response.body);
+      print("your request sent successfully");
+      return true;
     } else
       return null;
   }

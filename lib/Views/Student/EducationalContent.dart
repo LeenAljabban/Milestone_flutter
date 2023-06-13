@@ -93,23 +93,25 @@ class EducationalContent extends StatelessWidget {
                                                   size: 80,
                                                 ),
                                                 decoration: BoxDecoration(
-                                                    color: Colors.white,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            15),
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        color:
-                                                            Color(0xff2D527E),
-                                                        blurRadius: 5.0,
-                                                      )
-                                                    ],
-                                                    border: Border.all(
-                                                        color: Colors.grey,
-                                                        width: 1)),
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(15),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: Color(0xff2D527E),
+                                                      blurRadius: 5.0,
+                                                    )
+                                                  ],
+                                                  border: Border.all(
+                                                      color: Colors.grey,
+                                                      width: 1),
+                                                ),
                                               ),
                                               onTap: () {
-                                                // controller.educationalcontent_list[0].file
+                                                // Call the `playMp3` method of your `EducationalContentController` to play the MP3 file
+                                                // Get.find<
+                                                //         EducationalContentController>()
+                                                //     .playMp3();
                                               },
                                             ),
                                             Padding(
@@ -153,7 +155,7 @@ class EducationalContent extends StatelessWidget {
             iconColor: Colors.white,
             containerColor: Color(0xff2D527E),
             press: () {
-              Get.toNamed('/BottomNavigation');
+              Get.back();
             },
           ),
         ],

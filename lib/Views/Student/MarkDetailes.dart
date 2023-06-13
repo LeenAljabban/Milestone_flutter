@@ -1,12 +1,12 @@
 import 'package:first/Component/MarkCard.dart';
-import 'package:first/Controllers/StudentsControllers/MarkDetailsController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
-import 'package:get/get.dart';
 
 import '../../Component/IconContainer.dart';
 
-class MarkDetailes extends GetView<MarkDetailsController> {
+class MarkDetailes extends StatelessWidget {
+  const MarkDetailes({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +33,7 @@ class MarkDetailes extends GetView<MarkDetailsController> {
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 40.0),
                         child: Text(
-                          controller.detail.courseName + ' Marks',
+                          "A1 Marks",
                           style: TextStyle(
                             fontSize: 27,
                             color: Colors.white,
@@ -54,27 +54,27 @@ class MarkDetailes extends GetView<MarkDetailsController> {
             ),
             MarkCard(
               section: 'Mid',
-              mark: controller.detail.mark.med,
+              mark: 49,
               wholemark: 50,
             ),
             MarkCard(
               section: 'Presentation',
-              mark: controller.detail.mark.presentation,
+              mark: 47,
               wholemark: 50,
             ),
             MarkCard(
               section: 'Oral',
-              mark: controller.detail.mark.oral,
+              mark: 45,
               wholemark: 50,
             ),
             MarkCard(
               section: 'Final',
-              mark: controller.detail.mark.markFinal,
+              mark: 50,
               wholemark: 50,
             ),
             MarkCard(
               section: 'Homeworks',
-              mark: controller.detail.mark.homework,
+              mark: 30,
               wholemark: 30,
             ),
             Padding(
@@ -106,7 +106,7 @@ class MarkDetailes extends GetView<MarkDetailsController> {
                           ),
                         ),
                         Text(
-                          controller.detail.total.toString() + '/100',
+                          '90/100',
                           //textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'segoepr',

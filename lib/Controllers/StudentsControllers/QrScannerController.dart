@@ -1,8 +1,9 @@
-import 'package:first/Services/QrScannerService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
+
+import '../../Services/ScanQrService.dart';
 
 class QrScannerController extends GetxController {
   Color blue = Color(0xff2D527E);
@@ -11,7 +12,7 @@ class QrScannerController extends GetxController {
   Future<void> CallSubmitQr() async {
     try {
       var data =
-          await QrScannerService.SubmitQr('student/Attendence', barcodeScanRes);
+          await ScanQrService.SubmitQr('student/Attendence', barcodeScanRes);
       if (data != null) {
         if (data['message'] == "Attendance recorded") {
           print('scan took Successfully');

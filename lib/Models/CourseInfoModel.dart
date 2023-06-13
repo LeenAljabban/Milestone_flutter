@@ -7,8 +7,6 @@ String courseInfoToJson(CourseInfo data) => json.encode(data.toJson());
 
 class CourseInfo {
   int id;
-  String startHour;
-  String endHour;
   DateTime startDay;
   DateTime endDay;
   List<Day> days;
@@ -16,12 +14,15 @@ class CourseInfo {
   int classId;
   int courseNameId;
   DateTime createdAt;
-  dynamic updatedAt;
+  DateTime updatedAt;
+  int teacherId;
+  int periodId;
+  String startHour;
+  String endHour;
+  int isAvailable;
 
   CourseInfo({
     required this.id,
-    required this.startHour,
-    required this.endHour,
     required this.startDay,
     required this.endDay,
     required this.days,
@@ -29,13 +30,16 @@ class CourseInfo {
     required this.classId,
     required this.courseNameId,
     required this.createdAt,
-    this.updatedAt,
+    required this.updatedAt,
+    required this.teacherId,
+    required this.periodId,
+    required this.startHour,
+    required this.endHour,
+    required this.isAvailable,
   });
 
   factory CourseInfo.fromJson(Map<String, dynamic> json) => CourseInfo(
         id: json["id"],
-        startHour: json["start_hour"],
-        endHour: json["end_hour"],
         startDay: DateTime.parse(json["start_day"]),
         endDay: DateTime.parse(json["end_day"]),
         days: List<Day>.from(json["days"].map((x) => Day.fromJson(x))),
@@ -43,13 +47,16 @@ class CourseInfo {
         classId: json["class_id"],
         courseNameId: json["course_name_id"],
         createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"],
+        updatedAt: DateTime.parse(json["updated_at"]),
+        teacherId: json["teacher_id"],
+        periodId: json["period_id"],
+        startHour: json["start_hour"],
+        endHour: json["end_hour"],
+        isAvailable: json["is_available"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "start_hour": startHour,
-        "end_hour": endHour,
         "start_day":
             "${startDay.year.toString().padLeft(4, '0')}-${startDay.month.toString().padLeft(2, '0')}-${startDay.day.toString().padLeft(2, '0')}",
         "end_day":
@@ -59,7 +66,12 @@ class CourseInfo {
         "class_id": classId,
         "course_name_id": courseNameId,
         "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt,
+        "updated_at": updatedAt.toIso8601String(),
+        "teacher_id": teacherId,
+        "period_id": periodId,
+        "start_hour": startHour,
+        "end_hour": endHour,
+        "is_available": isAvailable,
       };
 }
 

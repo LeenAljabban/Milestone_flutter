@@ -1,9 +1,6 @@
 import 'package:first/Services/GuestInformationService.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:unique_identifier/unique_identifier.dart';
-
-import '../../global.dart';
 
 class GuestInformationController extends GetxController {
   late TextEditingController firstnameController,
@@ -11,11 +8,9 @@ class GuestInformationController extends GetxController {
       educationController,
       emailController,
       phoneNumberController;
-  String? deviceId;
 
   @override
   void onInit() {
-    _getDeviceId();
     firstnameController = TextEditingController();
     lastnameController = TextEditingController();
     educationController = TextEditingController();
@@ -34,26 +29,15 @@ class GuestInformationController extends GetxController {
     super.dispose();
   }
 
-  Future<void> _getDeviceId() async {
-    try {
-      final identifier = await UniqueIdentifier.serial;
-      deviceId = identifier;
-      await saveToSharedPreferences('deviceId', deviceId!);
-    } catch (e) {
-      print('Error getting device identifier: $e');
-    }
-  }
-
   CallGuestInformation() async {
     try {
       var data = await GuestInformationService.GuestInformation(
-          'register/guest',
+          'CreateGuest',
           firstnameController.text,
           lastnameController.text,
           phoneNumberController.text,
           emailController.text,
-          educationController.text,
-          deviceId);
+          educationController.text);
       if (data != null) {
         Get.toNamed("/VerificationCode", arguments: emailController);
       } else {

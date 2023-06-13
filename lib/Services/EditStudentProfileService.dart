@@ -5,8 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class EditStudentProfileService {
-  static EditStudentProfile(endpoint, username, email, phone, birthday,
-      file) async {
+  static EditStudentProfile(
+      endpoint, username, email, phone, birthday, file) async {
     var token = await getFromSharedPreferences('token');
 
     var request = http.MultipartRequest('POST', Uri.parse(baseApi + endpoint));
@@ -14,9 +14,7 @@ class EditStudentProfileService {
     if ('${file}' != '') {
       request.files.add(http.MultipartFile(
           'image', File(file).readAsBytes().asStream(), File(file).lengthSync(),
-          filename: file
-              .split("/")
-              .last));
+          filename: file.split("/").last));
     }
     request.fields['username'] = username;
     request.fields['email'] = email;
@@ -28,7 +26,6 @@ class EditStudentProfileService {
       "Authorization": "Bearer ${token}"
     });
     var response = await request.send();
-
     if (response.statusCode == 200) {
       return response;
     } else
