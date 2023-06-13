@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
 import '../../Component/IconContainer.dart';
-import '../../Controllers/TeacherControllers/UploadHomeorkController.dart';
+import '../../Controllers/TeacherControllers/UploadHomeworkController.dart';
 
 class UploadHomework extends GetView<UploadHomeworkController> {
   const UploadHomework({Key? key}) : super(key: key);
@@ -58,7 +58,9 @@ class UploadHomework extends GetView<UploadHomeworkController> {
                       icon: Icons.arrow_back_ios_new,
                       iconColor: Color(0xff2D527E),
                       containerColor: Colors.white,
-                      press: () {},
+                      press: () {
+                        Get.back();
+                      },
                     ),
                   ],
                 ),
@@ -76,6 +78,7 @@ class UploadHomework extends GetView<UploadHomeworkController> {
                   child: SizedBox(
                     width: 340,
                     child: TextFormField(
+                      controller: controller.noteController,
                       maxLines: 6,
                       style: TextStyle(
                           color: Colors.grey.shade500,
@@ -166,7 +169,9 @@ class UploadHomework extends GetView<UploadHomeworkController> {
                         ),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.CallUploadHomework();
+                    },
                     child: Text(
                       'Upload',
                       style: TextStyle(

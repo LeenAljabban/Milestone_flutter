@@ -11,8 +11,8 @@ class GuestHomeController extends GetxController {
   RxInt activeIndex = 0.obs;
 
   GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
-  List<PhotoModel> images = [];
-  List<AdvertismentModel> advertisments = [];
+  var images = <PhotoModel>[].obs;
+  var advertisments = <AdvertismentModel>[].obs;
   List<UserModel> teachers = [];
   var isLoading = false.obs;
   var isLoading2 = false.obs;
@@ -29,10 +29,10 @@ class GuestHomeController extends GetxController {
   CallGuestHomePhotos() async {
     try {
       var data = await GuestHomeService.GuestHomePhotos(
-        'getImage',
+        'images',
       );
       if (data != null) {
-        images.addAll(data);
+        images.assignAll(data);
       } else {
         print('there is a problem');
       }
@@ -47,7 +47,8 @@ class GuestHomeController extends GetxController {
         'advertisements',
       );
       if (data != null) {
-        advertisments.addAll(data);
+        advertisments.assignAll(data);
+        print(advertisments.length);
       } else {
         print('there is a problem');
       }
@@ -59,7 +60,7 @@ class GuestHomeController extends GetxController {
   CallGuestHomeTeachers() async {
     try {
       var data = await GuestHomeService.GuestHomeTeachers(
-        'geteacher',
+        'teachers',
       );
       if (data != null) {
         teachers.addAll(data);

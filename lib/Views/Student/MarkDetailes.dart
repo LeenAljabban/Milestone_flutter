@@ -1,12 +1,12 @@
 import 'package:first/Component/MarkCard.dart';
+import 'package:first/Controllers/StudentsControllers/MarkDetailsController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:get/get.dart';
 
 import '../../Component/IconContainer.dart';
 
-class MarkDetailes extends StatelessWidget {
-  const MarkDetailes({Key? key}) : super(key: key);
-
+class MarkDetailes extends GetView<MarkDetailsController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -33,7 +33,7 @@ class MarkDetailes extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 40.0),
                         child: Text(
-                          "A1 Marks",
+                          controller.detail.courseName + ' Marks',
                           style: TextStyle(
                             fontSize: 27,
                             color: Colors.white,
@@ -54,27 +54,27 @@ class MarkDetailes extends StatelessWidget {
             ),
             MarkCard(
               section: 'Mid',
-              mark: 49,
+              mark: controller.detail.mark.med,
               wholemark: 50,
             ),
             MarkCard(
               section: 'Presentation',
-              mark: 47,
+              mark: controller.detail.mark.presentation,
               wholemark: 50,
             ),
             MarkCard(
               section: 'Oral',
-              mark: 45,
+              mark: controller.detail.mark.oral,
               wholemark: 50,
             ),
             MarkCard(
               section: 'Final',
-              mark: 50,
+              mark: controller.detail.mark.markFinal,
               wholemark: 50,
             ),
             MarkCard(
               section: 'Homeworks',
-              mark: 30,
+              mark: controller.detail.mark.homework,
               wholemark: 30,
             ),
             Padding(
@@ -106,7 +106,7 @@ class MarkDetailes extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '90/100',
+                          controller.detail.total.toString() + '/100',
                           //textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: 'segoepr',

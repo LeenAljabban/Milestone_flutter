@@ -1,42 +1,56 @@
+import 'package:first/Services/LeaveRequeatService.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class LeaveRequestController extends GetxController {
   var selectedDate = DateTime.now().obs;
-  late TextEditingController dateController;
-  RxInt NumDays = 1.obs;
-  late TextEditingController numDaysController;
+  late TextEditingController startdateController,
+      enddateController,
+      commentController;
+
+  // late TextEditingController numDaysController;
   var selected = "paid leave".obs;
   List<String> types = ['paid leave', 'unpaid leave', 'sick', 'others'];
 
   @override
   void onInit() {
-    dateController = TextEditingController();
+    startdateController = TextEditingController();
+    enddateController = TextEditingController();
+    commentController = TextEditingController();
   }
 
-  chooseDate() async {
+  chooseDate(controll) async {
     DateTime? pickedDate = await showDatePicker(
-        context: Get.context!,
-        initialDate: selectedDate.value,
-        firstDate: DateTime(2023),
-        lastDate: DateTime(2024));
+      context: Get.context!,
+      initialDate: selectedDate.value,
+      firstDate: DateTime(2023),
+      lastDate: DateTime(2024),
+    );
     if (pickedDate != null && pickedDate != selectedDate.value) {
       selectedDate.value = pickedDate;
-      dateController.text =
+      controll.text =
           DateFormat('dd-MM-yyyy').format(selectedDate.value).toString();
     }
   }
 
-  IncreaseDays() {
-    NumDays.value++;
-  }
-
-  DecraeseDays() {
-    if (NumDays.value > 1) NumDays.value--;
-  }
-
   void setSelected(String value) {
     selected.value = value;
+  }
+
+  void CallLeaveRequest() async {
+    try {
+      var data = await LeaveRequestService.LeaveRequest(
+          'teacher/upload/Resignation',
+          startdateController.text,
+          enddateController.text,
+          selected.toString(),
+          commentController.text);
+      if (data) {
+        print('cvgbhjkl');
+      } else {
+        print('Try again');
+      }
+    } finally {}
   }
 }

@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
 
-import '../../Services/ScanQrService.dart';
 import '../../Services/resignationservice.dart';
 
 class ResignationRequestController extends GetxController {

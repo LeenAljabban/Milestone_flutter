@@ -5,7 +5,7 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
 
 import '../../Services/AllRequestService.dart';
-import '../../Services/ScanQrService.dart';
+
 import '../../Services/resignationservice.dart';
 
 class AllRequestController extends GetxController {

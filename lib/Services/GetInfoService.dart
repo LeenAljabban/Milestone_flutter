@@ -12,7 +12,6 @@ class GetInfoService {
     });
 
     print(response.body);
-    print('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh');
 
     if (response.statusCode == 200) {
       var obj = response.body;
