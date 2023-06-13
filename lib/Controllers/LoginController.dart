@@ -5,7 +5,7 @@ import 'package:first/Services/LoginService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
-import 'package:pusher_client/pusher_client.dart';
+
 import 'dart:convert';
 import 'dart:io';
 
