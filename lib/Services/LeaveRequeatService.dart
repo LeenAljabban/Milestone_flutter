@@ -15,8 +15,7 @@ class LeaveRequestService {
         headers: {
           'Content-type': 'application/json',
           'Accept': 'application/json',
-          "Authorization":
-              "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2ODY1NDk2ODUsImV4cCI6MTY4NjU1MzI4NSwibmJmIjoxNjg2NTQ5Njg1LCJqdGkiOiJPcWZ3MVlBQ1BldVFPQXlDIiwic3ViIjoiMyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.6E1EOAIIXC16MC_0BfAsj1gnHKWvc4Ic1VIpFuNKYyQ",
+          "Authorization": "Bearer $token",
         });
 
     if (response.statusCode == 200) {
