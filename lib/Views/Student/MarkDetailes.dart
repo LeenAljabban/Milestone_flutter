@@ -48,7 +48,9 @@ class MarkDetailes extends GetView<MarkDetailsController> {
                   icon: Icons.arrow_back_ios_new,
                   containerColor: Colors.white,
                   iconColor: Color(0xff2D527E),
-                  press: () {},
+                  press: () {
+                    Get.back();
+                  },
                 ),
               ],
             ),

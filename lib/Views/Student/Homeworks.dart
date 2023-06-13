@@ -81,7 +81,7 @@ class HomeWorks extends StatelessWidget {
                                       )
                                     : ListTile(
                                         title: Text(
-                                          controller.homework[index].file!,
+                                          controller.homework[index].text!,
                                           //textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontFamily: 'segoepr',

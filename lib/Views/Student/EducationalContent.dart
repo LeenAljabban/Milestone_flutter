@@ -79,8 +79,9 @@ class EducationalContent extends StatelessWidget {
                                       controller.educationalcontent_list.length,
                                   itemBuilder: (BuildContext ctx, index) {
                                     return Padding(
-                                      padding: const EdgeInsets.only(top: 20.0),
-                                      child: SizedBox(
+                                      padding: const EdgeInsets.only(
+                                          top: 40.0, right: 10, left: 10),
+                                      child: Center(
                                         child: Column(
                                           children: [
                                             InkWell(
@@ -140,7 +141,7 @@ class EducationalContent extends StatelessWidget {
                                   },
                                   gridDelegate:
                                       SliverGridDelegateWithMaxCrossAxisExtent(
-                                    maxCrossAxisExtent: 200,
+                                    maxCrossAxisExtent: 240,
                                   ),
                                 ),
                               ],

@@ -66,7 +66,7 @@ class EditTeacherProfile extends GetView<EditTeacherProfileController> {
                               () => CircleAvatar(
                                 backgroundImage: controller.file.value == ''
                                     ? NetworkImage(
-                                        'http://192.168.1.106:8000/${controller.user.image}')
+                                        'http://192.168.1.45:8000/${controller.user.image}')
                                     : FileImage(File(controller.file.value))
                                         as ImageProvider,
                                 //NetworkImage

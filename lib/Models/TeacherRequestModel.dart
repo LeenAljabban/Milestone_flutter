@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:intl/intl.dart';
+
 List<TeacherRequest> teacherRequestFromJson(String str) =>
     List<TeacherRequest>.from(
         json.decode(str).map((x) => TeacherRequest.fromJson(x)));
@@ -45,7 +47,7 @@ class TeacherRequest {
         employeeId: json["employee_id"],
         reason: json["reason"],
         file: json["file"],
-        from: DateTime.parse(json["from"]),
+        from: DateFormat("yyyy-MM-dd").parse(json["from"]),
         to: json["to"],
         type: json["type"],
         createdAt: DateTime.parse(json["created_at"]),
@@ -60,7 +62,7 @@ class TeacherRequest {
         "employee_id": employeeId,
         "reason": reason,
         "file": file,
-        "from": from.toIso8601String(),
+        "from": DateFormat("yyyy-MM-dd").format(from),
         "to": to,
         "type": type,
         "created_at": createdAt.toIso8601String(),

@@ -4,30 +4,33 @@ import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
 
+import '../../Models/NotificationModel.dart';
 import '../../Services/AllRequestService.dart';
+import '../../Services/NotificationService.dart';
+import '../../Services/TeacherNotificationService.dart';
 
-import '../../Services/resignationservice.dart';
-
-class AllRequestController extends GetxController {
+class TeacherNotificationController extends GetxController {
   Color blue = Color(0xff2D527E);
-  RxList<TeacherRequest> teacherrequest_list = <TeacherRequest>[].obs;
+  RxList<NotificationModel> notification_list = <NotificationModel>[].obs;
   var isLoading3 = false.obs;
 
   @override
   void onInit() {
-    CallGetRequests();
+    CallGetNotification();
     super.onInit();
   }
 
-  CallGetRequests() async {
+  CallGetNotification() async {
     try {
-      var data = await AllRequestService.getAllRequests(
-        'teacher/get/Requests',
+      var data = await TeacherNotificationService.getAllNotification(
+        'teacher/get/Notification',
       );
       if (data != null) {
-        teacherrequest_list.value = data;
+        notification_list.value = data;
+        print(data);
       } else {
-        print('there is a problem');
+        print("iiiiiiiiiiiiiiiiiiiiiiiiii");
+        print(data);
       }
     } finally {
       isLoading3(true);

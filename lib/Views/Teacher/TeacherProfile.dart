@@ -211,7 +211,7 @@ class TeacherProfile extends StatelessWidget {
                               radius: 77,
                               child: CircleAvatar(
                                 backgroundImage: NetworkImage(
-                                  'http://192.168.1.106:8000/${controller.user.image}',
+                                  'http://192.168.1.45:8000/${controller.user.image}',
                                 ),
                                 //NetworkImage
                                 radius: 72,

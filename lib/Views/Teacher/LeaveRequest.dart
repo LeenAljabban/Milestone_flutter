@@ -278,6 +278,7 @@ class LeaveRequest extends GetView<LeaveRequestController> {
                     ),
                     onPressed: () {
                       controller.CallLeaveRequest();
+                      Get.back();
                     },
                     child: Text(
                       'Submit Request',

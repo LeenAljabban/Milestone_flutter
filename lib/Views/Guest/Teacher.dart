@@ -3,7 +3,10 @@ import 'package:first/Component/RoundedAppbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../Controllers/TeacherController.dart';
+
 class Teacher extends StatelessWidget {
+  TeacherController controller = Get.put(TeacherController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +56,7 @@ class Teacher extends StatelessWidget {
                         ],
                       ),
                       width: 360,
-                      height: 360,
+                      height: 450,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Column(
@@ -65,14 +68,18 @@ class Teacher extends StatelessWidget {
                                 backgroundColor: Color(0xff2D527E),
                                 radius: 65,
                                 child: CircleAvatar(
-                                  backgroundImage:
-                                      AssetImage("Images/mumayaz.png"),
+                                  backgroundImage: NetworkImage(
+                                      'http://192.168.1.45:8000/${controller.teacher!.image}'),
                                   //NetworkImage
                                   radius: 60,
                                 ), //CircleAvatar
                               ),
                             ),
-                            Text('Mr- Mumayaz Allan',
+                            Text(
+                                'Mr- ' +
+                                    controller.teacher!.firstName.toString() +
+                                    ' ' +
+                                    controller.teacher!.lastName.toString(),
                                 style: TextStyle(
                                     color: Color(0xff2D527E),
                                     //fontFamily: 'segoepr',
@@ -84,18 +91,35 @@ class Teacher extends StatelessWidget {
                               endIndent: 20,
                               indent: 20,
                             ),
-                            Text('Manager & founder of Milstone.',
+                            Text(controller.teacher!.email,
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
-                                    color: Colors.grey.shade700,
-                                    fontFamily: 'segoepr',
-                                    fontSize: 18)),
-                            Text('Studied at University of the People.',
+                                  color: Colors.grey.shade700,
+                                  fontFamily: 'segoepr',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                                controller.teacher!.experinceYears.toString() +
+                                    ' years of experience',
+                                style: TextStyle(
+                                  color: Colors.grey.shade700,
+                                  fontFamily: 'segoepr',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                            SizedBox(height: 20),
+                            Text(controller.teacher!.birthdate,
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
-                                    color: Colors.grey.shade700,
-                                    fontFamily: 'segoepr',
-                                    fontSize: 18)),
+                                  color: Colors.grey.shade700,
+                                  fontFamily: 'segoepr',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                )),
                           ],
                         ),
                       ),
@@ -113,85 +137,6 @@ class Teacher extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  Card(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xff2D527E),
-                            blurRadius: 5,
-                            offset: Offset(0.5, 1), // Shadow position
-                          ),
-                          BoxShadow(
-                            color: Colors.grey.shade200,
-                          ),
-                          BoxShadow(
-                            color: Colors.white,
-                            spreadRadius: -15.0,
-                            blurRadius: 15.0,
-                          ),
-                        ],
-                      ),
-                      width: 360,
-                      height: 150,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  'Years Of Experience :',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xff2D527E),
-                                      // fontFamily: 'segoepr',
-                                      fontSize: 18),
-                                ),
-                                Text(
-                                  ' 15 years',
-                                  style: TextStyle(
-                                      color: Colors.grey.shade700,
-                                      fontFamily: 'segoepr',
-                                      fontSize: 18),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  'Email :',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xff2D527E),
-                                      // fontFamily: 'segoepr',
-                                      fontSize: 18),
-                                ),
-                                Text(
-                                  ' mymayaz_a@hotmail.com',
-                                  style: TextStyle(
-                                      color: Colors.grey.shade700,
-                                      fontFamily: 'segoepr',
-                                      fontSize: 18),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: Color(0xff2D527E),
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    shadowColor: Colors.white,
-                    elevation: 3,
-                  ),
                 ],
               ),
             ),
@@ -199,7 +144,9 @@ class Teacher extends StatelessWidget {
                 icon: Icons.arrow_back_ios_new,
                 iconColor: Color(0xff2D527E),
                 containerColor: Colors.white,
-                press: () {})
+                press: () {
+                  Get.back();
+                })
           ],
         ),
       ),

@@ -55,20 +55,6 @@ class StudentSideBar extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(
-              Icons.ad_units,
-              color: Color(0xff2D527E),
-            ),
-            title: Text(
-              'Advertisment',
-              style: TextStyle(
-                fontFamily: 'segoepr',
-                color: Color(0xff2D527E),
-              ),
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(
               Icons.people_alt_rounded,
               color: Color(0xff2D527E),
             ),
@@ -79,7 +65,9 @@ class StudentSideBar extends StatelessWidget {
                 color: Color(0xff2D527E),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Get.toNamed('/OurTeachers');
+            },
           ),
           ListTile(
             leading: Icon(
@@ -141,42 +129,6 @@ class StudentSideBar extends StatelessWidget {
             ),
             onTap: () {},
           ),
-          ExpansionTile(
-            title: Text(
-              'Languages',
-              style: TextStyle(
-                fontFamily: 'segoepr',
-                color: Color(0xff2D527E),
-              ),
-            ),
-            leading: Icon(
-              Icons.language,
-              color: Color(0xff2D527E),
-            ),
-            childrenPadding: EdgeInsets.only(left: 60),
-            children: [
-              ListTile(
-                title: Text(
-                  'Arabic',
-                  style: TextStyle(
-                    fontFamily: 'segoepr',
-                    color: Color(0xff2D527E),
-                  ),
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                title: Text(
-                  'English',
-                  style: TextStyle(
-                    fontFamily: 'segoepr',
-                    color: Color(0xff2D527E),
-                  ),
-                ),
-                onTap: () {},
-              ),
-            ],
-          ),
           ListTile(
             leading: Icon(
               Icons.logout,
@@ -189,7 +141,9 @@ class StudentSideBar extends StatelessWidget {
                 color: Color(0xff2D527E),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Get.offAllNamed('/WhoAreYou');
+            },
           ),
         ],
       ),

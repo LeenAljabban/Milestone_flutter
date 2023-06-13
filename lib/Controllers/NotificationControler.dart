@@ -7,25 +7,27 @@ import 'package:get/get.dart';
 import '../../Services/AllRequestService.dart';
 
 import '../../Services/resignationservice.dart';
+import '../Models/NotificationModel.dart';
+import '../Services/NotificationService.dart';
 
-class AllRequestController extends GetxController {
+class NotificationController extends GetxController {
   Color blue = Color(0xff2D527E);
-  RxList<TeacherRequest> teacherrequest_list = <TeacherRequest>[].obs;
+  RxList<NotificationModel> notification_list = <NotificationModel>[].obs;
   var isLoading3 = false.obs;
 
   @override
   void onInit() {
-    CallGetRequests();
+    CallGetNotification();
     super.onInit();
   }
 
-  CallGetRequests() async {
+  CallGetNotification() async {
     try {
-      var data = await AllRequestService.getAllRequests(
-        'teacher/get/Requests',
+      var data = await NotificationService.getAllNotification(
+        'student/get/Notification',
       );
       if (data != null) {
-        teacherrequest_list.value = data;
+        notification_list.value = data;
       } else {
         print('there is a problem');
       }

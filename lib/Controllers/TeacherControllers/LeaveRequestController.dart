@@ -47,9 +47,17 @@ class LeaveRequestController extends GetxController {
           selected.toString(),
           commentController.text);
       if (data) {
-        print('cvgbhjkl');
+        print('request sent successfully');
+        Get.snackbar('Request sent Successfully', ' ',
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: Colors.green,
+            colorText: Colors.white);
       } else {
         print('Try again');
+        Get.snackbar('Request did not send', 'please try again later',
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: Colors.red,
+            colorText: Colors.white);
       }
     } finally {}
   }

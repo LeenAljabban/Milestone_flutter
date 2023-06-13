@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
@@ -5,8 +7,9 @@ import 'package:get/get.dart';
 
 import '../../Component/IconContainer.dart';
 import '../../Component/RoundedAppbar.dart';
+import '../../Controllers/TeacherControllers/OurTeacherController.dart';
 
-class OurTeachers extends StatelessWidget {
+class OurTeachers extends GetView<OueTeacherController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,80 +40,95 @@ class OurTeachers extends StatelessWidget {
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(top: 100),
-                child: ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20.0, vertical: 7),
-                        child: Container(
-                          width: 360,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0xff2D527E),
-                                blurRadius: 5.0,
-                              )
-                            ],
-                            // border: Border.all(
-                            //     color: Color(0xff2D527E), width: 2)
-                          ),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 5.0),
-                                child: Container(
-                                  height: 90,
-                                  width: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                          'Images/mumayaz.png',
-                                        ),
-                                        fit: BoxFit.fill),
-                                  ),
+                child: Obx(() => controller.isLoading3.value
+                    ? ListView.builder(
+                        itemCount: controller.teachers.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20.0, vertical: 7),
+                            child: InkWell(
+                              child: Container(
+                                width: 360,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0xff2D527E),
+                                      blurRadius: 5.0,
+                                    )
+                                  ],
+                                  // border: Border.all(
+                                  //     color: Color(0xff2D527E), width: 2)
                                 ),
-                              ),
-                              SizedBox(
-                                width: 12,
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
+                                child: Row(
+                                  children: [
                                     Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 8.0),
-                                      child: Text('Ms- Marwa Hawari',
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                            color: Color(0xff2D527E),
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                            //height: -1.5
-                                          )),
+                                      padding: const EdgeInsets.only(left: 5.0),
+                                      child: Container(
+                                        height: 90,
+                                        width: 100,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          image: DecorationImage(
+                                              image: NetworkImage(
+                                                'http://192.168.1.45:8000/${controller.teachers[index].image}',
+                                              ),
+                                              fit: BoxFit.fill),
+                                        ),
+                                      ),
                                     ),
-                                    Text(
-                                        textAlign: TextAlign.left,
-                                        '5 years experience',
-                                        style: TextStyle(
-                                          color: Colors.grey.shade500,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 14,
-                                        ))
+                                    SizedBox(
+                                      width: 12,
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 8.0),
+                                            child: Text(
+                                                'Ms- ' +
+                                                    controller.teachers[index]
+                                                        .firstName +
+                                                    ' ' +
+                                                    controller.teachers[index]
+                                                        .lastName,
+                                                textAlign: TextAlign.left,
+                                                style: TextStyle(
+                                                  color: Color(0xff2D527E),
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16,
+                                                  //height: -1.5
+                                                )),
+                                          ),
+                                          Text(controller.teachers[index].email,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                color: Colors.grey.shade500,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14,
+                                              ))
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      );
-                    }),
+                              onTap: () {
+                                Get.toNamed('/Teacher',
+                                    arguments: controller.teachers[index]);
+                              },
+                            ),
+                          );
+                        })
+                    : Center(child: CircularProgressIndicator())),
               ),
             ),
             ClipPath(
@@ -147,7 +165,9 @@ class OurTeachers extends StatelessWidget {
                 icon: Icons.arrow_back_ios_new,
                 iconColor: Color(0xff2D527E),
                 containerColor: Colors.white,
-                press: () {},
+                press: () {
+                  Get.back();
+                },
               ),
             ),
           ],

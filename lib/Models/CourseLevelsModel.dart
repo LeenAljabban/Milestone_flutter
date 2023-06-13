@@ -12,25 +12,19 @@ String courseLevelsModelToJson(List<CourseLevelsModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class CourseLevelsModel {
-  int id;
-  String name;
+  late int id;
+  late String name;
   dynamic createdAt;
   dynamic updatedAt;
 
-  CourseLevelsModel({
-    required this.id,
-    required this.name,
-    this.createdAt,
-    this.updatedAt,
-  });
+  CourseLevelsModel();
 
-  factory CourseLevelsModel.fromJson(Map<String, dynamic> json) =>
-      CourseLevelsModel(
-        id: json["id"],
-        name: json["name"],
-        createdAt: json["created_at"],
-        updatedAt: json["updated_at"],
-      );
+  CourseLevelsModel.fromJson(Map<String, dynamic> json) {
+    id = json["id"];
+    name = json["name"];
+    if (json["created_at"] != null) createdAt = json["created_at"];
+    if (json["updated_at"] != null) updatedAt = json["updated_at"];
+  }
 
   Map<String, dynamic> toJson() => {
         "id": id,

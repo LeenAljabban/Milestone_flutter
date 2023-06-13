@@ -127,42 +127,6 @@ class TeacherSideBar extends StatelessWidget {
             ),
             onTap: () {},
           ),
-          ExpansionTile(
-            title: Text(
-              'Languages',
-              style: TextStyle(
-                fontFamily: 'segoepr',
-                color: Color(0xff2D527E),
-              ),
-            ),
-            leading: Icon(
-              Icons.language,
-              color: Color(0xff2D527E),
-            ),
-            childrenPadding: EdgeInsets.only(left: 60),
-            children: [
-              ListTile(
-                title: Text(
-                  'Arabic',
-                  style: TextStyle(
-                    fontFamily: 'segoepr',
-                    color: Color(0xff2D527E),
-                  ),
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                title: Text(
-                  'English',
-                  style: TextStyle(
-                    fontFamily: 'segoepr',
-                    color: Color(0xff2D527E),
-                  ),
-                ),
-                onTap: () {},
-              ),
-            ],
-          ),
           ListTile(
             leading: Icon(
               Icons.logout,
@@ -175,7 +139,9 @@ class TeacherSideBar extends StatelessWidget {
                 color: Color(0xff2D527E),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Get.offAllNamed('/WhoAreYou');
+            },
           ),
         ],
       ),

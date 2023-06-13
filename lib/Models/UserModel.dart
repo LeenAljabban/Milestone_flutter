@@ -21,6 +21,7 @@ class UserModel {
   late List<String> roles;
   late String token;
   late String image;
+  late int experinceYears;
 
   UserModel.fromJson(Map<String, dynamic> json) {
     id = json["id"];
@@ -34,6 +35,8 @@ class UserModel {
       roles = List<String>.from(json["roles"].map((x) => x));
     if (json['token'] != null) token = json["token"];
     if (json['image'] != null) image = json["image"];
+    if (json['experince_years'] != null)
+      experinceYears = json["experince_years"];
   }
 
   Map<String, dynamic> toJson() => {
@@ -43,5 +46,6 @@ class UserModel {
         "email": email,
         "roles": List<dynamic>.from(roles.map((x) => x)),
         "token": token,
+        "experince_years": experinceYears,
       };
 }

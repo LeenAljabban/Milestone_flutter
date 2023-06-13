@@ -175,7 +175,7 @@ class TeacherHome extends StatelessWidget {
                         ],
                         border: Border.all(color: Colors.grey, width: 2)),
                     child: Obx(() => controller.isLoading3.value
-                        ? ListView.builder(
+                        ? controller.teachercourses_list.length!=0? ListView.builder(
                             shrinkWrap: true,
                             itemCount: controller.teachercourses_list.length,
                             itemBuilder: (context, index) {
@@ -217,7 +217,16 @@ class TeacherHome extends StatelessWidget {
                                   },
                                 ),
                               );
-                            })
+                            }):Center(
+                      child: Text(
+                        'you do not have classes right now..',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Color(0xff2D527E),
+                          fontFamily: 'segoepr',
+                        ),
+                      ),
+                    )
                         : Center(child: CircularProgressIndicator())),
                     /*
                     Padding(

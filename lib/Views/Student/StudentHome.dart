@@ -9,8 +9,6 @@ import 'package:get/get.dart';
 
 class StudentHome extends StatelessWidget {
   StudentHomeController controller = Get.put(StudentHomeController());
-  EducationalContentController controller2 =
-      Get.put(EducationalContentController());
 
   @override
   Widget build(BuildContext context) {
@@ -417,14 +415,9 @@ class StudentHome extends StatelessWidget {
                                     ),
                                   ),
                                   onTap: () {
-                                    Get.toNamed(
-                                      '/EducationalContent',
-                                      arguments:
-                                          controller2.CallEducationalContent(
-                                              controller
-                                                  .courselevels_list[itemIndex]
-                                                  .id),
-                                    );
+                                    Get.toNamed('/EducationalContent',
+                                        arguments: controller
+                                            .courselevels_list[itemIndex].id);
                                   },
                                 ),
                                 options: CarouselOptions(
@@ -449,17 +442,17 @@ class StudentHome extends StatelessWidget {
                                 color: Color(0xff2D527E),
                               ),
                             ),
-                            InkWell(
-                              child: Text(
-                                'see all',
-                                style: TextStyle(
-                                  decoration: TextDecoration.underline,
-                                  fontSize: 15,
-                                  color: Color(0xff2D527E),
-                                ),
-                              ),
-                              onTap: () {},
-                            ),
+                            // InkWell(
+                            //   child: Text(
+                            //     'see all',
+                            //     style: TextStyle(
+                            //       decoration: TextDecoration.underline,
+                            //       fontSize: 15,
+                            //       color: Color(0xff2D527E),
+                            //     ),
+                            //   ),
+                            //   onTap: () {},
+                            // ),
                           ],
                         ),
                       ),
@@ -502,7 +495,7 @@ class StudentHome extends StatelessWidget {
                                             width: 330,
                                             fit: BoxFit.fill,
                                             image: NetworkImage(
-                                                'http://192.168.1.106:8000/${controller.advertisments[itemIndex].image}'),
+                                                'http://192.168.1.45:8000/${controller.advertisments[itemIndex].image}'),
                                           ),
                                         ),
                                         Container(
@@ -563,7 +556,9 @@ class StudentHome extends StatelessWidget {
                       icon: Icons.menu,
                       iconColor: Color(0xff2D527E),
                       containerColor: Colors.white,
-                      press: () {}),
+                      press: () {
+                        controller.key.currentState?.openDrawer();
+                      }),
                 ]),
               ),
             )

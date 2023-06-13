@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
 
-class Notifications extends StatelessWidget {
-  NotificationController controller = Get.put(NotificationController());
+import '../../Controllers/TeacherControllers/TeacherNotification.dart';
+
+class TeacherNotifications extends StatelessWidget {
+  TeacherNotificationController controller =
+      Get.put(TeacherNotificationController());
 
   @override
   Widget build(BuildContext context) {
