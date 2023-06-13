@@ -18,98 +18,116 @@ class HomeWorks extends StatelessWidget {
             padding: const EdgeInsets.only(top: 96),
             child: Obx(
               () => controller.isloading.value
-                  ? ListView.builder(
-                      itemCount: controller.homework.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.fromLTRB(20.0, 14, 20, 0),
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints(minHeight: 80),
-                            child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: controller.blue,
-                                    blurRadius: 5.0,
-                                  )
-                                ],
-                                border: Border.all(
-                                    color: controller.blue, width: 2),
-                              ),
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 20, top: 5),
-                                child: controller.homework[index].file != null
-                                    ? ListTile(
-                                        title: Text(
-                                          controller.homework[index].text !=
-                                                  null
-                                              ? controller.homework[index].text!
-                                              : controller
-                                                  .homework[index].file!,
-                                          //textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily: 'segoepr',
-                                            color: controller.blue,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                            //height: -1.5
-                                          ),
-                                        ),
-                                        subtitle: Text(
-                                          controller.homework[index].createdAt!
-                                              .toString()
-                                              .substring(0, 10),
-                                          //textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily: 'segoepr',
-                                            color: Colors.grey.shade500,
-                                            // fontWeight: FontWeight.bold,
-                                            fontSize: 14,
-                                            //height: -1.5
-                                          ),
-                                        ),
-                                        trailing: IconButton(
-                                            onPressed: () {
-                                              controller.downloadFile(
-                                                  'http://192.168.1.106:8000/${controller.homework[index].file}');
-                                            },
-                                            icon: Icon(Icons.download)),
+                  ? controller.homework.length != 0
+                      ? ListView.builder(
+                          itemCount: controller.homework.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(20.0, 14, 20, 0),
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints(minHeight: 80),
+                                child: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: controller.blue,
+                                        blurRadius: 5.0,
                                       )
-                                    : ListTile(
-                                        title: Text(
-                                          controller.homework[index].text!,
-                                          //textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontFamily: 'segoepr',
-                                            color: controller.blue,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                            //height: -1.5
+                                    ],
+                                    border: Border.all(
+                                        color: controller.blue, width: 2),
+                                  ),
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.only(left: 20, top: 5),
+                                    child: controller.homework[index].file !=
+                                            null
+                                        ? ListTile(
+                                            title: Text(
+                                              controller.homework[index].text !=
+                                                      null
+                                                  ? controller
+                                                      .homework[index].text!
+                                                  : controller
+                                                      .homework[index].file!,
+                                              //textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontFamily: 'segoepr',
+                                                color: controller.blue,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                                //height: -1.5
+                                              ),
+                                            ),
+                                            subtitle: Text(
+                                              controller
+                                                  .homework[index].createdAt!
+                                                  .toString()
+                                                  .substring(0, 10),
+                                              //textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontFamily: 'segoepr',
+                                                color: Colors.grey.shade500,
+                                                // fontWeight: FontWeight.bold,
+                                                fontSize: 14,
+                                                //height: -1.5
+                                              ),
+                                            ),
+                                            trailing: IconButton(
+                                                onPressed: () {
+                                                  controller.downloadFile(
+                                                      'http://192.168.1.106:8000/${controller.homework[index].file}');
+                                                },
+                                                icon: Icon(Icons.download)),
+                                          )
+                                        : ListTile(
+                                            title: Text(
+                                              controller.homework[index].text!,
+                                              //textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontFamily: 'segoepr',
+                                                color: controller.blue,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                                //height: -1.5
+                                              ),
+                                            ),
+                                            subtitle: Text(
+                                                controller
+                                                    .homework[index].createdAt!
+                                                    .toString()
+                                                    .substring(0, 10),
+                                                //textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  fontFamily: 'segoepr',
+                                                  color: Colors.grey.shade500,
+                                                  // fontWeight: FontWeight.bold,
+                                                  fontSize: 14,
+                                                  //height: -1.5
+                                                )),
                                           ),
-                                        ),
-                                        subtitle: Text(
-                                            controller
-                                                .homework[index].createdAt!
-                                                .toString()
-                                                .substring(0, 10),
-                                            //textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontFamily: 'segoepr',
-                                              color: Colors.grey.shade500,
-                                              // fontWeight: FontWeight.bold,
-                                              fontSize: 14,
-                                              //height: -1.5
-                                            )),
-                                      ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          })
+                      : Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Center(
+                            child: Text(
+                              'you do not have any homework yet..',
+                              style: TextStyle(
+                                fontSize: 25,
+                                color: Color(0xff2D527E),
+                                fontFamily: 'segoepr',
                               ),
                             ),
                           ),
-                        );
-                      })
+                        )
                   : Center(child: CircularProgressIndicator()),
             ),
           ),

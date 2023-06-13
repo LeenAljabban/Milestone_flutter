@@ -82,9 +82,14 @@ class MyRequests extends StatelessWidget {
                                                           //height: -1.5
                                                         )),
                                                     Container(
-                                                      height: 20,
+                                                      height: 30,
                                                       width: 110,
-                                                      color: Colors.green,
+                                                      decoration: BoxDecoration(
+                                                        color: Colors.blue,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                      ),
                                                       child: Center(
                                                         child: Text(
                                                             controller

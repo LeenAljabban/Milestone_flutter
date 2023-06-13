@@ -175,58 +175,67 @@ class TeacherHome extends StatelessWidget {
                         ],
                         border: Border.all(color: Colors.grey, width: 2)),
                     child: Obx(() => controller.isLoading3.value
-                        ? controller.teachercourses_list.length!=0? ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: controller.teachercourses_list.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10.0, vertical: 7),
-                                child: InkWell(
-                                  child: Container(
-                                    width: 300,
-                                    height: 60,
-                                    decoration: BoxDecoration(
-                                        color: Color(0xff2D527E),
-                                        borderRadius: BorderRadius.circular(10),
-                                        boxShadow: [
-                                          BoxShadow(
+                        ? controller.teachercourses_list.length != 0
+                            ? ListView.builder(
+                                shrinkWrap: true,
+                                itemCount:
+                                    controller.teachercourses_list.length,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10.0, vertical: 7),
+                                    child: InkWell(
+                                      child: Container(
+                                        width: 300,
+                                        height: 60,
+                                        decoration: BoxDecoration(
                                             color: Color(0xff2D527E),
-                                            blurRadius: 4.0,
-                                          )
-                                        ],
-                                        border: Border.all(
-                                            color: Color(0xff2D527E),
-                                            width: 5)),
-                                    child: Center(
-                                      child: Text(
-                                        controller
-                                            .teachercourses_list[index].name,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: 'segoepr',
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 25),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Color(0xff2D527E),
+                                                blurRadius: 4.0,
+                                              )
+                                            ],
+                                            border: Border.all(
+                                                color: Color(0xff2D527E),
+                                                width: 5)),
+                                        child: Center(
+                                          child: Text(
+                                            controller
+                                                .teachercourses_list[index]
+                                                .name,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontFamily: 'segoepr',
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 25),
+                                          ),
+                                        ),
                                       ),
+                                      onTap: () {
+                                        Get.toNamed('/SpecificCourse',
+                                            arguments: controller
+                                                .teachercourses_list[index].id);
+                                      },
+                                    ),
+                                  );
+                                })
+                            : Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: Center(
+                                  child: Text(
+                                    'you do not have classes right now..',
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      color: Color(0xff2D527E),
+                                      fontFamily: 'segoepr',
                                     ),
                                   ),
-                                  onTap: () {
-                                    Get.toNamed('/SpecificCourse',
-                                        arguments: controller
-                                            .teachercourses_list[index].id);
-                                  },
                                 ),
-                              );
-                            }):Center(
-                      child: Text(
-                        'you do not have classes right now..',
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Color(0xff2D527E),
-                          fontFamily: 'segoepr',
-                        ),
-                      ),
-                    )
+                              )
                         : Center(child: CircularProgressIndicator())),
                     /*
                     Padding(

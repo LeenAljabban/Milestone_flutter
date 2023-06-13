@@ -7,6 +7,7 @@ import '../../Controllers/TeacherControllers/BottomNavigationTeacherController.d
 import '../Student/Notifications.dart';
 import '../Student/QrScanner.dart';
 import 'MyRequests.dart';
+import 'TeacherNotification.dart';
 
 class BottomNavigationTeacher
     extends GetView<BottomNavigationTeacherController> {
@@ -23,7 +24,7 @@ class BottomNavigationTeacher
               TeacherHome(),
               MyRequests(),
               QrScanner(),
-              Notifications(),
+              TeacherNotifications(),
               TeacherProfile(),
             ],
           ),
