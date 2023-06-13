@@ -24,7 +24,7 @@ class VerificationCodeController extends GetxController {
   CallGuestInformation() async {
     try {
       var data = await VerificationCodeService.VerificationCode(
-          'verify', PINController.text, emailController.text);
+          'verify/email', PINController.text, emailController.text);
       if (data != null) {
         Get.toNamed("/PlacementTest");
       } else {

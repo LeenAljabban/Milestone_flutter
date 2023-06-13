@@ -1,9 +1,11 @@
+import 'package:first/Controllers/StudentsControllers/RateController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get/get.dart';
 
 class Rate extends StatelessWidget {
-  const Rate({Key? key}) : super(key: key);
+  RateController controller = Get.put(RateController());
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class Rate extends StatelessWidget {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.only(left: 30.0, top: 80, right: 30),
+                      const EdgeInsets.only(left: 30.0, top: 80, right: 30),
                   child: Column(
                     children: [
                       Text(
@@ -58,9 +60,9 @@ class Rate extends StatelessWidget {
                         itemSize: 50,
                         glow: false,
                         // onratingupdate called when the user drag on the bar
-                        //     updateOnDrag:true ,
+                        updateOnDrag: true,
                         itemPadding:
-                        EdgeInsets.symmetric(horizontal: 5, vertical: 30),
+                            EdgeInsets.symmetric(horizontal: 5, vertical: 30),
                         ratingWidget: RatingWidget(
                           full: Icon(
                             Icons.star,
@@ -74,7 +76,10 @@ class Rate extends StatelessWidget {
                             color: Color(0xffEF5432),
                           ),
                         ),
-                        onRatingUpdate: (_) {},
+                        onRatingUpdate: (rating) {
+                          controller.starnumber(rating.toInt());
+                          print(rating);
+                        },
                       ),
                       Text(
                         'Write Somthing to your teacher :',
@@ -91,11 +96,12 @@ class Rate extends StatelessWidget {
                         child: SizedBox(
                           width: 320,
                           child: TextFormField(
-                            maxLines: 4,
+                            controller: controller.noteController,
+                            maxLines: 5,
                             style: TextStyle(
                                 color: Color(0xff2D527E),
                                 fontFamily: 'segoepr',
-                                fontSize: 20),
+                                fontSize: 17),
                             decoration: InputDecoration(
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(20),
@@ -128,8 +134,7 @@ class Rate extends StatelessWidget {
                           ),
                           Text(
                             'your name will not appear..please\n'
-                                ' rate transparently',
-
+                            ' rate transparently',
                             style: TextStyle(
                               fontSize: 15,
                               color: Colors.grey,
@@ -154,7 +159,9 @@ class Rate extends StatelessWidget {
                               ),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.CallRate();
+                          },
                           child: Text(
                             'Show mark',
                             style: TextStyle(

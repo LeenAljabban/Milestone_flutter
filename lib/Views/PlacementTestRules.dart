@@ -1,9 +1,12 @@
+import 'package:first/Controllers/GuestControllers/PlacementTestRulesController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../Component/IconContainer.dart';
 
 class PlacementTestRules extends StatelessWidget {
+  PlacementTestRulesController controller =
+      Get.put(PlacementTestRulesController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -14,7 +17,8 @@ class PlacementTestRules extends StatelessWidget {
               height: 250,
               width: double.infinity,
               child: Image(
-                image: AssetImage('Images/placementTest.jpg'),
+                image: NetworkImage(
+                    'http://192.168.1.106:8000/${controller.AdvModel!.image}'),
                 fit: BoxFit.fill,
               ),
             ),
@@ -65,10 +69,7 @@ class PlacementTestRules extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 30.0),
                         child: Text(
-                          '- you have 120 minutes .\n'
-                          '- after doing this test '
-                          'we will contact you to continue the oral part of it in our institute.\n'
-                          '- you can change your answers until pressing done button .  ',
+                          controller.AdvModel!.tips,
                           textAlign: TextAlign.justify,
                           style: TextStyle(
                               color: Colors.grey.shade800,
@@ -103,7 +104,9 @@ class PlacementTestRules extends StatelessWidget {
                     ),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed('/GuestInformation');
+                },
                 child: Text(
                   'Do The Test',
                   style: TextStyle(
@@ -118,7 +121,9 @@ class PlacementTestRules extends StatelessWidget {
               icon: Icons.arrow_back_ios_new,
               iconColor: Color(0xff2D527E),
               containerColor: Colors.white,
-              press: () {},
+              press: () {
+                Get.back();
+              },
             ),
           ],
         ),

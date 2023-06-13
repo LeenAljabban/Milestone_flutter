@@ -1,4 +1,5 @@
 import 'package:first/Binding/AdvertismentListBinding.dart';
+import 'package:first/Binding/AllRequestBinding.dart';
 import 'package:first/Binding/AttendentBinding.dart';
 import 'package:first/Binding/EditStudentProfileBinding.dart';
 import 'package:first/Binding/EditTeacherProfileBinding.dart';
@@ -22,11 +23,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'Binding/BottomNavigationBinding.dart';
 import 'Binding/BottomNavigationTeacherBinding.dart';
+import 'Binding/EducationaTeacherBinding.dart';
+import 'Binding/GetStudentsBinding.dart';
 import 'Binding/GuestHomeBinding.dart';
 import 'Binding/JobAdvertismentBinding.dart';
 import 'Binding/LeaveRequestBinding.dart';
 import 'Binding/PlacmentTestBinding.dart';
 import 'Binding/ReserveBinding.dart';
+import 'Binding/Resignationbinding.dart';
+import 'Binding/SpicificCourseBinding.dart';
 import 'Binding/VerificationCodeBinding.dart';
 import 'Views/Guest/AdvertismentImage.dart';
 import 'Views/Guest/TeachersList.dart';
@@ -37,6 +42,7 @@ import 'Views/Guest/Teacher.dart';
 import 'Views/Guest/Timeup.dart';
 import 'Views/GuestHome.dart';
 import 'Views/Student/EditStudentProfile.dart';
+import 'Views/Student/EducationalContent.dart';
 import 'Views/Student/Homeworks.dart';
 import 'Views/Student/MarkDetailes.dart';
 import 'Views/Student/Marks.dart';
@@ -49,10 +55,14 @@ import 'Views/Student/StudentProfile.dart';
 import 'Views/Teacher/Attendent.dart';
 import 'Views/Teacher/BottomNavigationTeacher.dart';
 import 'Views/Teacher/EditTeacherProfile.dart';
+import 'Views/Teacher/EducationalContentTeacher.dart';
 import 'Views/Teacher/LeaveRequest.dart';
 import 'Views/Teacher/MyRequests.dart';
+import 'Views/Teacher/Resignation.dart';
 import 'Views/Teacher/SpicificCourse.dart';
+import 'Views/Teacher/Students.dart';
 import 'Views/Teacher/TeacherProfile.dart';
+import 'Views/Teacher/TeacherSideBar.dart';
 import 'Views/Teacher/UploadHomework.dart';
 import 'Views/WhoAreYou.dart';
 
@@ -66,11 +76,24 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         //use MaterialApp() widget like this
-        initialRoute: "/WhoAreYou",
+        initialRoute: "/Login",
         getPages: [
           GetPage(
             name: "/WhoAreYou",
             page: () => WhoAreYou(),
+          ),
+          GetPage(
+            name: "/Students",
+            page: () => Students(),
+            binding: GetStudentBinding(),
+          ),
+          GetPage(
+              name: "/ResignationRequest",
+              page: () => ResignationRequest(),
+              binding: ResignationBinding()),
+          GetPage(
+            name: "/EducationalContent",
+            page: () => EducationalContent(),
           ),
           GetPage(
               name: "/AboutUs",
@@ -79,6 +102,10 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: "/GuestSideBar",
             page: () => GuestSideBar(),
+          ),
+          GetPage(
+            name: "/TeacherSideBar",
+            page: () => TeacherSideBar(),
           ),
           GetPage(
               name: "/OurServices",
@@ -112,10 +139,17 @@ class MyApp extends StatelessWidget {
           GetPage(
             name: "/SpecificCourse",
             page: () => SpecificCourse(),
+            binding: SpicificCourseBinding(),
+          ),
+          GetPage(
+            name: "/EducationalContentTeacher",
+            page: () => EducationalContentTeacher(),
+            binding: EducationalTeacherBinding(),
           ),
           GetPage(
             name: "/MyRequests",
             page: () => MyRequests(),
+            binding: AllRequestBinding(),
           ),
           GetPage(
             name: "/TeachersList",

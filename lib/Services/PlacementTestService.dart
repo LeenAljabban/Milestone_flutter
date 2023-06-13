@@ -16,11 +16,9 @@ class PlacementTestService {
 
     if (response.statusCode == 200) {
       var obj = response.body;
-
       return placementTestModelFromJson(obj);
-    } else {
+    } else
       return null;
-    }
   }
 
   static SubmitAnswers(
@@ -28,22 +26,18 @@ class PlacementTestService {
     testid,
     answersList,
   ) async {
-    var deviceId = await getFromSharedPreferences('device_id');
-
     http.Response response = await http.post(Uri.parse(baseApi + endpoint),
         body: jsonEncode({
           'guest_id': 1,
           'test_id': testid,
           'mark': '',
           'answers': answersList,
-          'device_id': deviceId,
         }),
         headers: {
           'Content-type': 'application/json',
           'Accept': 'application/json',
         });
     print(response.body);
-    print(response.statusCode);
 
     if (response.statusCode == 200) {
       var obj = jsonDecode(response.body);

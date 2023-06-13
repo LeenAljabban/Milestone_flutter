@@ -10,12 +10,14 @@ class GetInfoModel {
   String whoWeAre;
   String contactUs;
   String services;
+  String email;
   DateTime createdAt;
   DateTime updatedAt;
 
   GetInfoModel({
     required this.id,
     required this.whoWeAre,
+    required this.email,
     required this.contactUs,
     required this.services,
     required this.createdAt,
@@ -24,6 +26,7 @@ class GetInfoModel {
 
   factory GetInfoModel.fromJson(Map<String, dynamic> json) => GetInfoModel(
         id: json["id"],
+        email: json["email"],
         whoWeAre: json["who_we_are"],
         contactUs: json["contact_us"],
         services: json["services"],
