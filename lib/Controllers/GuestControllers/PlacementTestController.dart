@@ -164,7 +164,7 @@ class PlacementTestController extends GetxController {
       var data = await PlacementTestService.SubmitAnswers(
           'submit', testid, selectedAnswers);
       if (data != null) {
-        if (data['message'] == "Answer Submited Successfully ")
+        if (data['message'] == "Answer Submitted Successfully")
           Get.offAllNamed('/ContinuePlacment');
       } else {
         print('there is a problem');

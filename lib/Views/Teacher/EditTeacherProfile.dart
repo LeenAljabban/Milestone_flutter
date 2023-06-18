@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'dart:io';
 import '../../Component/EditTextField.dart';
 import '../../Controllers/TeacherControllers/EditTeacherProlfileController.dart';
+import '../../global.dart';
 
 class EditTeacherProfile extends GetView<EditTeacherProfileController> {
   @override
@@ -66,7 +67,7 @@ class EditTeacherProfile extends GetView<EditTeacherProfileController> {
                               () => CircleAvatar(
                                 backgroundImage: controller.file.value == ''
                                     ? NetworkImage(
-                                        'http://192.168.1.45:8000/${controller.user.image}')
+                                        imageurl + controller.user.image)
                                     : FileImage(File(controller.file.value))
                                         as ImageProvider,
                                 //NetworkImage

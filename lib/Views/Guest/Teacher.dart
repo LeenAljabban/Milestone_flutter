@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Controllers/TeacherController.dart';
+import '../../global.dart';
 
 class Teacher extends StatelessWidget {
   TeacherController controller = Get.put(TeacherController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +71,7 @@ class Teacher extends StatelessWidget {
                                 radius: 65,
                                 child: CircleAvatar(
                                   backgroundImage: NetworkImage(
-                                      'http://192.168.1.45:8000/${controller.teacher!.image}'),
+                                      imageurl + controller.teacher!.image),
                                   //NetworkImage
                                   radius: 60,
                                 ), //CircleAvatar

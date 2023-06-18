@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:first/Controllers/StudentsControllers/HomeWorkController.dart';
+import 'package:first/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
@@ -80,7 +81,10 @@ class HomeWorks extends StatelessWidget {
                                             trailing: IconButton(
                                                 onPressed: () {
                                                   controller.downloadFile(
-                                                      'http://192.168.1.106:8000/${controller.homework[index].file}');
+                                                      imageurl +
+                                                          controller
+                                                              .homework[index]
+                                                              .file!);
                                                 },
                                                 icon: Icon(Icons.download)),
                                           )
@@ -120,6 +124,7 @@ class HomeWorks extends StatelessWidget {
                           child: Center(
                             child: Text(
                               'you do not have any homework yet..',
+                              textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 25,
                                 color: Color(0xff2D527E),

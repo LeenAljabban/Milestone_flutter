@@ -16,6 +16,7 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 class LoginController extends GetxController {
   Color blue = Color(0xff2D527E);
   late TextEditingController usernameController, passwordController;
+  RxBool send = true.obs;
 
   @override
   void onInit() {
@@ -37,6 +38,7 @@ class LoginController extends GetxController {
 
   CallLogin() async {
     try {
+      send(false);
       var data = await LoginService.Login(
           'auth/login', usernameController.text, passwordController.text);
       if (data != null) {
@@ -57,7 +59,7 @@ class LoginController extends GetxController {
         // });
         print('/////////////////////////////////////////////////////');
         WebSocket webSocket = await WebSocket.connect(
-            "ws://192.168.1.106:6001/app/45f5f505af3480063b2d");
+            "ws://192.168.43.164:6001/app/45f5f505af3480063b2d");
         Map<String, dynamic> subscribeEvent = {
           "event": "pusher:subscribe",
           "data": {

@@ -10,12 +10,13 @@ class JobAdvertismentController extends GetxController {
   FilePickerResult? result;
   PlatformFile? file;
   String path = '';
-  var token;
+  RxString token = ''.obs;
 
   @override
   Future<void> onInit() async {
     adv = Get.arguments;
-    token = await getFromSharedPreferences('token');
+    token.value = await getFromSharedPreferences('token');
+
     super.onInit();
   }
 

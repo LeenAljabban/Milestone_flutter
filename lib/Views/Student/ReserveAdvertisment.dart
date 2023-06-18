@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Component/IconContainer.dart';
+import '../../global.dart';
 
 class ReserveAdvertisment extends GetView<ReserveController> {
   @override
@@ -18,8 +19,7 @@ class ReserveAdvertisment extends GetView<ReserveController> {
                       height: 250,
                       width: double.infinity,
                       child: Image(
-                        image: NetworkImage(
-                            'http://192.168.1.106:8000/${controller.adv.image}'),
+                        image: NetworkImage(imageurl + controller.adv.image),
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -84,11 +84,13 @@ class ReserveAdvertisment extends GetView<ReserveController> {
                                         fontSize: 20),
                                   ),
                                   Text(
-                                    controller.adv.course.startHour
-                                            .substring(0, 5) +
-                                        ' - ' +
-                                        controller.adv.course.endHour
-                                            .substring(0, 5),
+                                    '3:00-6:00'
+                                    // controller.adv.course.startHour
+                                    //         .substring(0, 5) +
+                                    //     ' - ' +
+                                    //     controller.adv.course.endHour
+                                    //         .substring(0, 5)
+                                    ,
                                     style: TextStyle(
                                         color: Colors.grey.shade700,
                                         fontFamily: 'segoepr',
@@ -105,9 +107,10 @@ class ReserveAdvertisment extends GetView<ReserveController> {
                                   Text(
                                     controller.adv.course.days[0].name +
                                         ' - ' +
-                                        controller.adv.course.days[1].name +
-                                        ' - ' +
-                                        controller.adv.course.days[2].name,
+                                        controller.adv.course.days[1].name
+                                    // +' - '+
+                                    // controller.adv.course.days[2].name
+                                    ,
                                     style: TextStyle(
                                         color: Colors.grey.shade700,
                                         fontFamily: 'segoepr',
@@ -159,40 +162,49 @@ class ReserveAdvertisment extends GetView<ReserveController> {
                                         fontFamily: 'segoepr',
                                         fontSize: 20),
                                   ),
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 30.0),
-                                      child: SizedBox(
-                                        height: 50,
-                                        width: 250,
-                                        child: TextButton(
-                                          style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                              Color(0xff2D527E),
-                                            ),
-                                            shape: MaterialStateProperty.all(
-                                              RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(22),
+                                  Obx(
+                                    () => controller.token != ''
+                                        ? Center(
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 30.0),
+                                              child: SizedBox(
+                                                height: 50,
+                                                width: 250,
+                                                child: TextButton(
+                                                  style: ButtonStyle(
+                                                    backgroundColor:
+                                                        MaterialStateProperty
+                                                            .all(
+                                                      Color(0xff2D527E),
+                                                    ),
+                                                    shape: MaterialStateProperty
+                                                        .all(
+                                                      RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(22),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  onPressed: () {
+                                                    controller.CallReserve();
+                                                  },
+                                                  child: Text(
+                                                    'Reserve',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.white,
+                                                        fontFamily: 'segoepr',
+                                                        fontSize: 20),
+                                                  ),
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          onPressed: () {
-                                            controller.CallReserve();
-                                          },
-                                          child: Text(
-                                            'Reserve',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white,
-                                                fontFamily: 'segoepr',
-                                                fontSize: 20),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
+                                          )
+                                        : Container(),
                                   ),
                                 ],
                               ),

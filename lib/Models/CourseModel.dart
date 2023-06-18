@@ -29,8 +29,8 @@ class CourseModel {
 
   CourseModel.fromJson(Map<String, dynamic> json) {
     id = json["id"];
-    startHour = json["start_hour"];
-    endHour = json["end_hour"];
+    if (json["start_hour"] != null) startHour = json["start_hour"];
+    if (json["end_hour"] != null) endHour = json["end_hour"];
     startDay = DateTime.parse(json["start_day"]);
     endDay = DateTime.parse(json["end_day"]);
 

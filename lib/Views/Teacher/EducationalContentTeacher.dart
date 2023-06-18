@@ -10,6 +10,7 @@ import '../../Controllers/TeacherControllers/EducationalContentTeacherController
 class EducationalContentTeacher extends StatelessWidget {
   EducationalContentTeacherController controller =
       Get.put(EducationalContentTeacherController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -126,6 +127,7 @@ class EducationalContentTeacher extends StatelessWidget {
                                                     .file
                                                     .toString(),
                                                 textAlign: TextAlign.center,
+                                                overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(
                                                   fontSize: 13,
                                                   color: Color(0xff2D527E),
@@ -141,7 +143,7 @@ class EducationalContentTeacher extends StatelessWidget {
                                   },
                                   gridDelegate:
                                       SliverGridDelegateWithMaxCrossAxisExtent(
-                                    maxCrossAxisExtent: 200,
+                                    maxCrossAxisExtent: 240,
                                   ),
                                 ),
                               ],

@@ -249,40 +249,40 @@ class GuestInformation extends GetView<GuestInformationController> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 40,
+                                  height: 20,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 10.0),
-                                  child: Text(
-                                    'Address :',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xff2D527E),
-                                        fontFamily: 'segoepr',
-                                        fontSize: 18),
-                                  ),
-                                ),
-                                TextField(
-                                  // controller: controller.phoneNumberController,
-                                  decoration: InputDecoration(
-                                    labelText: 'Enter your phone number',
-                                    floatingLabelBehavior:
-                                        FloatingLabelBehavior.never,
-                                    contentPadding:
-                                        EdgeInsets.symmetric(vertical: 1),
-                                    labelStyle: TextStyle(
-                                        color: Colors.grey.shade400,
-                                        fontSize: 15),
-                                    suffixIcon: Icon(
-                                      Icons.phone,
-                                      color: Colors.grey.shade400,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.grey.shade400),
-                                    ),
-                                  ),
-                                ),
+                                // Padding(
+                                //   padding: const EdgeInsets.only(bottom: 10.0),
+                                //   child: Text(
+                                //     'Address :',
+                                //     style: TextStyle(
+                                //         fontWeight: FontWeight.bold,
+                                //         color: Color(0xff2D527E),
+                                //         fontFamily: 'segoepr',
+                                //         fontSize: 18),
+                                //   ),
+                                // ),
+                                // TextField(
+                                //   // controller: controller.phoneNumberController,
+                                //   decoration: InputDecoration(
+                                //     labelText: 'Enter your phone number',
+                                //     floatingLabelBehavior:
+                                //         FloatingLabelBehavior.never,
+                                //     contentPadding:
+                                //         EdgeInsets.symmetric(vertical: 1),
+                                //     labelStyle: TextStyle(
+                                //         color: Colors.grey.shade400,
+                                //         fontSize: 15),
+                                //     suffixIcon: Icon(
+                                //       Icons.phone,
+                                //       color: Colors.grey.shade400,
+                                //     ),
+                                //     enabledBorder: UnderlineInputBorder(
+                                //       borderSide: BorderSide(
+                                //           color: Colors.grey.shade400),
+                                //     ),
+                                //   ),
+                                // ),
                               ],
                             ),
                           ),
@@ -328,13 +328,17 @@ class GuestInformation extends GetView<GuestInformationController> {
                         // );
                         controller.CallGuestInformation();
                       },
-                      child: Text(
-                        'Continue',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontFamily: 'segoepr',
-                            fontSize: 18),
+                      child: Obx(
+                        () => controller.send.value
+                            ? Text(
+                                'Continue',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontFamily: 'segoepr',
+                                    fontSize: 18),
+                              )
+                            : CircularProgressIndicator(),
                       ),
                     ),
                   ),

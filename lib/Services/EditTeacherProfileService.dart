@@ -18,7 +18,7 @@ class EditTeacherProfileService {
     request.fields['username'] = username;
     request.fields['email'] = email;
     request.fields['phone'] = phone;
-    request.fields['birthdate'] = birthday;
+    request.fields['birth'] = birthday;
 
     request.headers.addAll({
       "content-type": "application/json",

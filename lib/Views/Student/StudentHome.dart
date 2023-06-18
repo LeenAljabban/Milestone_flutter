@@ -7,6 +7,8 @@ import '../../Controllers/StudentsControllers/EducationalContentController.dart'
 import '../../Controllers/StudentsControllers/StudentHomeController.dart';
 import 'package:get/get.dart';
 
+import '../../global.dart';
+
 class StudentHome extends StatelessWidget {
   StudentHomeController controller = Get.put(StudentHomeController());
 
@@ -470,9 +472,15 @@ class StudentHome extends StatelessWidget {
                                       ? Get.toNamed('/ReserveAdvertisment',
                                           arguments: controller
                                               .advertisments[itemIndex].id)
-                                      : Get.toNamed('/JobAdvertisment',
-                                          arguments: controller
-                                              .advertisments[itemIndex]),
+                                      : controller.advertisments[itemIndex]
+                                                  .advertismentTypeId ==
+                                              2
+                                          ? Get.toNamed('/JobAdvertisment',
+                                              arguments: controller
+                                                  .advertisments[itemIndex])
+                                          : Get.toNamed('/PlacementTestRules',
+                                              arguments: controller
+                                                  .advertisments[itemIndex]),
                                   child: Container(
                                     decoration: BoxDecoration(
                                       // borderRadius: BorderRadius.circular(10.0),
@@ -494,8 +502,10 @@ class StudentHome extends StatelessWidget {
                                             height: 200,
                                             width: 330,
                                             fit: BoxFit.fill,
-                                            image: NetworkImage(
-                                                'http://192.168.1.45:8000/${controller.advertisments[itemIndex].image}'),
+                                            image: NetworkImage(imageurl +
+                                                controller
+                                                    .advertisments[itemIndex]
+                                                    .image),
                                           ),
                                         ),
                                         Container(

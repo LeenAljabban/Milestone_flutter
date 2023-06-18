@@ -26,7 +26,7 @@ class PlacementTestService {
     testid,
     answersList,
   ) async {
-    var device_id = await getFromSharedPreferences('device_id');
+    var device_id = await getFromSharedPreferences('deviceId');
     http.Response response = await http.post(Uri.parse(baseApi + endpoint),
         body: jsonEncode({
           'guest_id': 1,

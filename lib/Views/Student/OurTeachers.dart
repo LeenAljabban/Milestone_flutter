@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import '../../Component/IconContainer.dart';
 import '../../Component/RoundedAppbar.dart';
 import '../../Controllers/TeacherControllers/OurTeacherController.dart';
+import '../../global.dart';
 
 class OurTeachers extends GetView<OueTeacherController> {
   @override
@@ -75,7 +76,9 @@ class OurTeachers extends GetView<OueTeacherController> {
                                               BorderRadius.circular(20),
                                           image: DecorationImage(
                                               image: NetworkImage(
-                                                'http://192.168.1.45:8000/${controller.teachers[index].image}',
+                                                imageurl +
+                                                    controller
+                                                        .teachers[index].image,
                                               ),
                                               fit: BoxFit.fill),
                                         ),

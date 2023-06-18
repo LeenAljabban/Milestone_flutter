@@ -7,6 +7,7 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
 
 import '../../Component/EditTextField.dart';
+import '../../global.dart';
 
 class EditStudentProfile extends GetView<EditStudentProfileController> {
   @override
@@ -67,7 +68,7 @@ class EditStudentProfile extends GetView<EditStudentProfileController> {
                               () => CircleAvatar(
                                 backgroundImage: controller.file.value == ''
                                     ? NetworkImage(
-                                        'http://192.168.1.106:8000/${controller.user.image}')
+                                        imageurl + controller.user.image)
                                     : FileImage(File(controller.file.value))
                                         as ImageProvider,
                                 //NetworkImage

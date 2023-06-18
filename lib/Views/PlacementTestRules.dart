@@ -2,6 +2,7 @@ import 'package:first/Controllers/GuestControllers/PlacementTestRulesController.
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../Component/IconContainer.dart';
+import '../global.dart';
 
 class PlacementTestRules extends StatelessWidget {
   PlacementTestRulesController controller =
@@ -17,8 +18,7 @@ class PlacementTestRules extends StatelessWidget {
               height: 250,
               width: double.infinity,
               child: Image(
-                image: NetworkImage(
-                    'http://192.168.1.106:8000/${controller.AdvModel!.image}'),
+                image: NetworkImage(imageurl + controller.AdvModel!.image),
                 fit: BoxFit.fill,
               ),
             ),
@@ -70,11 +70,11 @@ class PlacementTestRules extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 30.0),
                         child: Text(
                           controller.AdvModel!.tips,
-                          textAlign: TextAlign.justify,
+                          // textAlign: TextAlign.justify,
                           style: TextStyle(
                               color: Colors.grey.shade800,
                               fontFamily: 'segoepr',
-                              fontSize: 20),
+                              fontSize: 18),
                         ),
                       ),
                     ],

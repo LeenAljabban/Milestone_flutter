@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../Component/IconContainer.dart';
 import '../../Controllers/GuestControllers/JobAdvertismentController.dart';
+import '../../global.dart';
 
 class JobAdvertisment extends GetView<JobAdvertismentController> {
   @override
@@ -15,8 +16,7 @@ class JobAdvertisment extends GetView<JobAdvertismentController> {
                 height: 250,
                 width: double.infinity,
                 child: Image(
-                  image: NetworkImage(
-                      'http://192.168.1.54:8000/${controller.adv.image}'),
+                  image: NetworkImage(imageurl + controller.adv.image),
                   fit: BoxFit.fill,
                 ),
               ),
@@ -86,45 +86,47 @@ class JobAdvertisment extends GetView<JobAdvertismentController> {
                                   fontFamily: 'segoepr',
                                   fontSize: 20),
                             ),
-                            controller.token != ''
-                                ? Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 50.0),
-                                      child: SizedBox(
-                                        height: 50,
-                                        width: 250,
-                                        child: TextButton(
-                                          style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                              Color(0xff2D527E),
-                                            ),
-                                            shape: MaterialStateProperty.all(
-                                              RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(22),
+                            Obx(
+                              () => controller.token.value == ''
+                                  ? Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 50.0),
+                                        child: SizedBox(
+                                          height: 50,
+                                          width: 250,
+                                          child: TextButton(
+                                            style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                Color(0xff2D527E),
+                                              ),
+                                              shape: MaterialStateProperty.all(
+                                                RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(22),
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          onPressed: () {
-                                            controller.pickfile();
-                                            controller.CallUploadCv(
-                                                controller.adv.id);
-                                          },
-                                          child: Text(
-                                            'upload cv',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white,
-                                                fontFamily: 'segoepr',
-                                                fontSize: 20),
+                                            onPressed: () {
+                                              controller.pickfile();
+                                              controller.CallUploadCv(
+                                                  controller.adv.id);
+                                            },
+                                            child: Text(
+                                              'upload cv',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white,
+                                                  fontFamily: 'segoepr',
+                                                  fontSize: 20),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  )
-                                : Container(),
+                                    )
+                                  : Container(),
+                            ),
                           ],
                         ),
                       ),

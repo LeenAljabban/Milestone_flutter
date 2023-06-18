@@ -8,6 +8,7 @@ import '../Component/IconContainer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../Controllers/GuestControllers/GuestHomeController.dart';
+import '../global.dart';
 
 class GuestHome extends GetView<GuestHomeController> {
   @override
@@ -55,8 +56,8 @@ class GuestHome extends GetView<GuestHomeController> {
                                   borderRadius: BorderRadius.circular(20.0),
                                   child: Image(
                                     fit: BoxFit.fill,
-                                    image: NetworkImage(
-                                        'http://192.168.1.45:8000/${controller.images[itemIndex].filePath}'),
+                                    image: NetworkImage(imageurl +
+                                        controller.images[itemIndex].filePath),
                                   ),
                                 ),
                               ),
@@ -116,8 +117,10 @@ class GuestHome extends GetView<GuestHomeController> {
                                                 BorderRadius.circular(20.0),
                                             child: Image(
                                               fit: BoxFit.fill,
-                                              image: NetworkImage(
-                                                  'http://192.168.1.45:8000/${controller.advertisments[itemIndex].image}'),
+                                              image: NetworkImage(imageurl +
+                                                  controller
+                                                      .advertisments[itemIndex]
+                                                      .image),
                                             ),
                                           ),
                                         )
@@ -137,7 +140,7 @@ class GuestHome extends GetView<GuestHomeController> {
                                     //todo without reserve button
                                     Get.toNamed('/ReserveAdvertisment',
                                         arguments: controller
-                                            .advertisments[itemIndex]);
+                                            .advertisments[itemIndex].id);
                                   } else if (controller.advertisments[itemIndex]
                                           .advertismentTypeId ==
                                       3) {
@@ -235,7 +238,10 @@ class GuestHome extends GetView<GuestHomeController> {
                                                                 DecorationImage(
                                                                     image:
                                                                         NetworkImage(
-                                                                      'http://192.168.1.45:8000/${controller.teachers[index].image}',
+                                                                      imageurl +
+                                                                          controller
+                                                                              .teachers[index]
+                                                                              .image,
                                                                     ),
                                                                     fit: BoxFit
                                                                         .fill),

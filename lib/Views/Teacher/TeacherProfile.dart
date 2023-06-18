@@ -3,6 +3,7 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
 
 import '../../Controllers/TeacherControllers/TeacherProfileController.dart';
+import '../../global.dart';
 
 class TeacherProfile extends StatelessWidget {
   TeacherProfileController controller = Get.put(TeacherProfileController());
@@ -211,7 +212,7 @@ class TeacherProfile extends StatelessWidget {
                               radius: 77,
                               child: CircleAvatar(
                                 backgroundImage: NetworkImage(
-                                  'http://192.168.1.45:8000/${controller.user.image}',
+                                  imageurl + controller.user.image,
                                 ),
                                 //NetworkImage
                                 radius: 72,

@@ -6,6 +6,8 @@ import 'package:unique_identifier/unique_identifier.dart';
 import '../../global.dart';
 
 class GuestInformationController extends GetxController {
+
+  RxBool send = true.obs;
   late TextEditingController firstnameController,
       lastnameController,
       educationController,
@@ -45,6 +47,7 @@ class GuestInformationController extends GetxController {
   }
 
   CallGuestInformation() async {
+    send(false);
     try {
       var data = await GuestInformationService.GuestInformation(
           'register/guest',

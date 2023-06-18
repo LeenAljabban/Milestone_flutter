@@ -1,8 +1,12 @@
-import 'package:first/Views/AboutUs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../Controllers/StudentsControllers/StudentProfileController.dart';
+import '../../global.dart';
+
 class StudentSideBar extends StatelessWidget {
+  StudentProfileController controller = Get.put(StudentProfileController());
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -11,25 +15,25 @@ class StudentSideBar extends StatelessWidget {
         children: [
           UserAccountsDrawerHeader(
             accountName: Text(
-              'Rama Aljabban',
+              controller.user.firstName + ' ' + controller.user.lastName,
               style: TextStyle(
                 // fontFamily: 'segoepr',
                 fontWeight: FontWeight.bold,
               ),
             ),
             accountEmail: Text(
-              'Rama-jabban@gmail.com',
+              controller.user.email,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
-                child: Image.asset(
-                  'Images/roro.png',
-                  fit: BoxFit.cover,
-                  width: 90,
-                  height: 90,
+                child: Image(
+                  image: NetworkImage(
+                    imageurl + controller.user.image,
+                  ),
+                  // fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -142,6 +146,7 @@ class StudentSideBar extends StatelessWidget {
               ),
             ),
             onTap: () {
+              clearToken();
               Get.offAllNamed('/WhoAreYou');
             },
           ),

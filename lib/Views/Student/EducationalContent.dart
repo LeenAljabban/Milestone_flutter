@@ -9,6 +9,7 @@ import '../../Component/RoundedAppbar.dart';
 class EducationalContent extends StatelessWidget {
   EducationalContentController controller =
       Get.put(EducationalContentController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,7 +39,7 @@ class EducationalContent extends StatelessWidget {
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10.0, left: 10, top: 55),
+                padding: const EdgeInsets.only(right: 12.0, left: 10, top: 55),
                 child: Container(
                   height: 60,
                   width: 350,
@@ -126,6 +127,7 @@ class EducationalContent extends StatelessWidget {
                                                     .file
                                                     .toString(),
                                                 textAlign: TextAlign.center,
+                                                overflow: TextOverflow.ellipsis,
                                                 style: TextStyle(
                                                   fontSize: 13,
                                                   color: Color(0xff2D527E),

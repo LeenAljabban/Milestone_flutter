@@ -115,12 +115,17 @@ class Login extends GetView<LoginController> {
                                   onPressed: () {
                                     controller.CallLogin();
                                   },
-                                  child: Text(
-                                    'log In',
-                                    style: TextStyle(color: Colors.white),
+                                  child: Obx(
+                                    () => controller.send.value
+                                        ? Text(
+                                            'log In',
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          )
+                                        : CircularProgressIndicator(),
                                   ),
                                 ),
-                              ),
+                              )
                             ],
                           ),
                         ),

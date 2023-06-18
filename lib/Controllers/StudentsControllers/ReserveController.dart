@@ -5,23 +5,25 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../Models/AdvertismentModel.dart';
+import '../../global.dart';
 
 class ReserveController extends GetxController {
   Color blue = Color(0xff2D527E);
   AdvertismentModel adv = AdvertismentModel();
   var isLoading = false.obs;
   int? id;
-
+  RxString token = ''.obs;
   @override
-  void onInit() {
+  Future<void> onInit() async {
+    token.value = await getFromSharedPreferences('token');
     id = Get.arguments;
     CallCourseInfo(id);
   }
 
   CallCourseInfo(Adv_id) async {
     try {
-      var data = await ReserveService.CourseInfo(
-          'student/get/advertismentById', Adv_id);
+      var data =
+          await ReserveService.CourseInfo('get/advertismentById', Adv_id);
       if (data != null) {
         adv = data;
       } else {
