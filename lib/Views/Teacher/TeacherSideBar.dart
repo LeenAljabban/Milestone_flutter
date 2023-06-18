@@ -69,7 +69,9 @@ class TeacherSideBar extends StatelessWidget {
                 color: Color(0xff2D527E),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Get.toNamed('/AllAds');
+            },
           ),
           ListTile(
             leading: Icon(

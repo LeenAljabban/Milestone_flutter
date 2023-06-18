@@ -495,33 +495,38 @@ class SpecificCourse extends StatelessWidget {
                                     SizedBox(
                                       height: 20,
                                     ),
-                                    Container(
-                                      width: 350,
-                                      height: 60,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Color(0xff2D527E),
-                                              blurRadius: 5.0,
-                                            )
-                                          ],
-                                          border: Border.all(
-                                              color: Color(0xff2D527E),
-                                              width: 2)),
-                                      child: Center(
-                                        child: Text('Schedule appointment',
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontFamily: 'segoepr',
-                                              color: Color(0xff2D527E),
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 18,
-                                              //height: -1.5
-                                            )),
+                                    InkWell(
+                                      child: Container(
+                                        width: 350,
+                                        height: 60,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Color(0xff2D527E),
+                                                blurRadius: 5.0,
+                                              )
+                                            ],
+                                            border: Border.all(
+                                                color: Color(0xff2D527E),
+                                                width: 2)),
+                                        child: Center(
+                                          child: Text('Schedule appointment',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontFamily: 'segoepr',
+                                                color: Color(0xff2D527E),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18,
+                                                //height: -1.5
+                                              )),
+                                        ),
                                       ),
+                                      onTap: () {
+                                        Get.toNamed('/SchudleAppointment');
+                                      },
                                     ),
                                     SizedBox(
                                       height: 10,
