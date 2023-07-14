@@ -146,7 +146,7 @@ class StudentSideBar extends StatelessWidget {
               ),
             ),
             onTap: () {
-              clearToken();
+              //clearToken();
               Get.offAllNamed('/WhoAreYou');
             },
           ),
