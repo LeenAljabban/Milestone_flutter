@@ -1,12 +1,13 @@
 import 'package:first/Services/GuestInformationService.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unique_identifier/unique_identifier.dart';
 
 import '../../global.dart';
 
 class GuestInformationController extends GetxController {
-
+  final GlobalKey<FormState> guestInfoFormKey = GlobalKey<FormState>();
   RxBool send = true.obs;
   late TextEditingController firstnameController,
       lastnameController,
@@ -40,9 +41,19 @@ class GuestInformationController extends GetxController {
     try {
       final identifier = await UniqueIdentifier.serial;
       deviceId = identifier;
-      await saveToSharedPreferences('deviceId', deviceId!);
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString('deviceId', deviceId!);
     } catch (e) {
       print('Error getting device identifier: $e');
+    }
+  }
+
+  void check() {
+    final isValid = guestInfoFormKey.currentState!.validate();
+    if (!isValid) {
+      return;
+    } else {
+      CallGuestInformation();
     }
   }
 
@@ -61,6 +72,7 @@ class GuestInformationController extends GetxController {
         Get.toNamed("/VerificationCode", arguments: emailController);
       } else {
         print('there is a problem');
+        send(true);
       }
     } finally {}
   }

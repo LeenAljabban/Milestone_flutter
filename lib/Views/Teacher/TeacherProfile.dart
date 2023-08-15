@@ -46,6 +46,14 @@ class TeacherProfile extends StatelessWidget {
                       padding: const EdgeInsets.only(
                           left: 20.0, right: 20, top: 220),
                       child: Card(
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                            color: Colors.grey.shade300,
+                          ),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        shadowColor: Colors.white,
+                        elevation: 3,
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
@@ -179,14 +187,6 @@ class TeacherProfile extends StatelessWidget {
                             ),
                           ),
                         ),
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                            color: Colors.grey.shade300,
-                          ),
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        shadowColor: Colors.white,
-                        elevation: 3,
                       ),
                     ),
                     Center(

@@ -46,7 +46,7 @@ class TeacherSideBar extends StatelessWidget {
               Icons.account_circle,
               color: Color(0xff2D527E),
             ),
-            title: Text(
+            title: const Text(
               'What is Milstone',
               style: TextStyle(
                 fontFamily: 'segoepr',
@@ -58,11 +58,11 @@ class TeacherSideBar extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.ad_units,
               color: Color(0xff2D527E),
             ),
-            title: Text(
+            title: const Text(
               'Advertisment',
               style: TextStyle(
                 fontFamily: 'segoepr',
@@ -74,11 +74,11 @@ class TeacherSideBar extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.home_repair_service,
               color: Color(0xff2D527E),
             ),
-            title: Text(
+            title: const Text(
               'Our Services',
               style: TextStyle(
                 fontFamily: 'segoepr',
@@ -90,11 +90,11 @@ class TeacherSideBar extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.contact_support,
               color: Color(0xff2D527E),
             ),
-            title: Text(
+            title: const Text(
               'Contact Us',
               style: TextStyle(
                 fontFamily: 'segoepr',
@@ -105,40 +105,40 @@ class TeacherSideBar extends StatelessWidget {
               Get.toNamed('/ContactUs');
             },
           ),
+          // ListTile(
+          // trailing: InkWell(
+          //   onTap: () {
+          //     Get.changeTheme(
+          //         Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+          //   },
+          //   child: Icon(
+          //     Get.isDarkMode ? Icons.dark_mode : Icons.dark_mode_outlined,
+          //   ),
+          // ),
+          // Switch.adaptive(
+          //     value: ,
+          //     onChanged: (d) {
+          //
+          //     }),
+          //   leading: const Icon(
+          //     Icons.dark_mode,
+          //     color: Color(0xff2D527E),
+          //   ),
+          //   title: const Text(
+          //     'Dark Mode',
+          //     style: TextStyle(
+          //       fontFamily: 'segoepr',
+          //       color: Color(0xff2D527E),
+          //     ),
+          //   ),
+          //   onTap: () {},
+          // ),
           ListTile(
-            // trailing: InkWell(
-            //   onTap: () {
-            //     Get.changeTheme(
-            //         Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
-            //   },
-            //   child: Icon(
-            //     Get.isDarkMode ? Icons.dark_mode : Icons.dark_mode_outlined,
-            //   ),
-            // ),
-            // Switch.adaptive(
-            //     value: ,
-            //     onChanged: (d) {
-            //
-            //     }),
-            leading: Icon(
-              Icons.dark_mode,
-              color: Color(0xff2D527E),
-            ),
-            title: Text(
-              'Dark Mode',
-              style: TextStyle(
-                fontFamily: 'segoepr',
-                color: Color(0xff2D527E),
-              ),
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.logout,
               color: Color(0xff2D527E),
             ),
-            title: Text(
+            title: const Text(
               'Log out',
               style: TextStyle(
                 fontFamily: 'segoepr',

@@ -55,8 +55,8 @@ class Timeup extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      ' wait for us to contact'
-                      'you and make oral'
+                      ' wait for us to contact '
+                      'you and make oral '
                       'test appointment ',
                       textAlign: TextAlign.center,
                       style: TextStyle(

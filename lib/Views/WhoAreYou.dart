@@ -17,8 +17,8 @@ class WhoAreYou extends StatelessWidget {
             ),
             Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(
+                const Padding(
+                  padding: EdgeInsets.only(
                     top: 60.0,
                   ),
                   child: Center(
@@ -28,8 +28,8 @@ class WhoAreYou extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 40.0),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 40.0),
                   child: Text(
                     'WHO ARE YOU ?',
                     style: TextStyle(
@@ -43,29 +43,29 @@ class WhoAreYou extends StatelessWidget {
                 //   height: 30,
                 // ),
                 InkWell(
-                  child: Cards(
+                  child: const Cards(
                     txt: 'Student',
                   ),
                   onTap: () {
                     Get.toNamed("/Login");
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 InkWell(
-                  child: Cards(
+                  child: const Cards(
                     txt: 'Employee',
                   ),
                   onTap: () {
                     Get.toNamed("/Login");
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 InkWell(
-                  child: Cards(
+                  child: const Cards(
                     txt: 'Geust',
                   ),
                   onTap: () {

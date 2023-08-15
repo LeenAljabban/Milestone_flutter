@@ -5,12 +5,14 @@ import '../Component/IconContainer.dart';
 import '../Controllers/GuestControllers/GuestInformationControllers.dart';
 
 class GuestInformation extends GetView<GuestInformationController> {
+  const GuestInformation({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).requestFocus(
-          new FocusNode(),
+          FocusNode(),
         );
       },
       child: SafeArea(
@@ -35,8 +37,8 @@ class GuestInformation extends GetView<GuestInformationController> {
                 Column(
                   // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40.0, bottom: 20),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 40.0, bottom: 20),
                       child: Text(
                         'Enter your information',
                         style: TextStyle(
@@ -49,244 +51,6 @@ class GuestInformation extends GetView<GuestInformationController> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Card(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.shade200,
-                              ),
-                              BoxShadow(
-                                color: Colors.white,
-                                spreadRadius: -15.0,
-                                blurRadius: 15.0,
-                              ),
-                            ],
-                          ),
-                          width: MediaQuery.of(context).size.width,
-                          height: 880,
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: 40,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 10.0),
-                                  child: Text(
-                                    'Frist name :',
-                                    style: TextStyle(
-                                        color: Color(0xff2D527E),
-                                        fontFamily: 'segoepr',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18),
-                                  ),
-                                ),
-                                TextField(
-                                  controller: controller.firstnameController,
-                                  decoration: InputDecoration(
-                                    labelText: 'Enter your frist name',
-
-                                    floatingLabelBehavior:
-                                        FloatingLabelBehavior.never,
-                                    contentPadding:
-                                        EdgeInsets.symmetric(vertical: 0.5),
-                                    // icon: Icon(Icons.person),
-                                    labelStyle: TextStyle(
-                                        color: Colors.grey.shade400,
-                                        fontSize: 15),
-                                    suffixIcon: Icon(
-                                      Icons.person,
-                                      color: Colors.grey.shade400,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.grey.shade400),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 40,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 10.0),
-                                  child: Text(
-                                    'Last Name:',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xff2D527E),
-                                        fontFamily: 'segoepr',
-                                        fontSize: 18),
-                                  ),
-                                ),
-                                TextField(
-                                  controller: controller.lastnameController,
-                                  decoration: InputDecoration(
-                                    labelText: 'Enter your last name',
-                                    floatingLabelBehavior:
-                                        FloatingLabelBehavior.never,
-                                    contentPadding:
-                                        EdgeInsets.symmetric(vertical: 1),
-                                    labelStyle: TextStyle(
-                                        color: Colors.grey.shade400,
-                                        fontSize: 15),
-                                    suffixIcon: Icon(
-                                      Icons.person,
-                                      color: Colors.grey.shade400,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.grey.shade400),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 40,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 10.0),
-                                  child: Text(
-                                    'Education:',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xff2D527E),
-                                        fontFamily: 'segoepr',
-                                        fontSize: 18),
-                                  ),
-                                ),
-                                TextField(
-                                  controller: controller.educationController,
-                                  decoration: InputDecoration(
-                                    labelText: 'Enter your Education',
-                                    floatingLabelBehavior:
-                                        FloatingLabelBehavior.never,
-                                    contentPadding:
-                                        EdgeInsets.symmetric(vertical: 1),
-                                    labelStyle: TextStyle(
-                                        color: Colors.grey.shade400,
-                                        fontSize: 15),
-                                    suffixIcon: Icon(
-                                      Icons.cast_for_education_outlined,
-                                      color: Colors.grey.shade400,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.grey.shade400),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 40,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 10.0),
-                                  child: Text(
-                                    'Email:',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xff2D527E),
-                                        fontFamily: 'segoepr',
-                                        fontSize: 18),
-                                  ),
-                                ),
-                                TextField(
-                                  controller: controller.emailController,
-                                  decoration: InputDecoration(
-                                    labelText: 'Enter your Email',
-                                    floatingLabelBehavior:
-                                        FloatingLabelBehavior.never,
-                                    contentPadding:
-                                        EdgeInsets.symmetric(vertical: 1),
-                                    labelStyle: TextStyle(
-                                        color: Colors.grey.shade400,
-                                        fontSize: 15),
-                                    suffixIcon: Icon(
-                                      Icons.email,
-                                      color: Colors.grey.shade400,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.grey.shade400),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 40,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(bottom: 10.0),
-                                  child: Text(
-                                    'Phone Number :',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xff2D527E),
-                                        fontFamily: 'segoepr',
-                                        fontSize: 18),
-                                  ),
-                                ),
-                                TextField(
-                                  controller: controller.phoneNumberController,
-                                  decoration: InputDecoration(
-                                    labelText: 'Enter your phone number',
-                                    floatingLabelBehavior:
-                                        FloatingLabelBehavior.never,
-                                    contentPadding:
-                                        EdgeInsets.symmetric(vertical: 1),
-                                    labelStyle: TextStyle(
-                                        color: Colors.grey.shade400,
-                                        fontSize: 15),
-                                    suffixIcon: Icon(
-                                      Icons.phone,
-                                      color: Colors.grey.shade400,
-                                    ),
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.grey.shade400),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                // Padding(
-                                //   padding: const EdgeInsets.only(bottom: 10.0),
-                                //   child: Text(
-                                //     'Address :',
-                                //     style: TextStyle(
-                                //         fontWeight: FontWeight.bold,
-                                //         color: Color(0xff2D527E),
-                                //         fontFamily: 'segoepr',
-                                //         fontSize: 18),
-                                //   ),
-                                // ),
-                                // TextField(
-                                //   // controller: controller.phoneNumberController,
-                                //   decoration: InputDecoration(
-                                //     labelText: 'Enter your phone number',
-                                //     floatingLabelBehavior:
-                                //         FloatingLabelBehavior.never,
-                                //     contentPadding:
-                                //         EdgeInsets.symmetric(vertical: 1),
-                                //     labelStyle: TextStyle(
-                                //         color: Colors.grey.shade400,
-                                //         fontSize: 15),
-                                //     suffixIcon: Icon(
-                                //       Icons.phone,
-                                //       color: Colors.grey.shade400,
-                                //     ),
-                                //     enabledBorder: UnderlineInputBorder(
-                                //       borderSide: BorderSide(
-                                //           color: Colors.grey.shade400),
-                                //     ),
-                                //   ),
-                                // ),
-                              ],
-                            ),
-                          ),
-                        ),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
                             color: Colors.grey.shade400,
@@ -295,9 +59,297 @@ class GuestInformation extends GetView<GuestInformationController> {
                         ),
                         shadowColor: Colors.white,
                         elevation: 3,
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                              minHeight:
+                                  MediaQuery.of(context).size.height * 1.05),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.shade200,
+                                ),
+                                const BoxShadow(
+                                  color: Colors.white,
+                                  spreadRadius: -15.0,
+                                  blurRadius: 15.0,
+                                ),
+                              ],
+                            ),
+                            width: MediaQuery.of(context).size.width,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20.0),
+                              child: Form(
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                key: controller.guestInfoFormKey,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(
+                                      height: 40,
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(bottom: 10.0),
+                                      child: Text(
+                                        'Frist name :',
+                                        style: TextStyle(
+                                            color: Color(0xff2D527E),
+                                            fontFamily: 'segoepr',
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18),
+                                      ),
+                                    ),
+                                    TextFormField(
+                                      controller:
+                                          controller.firstnameController,
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please enter some text';
+                                        }
+                                        return null;
+                                      },
+                                      decoration: InputDecoration(
+                                        labelText: 'Enter your frist name',
+
+                                        floatingLabelBehavior:
+                                            FloatingLabelBehavior.never,
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 0.5),
+                                        // icon: Icon(Icons.person),
+                                        labelStyle: TextStyle(
+                                            color: Colors.grey.shade400,
+                                            fontSize: 15),
+                                        suffixIcon: Icon(
+                                          Icons.person,
+                                          color: Colors.grey.shade400,
+                                        ),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.grey.shade400),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 40,
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(bottom: 10.0),
+                                      child: Text(
+                                        'Last Name:',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xff2D527E),
+                                            fontFamily: 'segoepr',
+                                            fontSize: 18),
+                                      ),
+                                    ),
+                                    TextFormField(
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please enter some text';
+                                        }
+                                        return null;
+                                      },
+                                      controller: controller.lastnameController,
+                                      decoration: InputDecoration(
+                                        labelText: 'Enter your last name',
+                                        floatingLabelBehavior:
+                                            FloatingLabelBehavior.never,
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 1),
+                                        labelStyle: TextStyle(
+                                            color: Colors.grey.shade400,
+                                            fontSize: 15),
+                                        suffixIcon: Icon(
+                                          Icons.person,
+                                          color: Colors.grey.shade400,
+                                        ),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.grey.shade400),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 40,
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(bottom: 10.0),
+                                      child: Text(
+                                        'Education:',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xff2D527E),
+                                            fontFamily: 'segoepr',
+                                            fontSize: 18),
+                                      ),
+                                    ),
+                                    TextFormField(
+                                      controller:
+                                          controller.educationController,
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please enter some text';
+                                        }
+                                        return null;
+                                      },
+                                      decoration: InputDecoration(
+                                        labelText: 'Enter your Education',
+                                        floatingLabelBehavior:
+                                            FloatingLabelBehavior.never,
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 1),
+                                        labelStyle: TextStyle(
+                                            color: Colors.grey.shade400,
+                                            fontSize: 15),
+                                        suffixIcon: Icon(
+                                          Icons.cast_for_education_outlined,
+                                          color: Colors.grey.shade400,
+                                        ),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.grey.shade400),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 40,
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(bottom: 10.0),
+                                      child: Text(
+                                        'Email:',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xff2D527E),
+                                            fontFamily: 'segoepr',
+                                            fontSize: 18),
+                                      ),
+                                    ),
+                                    TextFormField(
+                                      controller: controller.emailController,
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please enter some text';
+                                        }
+                                        if (!GetUtils.isEmail(value)) {
+                                          return 'Enter valid Email';
+                                        }
+                                        return null;
+                                      },
+                                      decoration: InputDecoration(
+                                        labelText: 'Enter your Email',
+                                        floatingLabelBehavior:
+                                            FloatingLabelBehavior.never,
+                                        contentPadding:
+                                            EdgeInsets.symmetric(vertical: 1),
+                                        labelStyle: TextStyle(
+                                            color: Colors.grey.shade400,
+                                            fontSize: 15),
+                                        suffixIcon: Icon(
+                                          Icons.email,
+                                          color: Colors.grey.shade400,
+                                        ),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.grey.shade400),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 40,
+                                    ),
+                                    const Padding(
+                                      padding: EdgeInsets.only(bottom: 10.0),
+                                      child: Text(
+                                        'Phone Number :',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xff2D527E),
+                                            fontFamily: 'segoepr',
+                                            fontSize: 18),
+                                      ),
+                                    ),
+                                    TextFormField(
+                                      controller:
+                                          controller.phoneNumberController,
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please enter some text';
+                                        }
+
+                                        return null;
+                                      },
+                                      decoration: InputDecoration(
+                                        labelText: 'Enter your phone number',
+                                        floatingLabelBehavior:
+                                            FloatingLabelBehavior.never,
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                vertical: 1),
+                                        labelStyle: TextStyle(
+                                            color: Colors.grey.shade400,
+                                            fontSize: 15),
+                                        suffixIcon: Icon(
+                                          Icons.phone,
+                                          color: Colors.grey.shade400,
+                                        ),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.grey.shade400),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    // Padding(
+                                    //   padding: const EdgeInsets.only(bottom: 10.0),
+                                    //   child: Text(
+                                    //     'Address :',
+                                    //     style: TextStyle(
+                                    //         fontWeight: FontWeight.bold,
+                                    //         color: Color(0xff2D527E),
+                                    //         fontFamily: 'segoepr',
+                                    //         fontSize: 18),
+                                    //   ),
+                                    // ),
+                                    // TextField(
+                                    //   // controller: controller.phoneNumberController,
+                                    //   decoration: InputDecoration(
+                                    //     labelText: 'Enter your phone number',
+                                    //     floatingLabelBehavior:
+                                    //         FloatingLabelBehavior.never,
+                                    //     contentPadding:
+                                    //         EdgeInsets.symmetric(vertical: 1),
+                                    //     labelStyle: TextStyle(
+                                    //         color: Colors.grey.shade400,
+                                    //         fontSize: 15),
+                                    //     suffixIcon: Icon(
+                                    //       Icons.phone,
+                                    //       color: Colors.grey.shade400,
+                                    //     ),
+                                    //     enabledBorder: UnderlineInputBorder(
+                                    //       borderSide: BorderSide(
+                                    //           color: Colors.grey.shade400),
+                                    //     ),
+                                    //   ),
+                                    // ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                   ],
@@ -311,7 +363,7 @@ class GuestInformation extends GetView<GuestInformationController> {
                     child: TextButton(
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
-                          Color(0xff2D527E),
+                          const Color(0xff2D527E),
                         ),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
@@ -326,11 +378,11 @@ class GuestInformation extends GetView<GuestInformationController> {
                         //   barrierDismissible: true,
                         //   content: CircularProgressIndicator(),
                         // );
-                        controller.CallGuestInformation();
+                        controller.check();
                       },
                       child: Obx(
                         () => controller.send.value
-                            ? Text(
+                            ? const Text(
                                 'Continue',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -345,7 +397,7 @@ class GuestInformation extends GetView<GuestInformationController> {
                 ),
                 IconContainer(
                   icon: Icons.arrow_back_ios_new,
-                  iconColor: Color(0xff2D527E),
+                  iconColor: const Color(0xff2D527E),
                   containerColor: Colors.white,
                   press: () {
                     Get.back();

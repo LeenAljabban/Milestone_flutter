@@ -132,7 +132,7 @@ class PlacementTestController extends GetxController {
   CallGetquestionslist() async {
     try {
       var data = await PlacementTestService.getquestionslist(
-        'getTest?page=${page}',
+        'getTest?page=$page',
       );
       print('/////////////////////////////////////////////////////////////');
       print(data);
@@ -164,8 +164,9 @@ class PlacementTestController extends GetxController {
       var data = await PlacementTestService.SubmitAnswers(
           'submit', testid, selectedAnswers);
       if (data != null) {
-        if (data['message'] == "Answer Submitted Successfully")
+        if (data['message'] == "Answer Submitted Successfully") {
           Get.offAllNamed('/ContinuePlacment');
+        }
       } else {
         print('there is a problem');
       }

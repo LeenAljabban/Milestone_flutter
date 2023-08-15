@@ -21,17 +21,15 @@ class VerificationCodeController extends GetxController {
     super.dispose();
   }
 
-  CallGuestInformation() async {
+  Callverify() async {
     try {
       var data = await VerificationCodeService.VerificationCode(
           'verify/email', PINController.text, emailController.text);
       if (data != null) {
-        Get.toNamed("/PlacementTest");
+        Get.offNamed("/PlacementTest");
       } else {
         print('there is a problem');
       }
     } finally {}
   }
 }
-
-class VerificationCoddService {}

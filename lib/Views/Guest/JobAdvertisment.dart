@@ -5,6 +5,8 @@ import '../../Controllers/GuestControllers/JobAdvertismentController.dart';
 import '../../global.dart';
 
 class JobAdvertisment extends GetView<JobAdvertismentController> {
+  const JobAdvertisment({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -12,7 +14,7 @@ class JobAdvertisment extends GetView<JobAdvertismentController> {
         body: SingleChildScrollView(
           child: Stack(
             children: [
-              Container(
+              SizedBox(
                 height: 250,
                 width: double.infinity,
                 child: Image(
@@ -26,6 +28,13 @@ class JobAdvertisment extends GetView<JobAdvertismentController> {
                   // right: 5, left: 5
                 ),
                 child: Card(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Colors.grey.shade500,
+                    ),
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  shadowColor: Colors.white,
                   child: ConstrainedBox(
                     constraints: BoxConstraints(minHeight: 600),
                     child: Container(
@@ -41,7 +50,7 @@ class JobAdvertisment extends GetView<JobAdvertismentController> {
                           BoxShadow(
                             color: Colors.indigo.shade50,
                           ),
-                          BoxShadow(
+                          const BoxShadow(
                             color: Colors.white,
                             spreadRadius: -20.0,
                             blurRadius: 15.0,
@@ -56,7 +65,7 @@ class JobAdvertisment extends GetView<JobAdvertismentController> {
                             SizedBox(
                               height: 30,
                             ),
-                            Text(
+                            const Text(
                               '- Job Title :',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -71,7 +80,7 @@ class JobAdvertisment extends GetView<JobAdvertismentController> {
                                   fontFamily: 'segoepr',
                                   fontSize: 20),
                             ),
-                            Text(
+                            const Text(
                               '\n- Job Description :',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -87,44 +96,45 @@ class JobAdvertisment extends GetView<JobAdvertismentController> {
                                   fontSize: 20),
                             ),
                             Obx(
-                              () => controller.token.value == ''
+                                  () =>
+                              controller.token.value == ''
                                   ? Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 50.0),
-                                        child: SizedBox(
-                                          height: 50,
-                                          width: 250,
-                                          child: TextButton(
-                                            style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                Color(0xff2D527E),
-                                              ),
-                                              shape: MaterialStateProperty.all(
-                                                RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(22),
-                                                ),
-                                              ),
-                                            ),
-                                            onPressed: () {
-                                              controller.pickfile();
-                                              controller.CallUploadCv(
-                                                  controller.adv.id);
-                                            },
-                                            child: Text(
-                                              'upload cv',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white,
-                                                  fontFamily: 'segoepr',
-                                                  fontSize: 20),
-                                            ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 50.0),
+                                  child: SizedBox(
+                                    height: 50,
+                                    width: 250,
+                                    child: TextButton(
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                        MaterialStateProperty.all(
+                                          Color(0xff2D527E),
+                                        ),
+                                        shape: MaterialStateProperty.all(
+                                          RoundedRectangleBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(22),
                                           ),
                                         ),
                                       ),
-                                    )
+                                      onPressed: () {
+                                        controller.pickfile();
+                                        controller.CallUploadCv(
+                                            controller.adv.id);
+                                      },
+                                      child: Text(
+                                        'upload cv',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                            fontFamily: 'segoepr',
+                                            fontSize: 20),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
                                   : Container(),
                             ),
                           ],
@@ -132,13 +142,6 @@ class JobAdvertisment extends GetView<JobAdvertismentController> {
                       ),
                     ),
                   ),
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      color: Colors.grey.shade500,
-                    ),
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  shadowColor: Colors.white,
                 ),
               ),
               IconContainer(

@@ -13,6 +13,7 @@ class GetInfoModel {
   String email;
   DateTime createdAt;
   DateTime updatedAt;
+  String image;
 
   GetInfoModel({
     required this.id,
@@ -22,6 +23,7 @@ class GetInfoModel {
     required this.services,
     required this.createdAt,
     required this.updatedAt,
+    required this.image,
   });
 
   factory GetInfoModel.fromJson(Map<String, dynamic> json) => GetInfoModel(
@@ -30,6 +32,7 @@ class GetInfoModel {
         whoWeAre: json["who_we_are"],
         contactUs: json["contact_us"],
         services: json["services"],
+        image: json["image"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
       );
@@ -39,6 +42,7 @@ class GetInfoModel {
         "who_we_are": whoWeAre,
         "contact_us": contactUs,
         "services": services,
+        "image": image,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
       };

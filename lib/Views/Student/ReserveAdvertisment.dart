@@ -29,6 +29,13 @@ class ReserveAdvertisment extends GetView<ReserveController> {
                         // right: 5, left: 5
                       ),
                       child: Card(
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(
+                            color: Colors.grey.shade500,
+                          ),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        shadowColor: Colors.white,
                         child: ConstrainedBox(
                           constraints: BoxConstraints(minHeight: 600),
                           child: Container(
@@ -44,7 +51,7 @@ class ReserveAdvertisment extends GetView<ReserveController> {
                                 BoxShadow(
                                   color: Colors.indigo.shade50,
                                 ),
-                                BoxShadow(
+                                const BoxShadow(
                                   color: Colors.white,
                                   spreadRadius: -20.0,
                                   blurRadius: 15.0,
@@ -60,7 +67,7 @@ class ReserveAdvertisment extends GetView<ReserveController> {
                                   SizedBox(
                                     height: 30,
                                   ),
-                                  Text(
+                                  const Text(
                                     '- course level :',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -75,7 +82,7 @@ class ReserveAdvertisment extends GetView<ReserveController> {
                                         fontFamily: 'segoepr',
                                         fontSize: 20),
                                   ),
-                                  Text(
+                                  const Text(
                                     '\n- Course time :',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -96,7 +103,7 @@ class ReserveAdvertisment extends GetView<ReserveController> {
                                         fontFamily: 'segoepr',
                                         fontSize: 20),
                                   ),
-                                  Text(
+                                  const Text(
                                     '\n- Course Days :',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -105,9 +112,9 @@ class ReserveAdvertisment extends GetView<ReserveController> {
                                         fontSize: 20),
                                   ),
                                   Text(
-                                    controller.adv.course.days[0].name +
+                                    controller.adv.course.days![0].name +
                                         ' - ' +
-                                        controller.adv.course.days[1].name
+                                        controller.adv.course.days![1].name
                                     // +' - '+
                                     // controller.adv.course.days[2].name
                                     ,
@@ -116,7 +123,7 @@ class ReserveAdvertisment extends GetView<ReserveController> {
                                         fontFamily: 'segoepr',
                                         fontSize: 20),
                                   ),
-                                  Text(
+                                  const Text(
                                     '\n- Course Teacher :',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -211,13 +218,6 @@ class ReserveAdvertisment extends GetView<ReserveController> {
                             ),
                           ),
                         ),
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                            color: Colors.grey.shade500,
-                          ),
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        shadowColor: Colors.white,
                       ),
                     ),
                     IconContainer(

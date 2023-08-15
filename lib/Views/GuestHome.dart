@@ -28,9 +28,8 @@ class GuestHome extends GetView<GuestHomeController> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(top: 50.0, bottom: 20),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 50.0, bottom: 20),
                             child: Center(
                               child: Text(
                                 'WELOCOME TO MILESTONE',
@@ -75,7 +74,7 @@ class GuestHome extends GetView<GuestHomeController> {
                                   controller.activeIndex.value = index;
                                 }),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 25,
                           ),
                           Obx(
@@ -124,7 +123,7 @@ class GuestHome extends GetView<GuestHomeController> {
                                             ),
                                           ),
                                         )
-                                      : Center(
+                                      : const Center(
                                           child: CircularProgressIndicator()),
                                 ),
                                 onTap: () {
@@ -188,130 +187,113 @@ class GuestHome extends GetView<GuestHomeController> {
                           ),
                           Obx(
                             () => controller.isLoading3.value
-                                ? Container(
-                                    child: ListView.builder(
-                                        shrinkWrap: true,
-                                        physics: NeverScrollableScrollPhysics(),
-                                        itemCount: 2,
-                                        itemBuilder: (context, index) {
-                                          return Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 20.0,
-                                                      vertical: 7),
-                                              child: InkWell(
-                                                child: Container(
-                                                  height: 100,
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.white,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20),
-                                                      boxShadow: [
-                                                        BoxShadow(
-                                                          color:
-                                                              controller.blue,
-                                                          blurRadius: 5.0,
-                                                        )
-                                                      ],
-                                                      border: Border.all(
-                                                          color:
-                                                              controller.blue,
-                                                          width: 2)),
-                                                  child: Row(
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                left: 5.0),
-                                                        child: Container(
-                                                          height: 90,
-                                                          width: 100,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20),
-                                                            image:
-                                                                DecorationImage(
-                                                                    image:
-                                                                        NetworkImage(
-                                                                      imageurl +
-                                                                          controller
-                                                                              .teachers[index]
-                                                                              .image,
-                                                                    ),
-                                                                    fit: BoxFit
-                                                                        .fill),
+                                ? ListView.builder(
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemCount: 2,
+                                    itemBuilder: (context, index) {
+                                      return Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 20.0, vertical: 7),
+                                          child: InkWell(
+                                            child: Container(
+                                              height: 100,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: controller.blue,
+                                                      blurRadius: 5.0,
+                                                    )
+                                                  ],
+                                                  border: Border.all(
+                                                      color: controller.blue,
+                                                      width: 2)),
+                                              child: Row(
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 5.0),
+                                                    child: Container(
+                                                      height: 90,
+                                                      width: 100,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20),
+                                                        image: DecorationImage(
+                                                            image: NetworkImage(
+                                                              imageurl +
+                                                                  controller
+                                                                      .teachers[
+                                                                          index]
+                                                                      .image,
+                                                            ),
+                                                            fit: BoxFit.fill),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 12,
+                                                  ),
+                                                  Container(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 5),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .symmetric(
+                                                                  vertical:
+                                                                      8.0),
+                                                          child: Text(
+                                                            controller
+                                                                    .teachers[
+                                                                        index]
+                                                                    .firstName +
+                                                                ' ' +
+                                                                controller
+                                                                    .teachers[
+                                                                        index]
+                                                                    .lastName,
+                                                            style: TextStyle(
+                                                              color: controller
+                                                                  .blue,
+                                                              fontSize: 20.0,
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 12,
-                                                      ),
-                                                      Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .only(top: 5),
-                                                        child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: <Widget>[
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                          .symmetric(
-                                                                      vertical:
-                                                                          8.0),
-                                                              child: Text(
-                                                                controller
-                                                                        .teachers[
-                                                                            index]
-                                                                        .firstName +
-                                                                    ' ' +
-                                                                    controller
-                                                                        .teachers[
-                                                                            index]
-                                                                        .lastName,
-                                                                style:
-                                                                    TextStyle(
-                                                                  color:
-                                                                      controller
-                                                                          .blue,
-                                                                  fontSize:
-                                                                      20.0,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Text(
-                                                              controller
-                                                                  .teachers[
-                                                                      index]
-                                                                  .email,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      14.0,
-                                                                  color: Colors
-                                                                      .grey
-                                                                      .shade600),
-                                                            ),
-                                                          ],
+                                                        Text(
+                                                          controller
+                                                              .teachers[index]
+                                                              .email,
+                                                          style: TextStyle(
+                                                              fontSize: 14.0,
+                                                              color: Colors.grey
+                                                                  .shade600),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                                onTap: () {
-                                                  Get.toNamed('/Teacher',
-                                                      arguments: controller
-                                                          .teachers[index]);
-                                                },
-                                              ));
-                                        }),
-                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            onTap: () {
+                                              Get.toNamed('/Teacher',
+                                                  arguments: controller
+                                                      .teachers[index]);
+                                            },
+                                          ));
+                                    })
                                 : Center(child: CircularProgressIndicator()),
                           ),
                         ],
@@ -328,7 +310,7 @@ class GuestHome extends GetView<GuestHomeController> {
                   ),
                 ),
               )
-            : Scaffold(body: Center(child: CircularProgressIndicator())),
+            : const Scaffold(body: Center(child: CircularProgressIndicator())),
       ),
     );
   }

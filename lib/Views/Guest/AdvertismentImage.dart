@@ -1,4 +1,5 @@
 import 'package:first/Component/IconContainer.dart';
+import 'package:first/global.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,16 +14,14 @@ class AdvertismentImage extends StatelessWidget {
               child: Image(
                 fit: BoxFit.fill,
                 width: double.infinity,
-                image: AssetImage('Images/img_3.png'),
+                image: NetworkImage(imageurl),
               ),
             ),
             IconContainer(
                 icon: Icons.arrow_back_ios_new,
                 iconColor: Colors.white,
                 containerColor: Color(0xff2D527E),
-                press: () {
-
-                })
+                press: () {})
           ],
         ),
       ),

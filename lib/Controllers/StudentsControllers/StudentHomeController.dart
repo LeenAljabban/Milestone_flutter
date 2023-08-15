@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Models/AdvertismentModel.dart';
-import '../../Models/CourseInfoModel.dart';
+import '../../Models/CourseModel.dart';
 
 class StudentHomeController extends GetxController {
   Color blue = Color(0xff2D527E);
@@ -24,6 +24,7 @@ class StudentHomeController extends GetxController {
   var is_thu = false;
   var is_fri = false;
   var is_sat = false;
+
   @override
   void onInit() {
     try {
@@ -48,7 +49,7 @@ class StudentHomeController extends GetxController {
     }
   }
 
-  CourseInfo? courseinfo;
+  CourseModel? courseinfo;
 
   CallGetCourseInfo() async {
     try {
@@ -56,32 +57,38 @@ class StudentHomeController extends GetxController {
         'student/get/attendenceDays',
       );
       if (data != null) {
-        courseinfo = data;
+        if (data == 'No Course now')
+          print('No Course now');
+        else {
+          courseinfo = data;
+        }
       } else {
         print('there is a problem');
       }
     } finally {
-      for (int i = 0; i < courseinfo!.days.length; i++) {
-        if (courseinfo!.days[i].name == 'Saturday') {
-          is_sat = true;
-        }
-        if (courseinfo!.days[i].name == 'Sunday') {
-          is_sun = true;
-        }
-        if (courseinfo!.days[i].name == 'Monday') {
-          is_mon = true;
-        }
-        if (courseinfo!.days[i].name == 'Tuesday') {
-          is_tue = true;
-        }
-        if (courseinfo!.days[i].name == 'Wednesday') {
-          is_wed = true;
-        }
-        if (courseinfo!.days[i].name == 'Thursday') {
-          is_thu = true;
-        }
-        if (courseinfo!.days[i].name == 'Friday') {
-          is_fri = true;
+      if (courseinfo != null) {
+        for (int i = 0; i < courseinfo!.days.length; i++) {
+          if (courseinfo!.days[i].name == 'Saturday') {
+            is_sat = true;
+          }
+          if (courseinfo!.days[i].name == 'Sunday') {
+            is_sun = true;
+          }
+          if (courseinfo!.days[i].name == 'Monday') {
+            is_mon = true;
+          }
+          if (courseinfo!.days[i].name == 'Tuesday') {
+            is_tue = true;
+          }
+          if (courseinfo!.days[i].name == 'Wednesday') {
+            is_wed = true;
+          }
+          if (courseinfo!.days[i].name == 'Thursday') {
+            is_thu = true;
+          }
+          if (courseinfo!.days[i].name == 'Friday') {
+            is_fri = true;
+          }
         }
       }
       isLoading2(true);

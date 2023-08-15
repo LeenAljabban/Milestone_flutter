@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../Models/CourseInfoModel.dart';
 import '../../Models/TeacherCourses.dart';
 import '../../Services/TeacherHomeService.dart';
 

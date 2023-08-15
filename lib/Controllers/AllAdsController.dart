@@ -1,12 +1,8 @@
-import 'dart:ffi';
-
-import 'package:first/Models/CourseLevelsModel.dart';
 import 'package:first/Services/StudentHomeService.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Models/AdvertismentModel.dart';
-import '../../Models/CourseInfoModel.dart';
 
 class AllAdsController extends GetxController {
   Color blue = Color(0xff2D527E);

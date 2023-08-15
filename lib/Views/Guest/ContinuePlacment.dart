@@ -43,8 +43,8 @@ class ContinuePlacment extends StatelessWidget {
                 height: 350,
                 child: Center(
                   child: Text(
-                    'wishing you best of luck! \n \n wait for us to contact'
-                    'you and make oral'
+                    'wishing you best of luck! \n \n wait for us to contact '
+                    'you and make oral '
                     'test appointment ',
                     textAlign: TextAlign.center,
                     style: TextStyle(

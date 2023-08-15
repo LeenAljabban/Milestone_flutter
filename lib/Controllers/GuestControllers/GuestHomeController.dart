@@ -3,7 +3,6 @@ import 'package:first/Models/UserModel.dart';
 import 'package:first/Services/GuestHomeService.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../Models/PhotoModel.dart';
 
 class GuestHomeController extends GetxController {

@@ -29,271 +29,313 @@ class StudentHome extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         height: 145,
                         color: Color(0xff2D527E),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: 105,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                        child: controller.courseinfo != null
+                            ? Column(
                                 children: [
                                   SizedBox(
-                                    width: 40,
-                                    child: TimelineTile(
-                                      axis: TimelineAxis.horizontal,
-                                      alignment: TimelineAlign.center,
-                                      indicatorStyle: IndicatorStyle(
-                                        height: 18,
-                                        color: controller.is_sun == true
-                                            ? Color(0xffEF5432)
-                                            : Colors.white,
-                                      ),
-                                      afterLineStyle: const LineStyle(
-                                        color: Colors.white,
-                                        thickness: 4,
-                                      ),
-                                      beforeLineStyle: const LineStyle(
-                                        color: Colors.white,
-                                        thickness: 4,
-                                      ),
-                                      endChild: Padding(
-                                        padding: const EdgeInsets.only(top: 10),
-                                        child: Text(
-                                          'Sun',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: controller.is_sun == true
-                                                  ? Color(0xffEF5432)
-                                                  : Colors.white,
-                                              // fontFamily: 'segoepr',
-                                              fontSize: 15),
-                                        ),
-                                      ),
+                                      height: 105,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: 40,
+                                            child: TimelineTile(
+                                              axis: TimelineAxis.horizontal,
+                                              alignment: TimelineAlign.center,
+                                              indicatorStyle: IndicatorStyle(
+                                                height: 18,
+                                                color: controller.is_sun == true
+                                                    ? Color(0xffEF5432)
+                                                    : Colors.white,
+                                              ),
+                                              afterLineStyle: const LineStyle(
+                                                color: Colors.white,
+                                                thickness: 4,
+                                              ),
+                                              beforeLineStyle: const LineStyle(
+                                                color: Colors.white,
+                                                thickness: 4,
+                                              ),
+                                              endChild: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 10),
+                                                child: Text(
+                                                  'Sun',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: controller
+                                                                  .is_sun ==
+                                                              true
+                                                          ? Color(0xffEF5432)
+                                                          : Colors.white,
+                                                      // fontFamily: 'segoepr',
+                                                      fontSize: 15),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 40,
+                                            child: TimelineTile(
+                                                axis: TimelineAxis.horizontal,
+                                                alignment: TimelineAlign.center,
+                                                indicatorStyle: IndicatorStyle(
+                                                  height: 18,
+                                                  color:
+                                                      controller.is_mon == true
+                                                          ? Color(0xffEF5432)
+                                                          : Colors.white,
+                                                ),
+                                                endChild: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 10),
+                                                  child: Text(
+                                                    'Mon',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: controller
+                                                                    .is_mon ==
+                                                                true
+                                                            ? Color(0xffEF5432)
+                                                            : Colors.white,
+                                                        // fontFamily: 'segoepr',
+                                                        fontSize: 15),
+                                                  ),
+                                                ),
+                                                afterLineStyle: const LineStyle(
+                                                  color: Colors.white,
+                                                  thickness: 4,
+                                                ),
+                                                beforeLineStyle:
+                                                    const LineStyle(
+                                                  color: Colors.white,
+                                                  thickness: 4,
+                                                )),
+                                          ),
+                                          SizedBox(
+                                            width: 40,
+                                            child: TimelineTile(
+                                                axis: TimelineAxis.horizontal,
+                                                alignment: TimelineAlign.center,
+                                                indicatorStyle: IndicatorStyle(
+                                                  height: 18,
+                                                  color:
+                                                      controller.is_tue == true
+                                                          ? Color(0xffEF5432)
+                                                          : Colors.white,
+                                                ),
+                                                endChild: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 10),
+                                                  child: Text(
+                                                    'Tue',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: controller
+                                                                    .is_tue ==
+                                                                true
+                                                            ? Color(0xffEF5432)
+                                                            : Colors.white,
+                                                        // fontFamily: 'segoepr',
+                                                        fontSize: 15),
+                                                  ),
+                                                ),
+                                                afterLineStyle: const LineStyle(
+                                                  color: Colors.white,
+                                                  thickness: 4,
+                                                ),
+                                                beforeLineStyle:
+                                                    const LineStyle(
+                                                  color: Colors.white,
+                                                  thickness: 4,
+                                                )),
+                                          ),
+                                          SizedBox(
+                                            width: 40,
+                                            child: TimelineTile(
+                                                axis: TimelineAxis.horizontal,
+                                                alignment: TimelineAlign.center,
+                                                indicatorStyle: IndicatorStyle(
+                                                  height: 18,
+                                                  color:
+                                                      controller.is_wed == true
+                                                          ? Color(0xffEF5432)
+                                                          : Colors.white,
+                                                ),
+                                                endChild: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 10.0),
+                                                  child: Text(
+                                                    'Wed',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: controller
+                                                                    .is_wed ==
+                                                                true
+                                                            ? Color(0xffEF5432)
+                                                            : Colors.white,
+                                                        // fontFamily: 'segoepr',
+                                                        fontSize: 15),
+                                                  ),
+                                                ),
+                                                afterLineStyle: const LineStyle(
+                                                  color: Colors.white,
+                                                  thickness: 4,
+                                                ),
+                                                beforeLineStyle:
+                                                    const LineStyle(
+                                                  color: Colors.white,
+                                                  thickness: 4,
+                                                )),
+                                          ),
+                                          SizedBox(
+                                            width: 40,
+                                            child: TimelineTile(
+                                                axis: TimelineAxis.horizontal,
+                                                alignment: TimelineAlign.center,
+                                                indicatorStyle: IndicatorStyle(
+                                                  height: 18,
+                                                  color:
+                                                      controller.is_thu == true
+                                                          ? Color(0xffEF5432)
+                                                          : Colors.white,
+                                                ),
+                                                endChild: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 10.0),
+                                                  child: Text(
+                                                    'Thu',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: controller
+                                                                    .is_thu ==
+                                                                true
+                                                            ? Color(0xffEF5432)
+                                                            : Colors.white,
+                                                        // fontFamily: 'segoepr',
+                                                        fontSize: 15),
+                                                  ),
+                                                ),
+                                                afterLineStyle: const LineStyle(
+                                                  color: Colors.white,
+                                                  thickness: 4,
+                                                ),
+                                                beforeLineStyle:
+                                                    const LineStyle(
+                                                  color: Colors.white,
+                                                  thickness: 4,
+                                                )),
+                                          ),
+                                          SizedBox(
+                                            width: 40,
+                                            child: TimelineTile(
+                                                axis: TimelineAxis.horizontal,
+                                                alignment: TimelineAlign.center,
+                                                indicatorStyle: IndicatorStyle(
+                                                  height: 18,
+                                                  color:
+                                                      controller.is_fri == true
+                                                          ? Color(0xffEF5432)
+                                                          : Colors.white,
+                                                ),
+                                                endChild: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 10.0),
+                                                  child: Text(
+                                                    'Fri',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: controller
+                                                                    .is_fri ==
+                                                                true
+                                                            ? Color(0xffEF5432)
+                                                            : Colors.white,
+                                                        // fontFamily: 'segoepr',
+                                                        fontSize: 15),
+                                                  ),
+                                                ),
+                                                afterLineStyle: const LineStyle(
+                                                  color: Colors.white,
+                                                  thickness: 4,
+                                                ),
+                                                beforeLineStyle:
+                                                    const LineStyle(
+                                                  color: Colors.white,
+                                                  thickness: 4,
+                                                )),
+                                          ),
+                                          SizedBox(
+                                            width: 40,
+                                            child: TimelineTile(
+                                                axis: TimelineAxis.horizontal,
+                                                alignment: TimelineAlign.center,
+                                                indicatorStyle: IndicatorStyle(
+                                                  height: 18,
+                                                  color:
+                                                      controller.is_sat == true
+                                                          ? Color(0xffEF5432)
+                                                          : Colors.white,
+                                                ),
+                                                endChild: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 10.0),
+                                                  child: Text(
+                                                    'Sat',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: controller
+                                                                    .is_sat ==
+                                                                true
+                                                            ? Color(0xffEF5432)
+                                                            : Colors.white,
+                                                        // fontFamily: 'segoepr',
+                                                        fontSize: 15),
+                                                  ),
+                                                ),
+                                                beforeLineStyle:
+                                                    const LineStyle(
+                                                  color: Colors.white,
+                                                  thickness: 4,
+                                                ),
+                                                afterLineStyle: const LineStyle(
+                                                  color: Colors.white,
+                                                  thickness: 4,
+                                                )),
+                                          ),
+                                        ],
+                                      )),
+                                  SizedBox(
+                                    height: 30,
+                                    child: Text(
+                                      controller.courseinfo!.startHour
+                                              .substring(0, 5) +
+                                          " - " +
+                                          controller.courseinfo!.endHour
+                                              .substring(0, 5),
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontFamily: 'segoepr',
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 40,
-                                    child: TimelineTile(
-                                        axis: TimelineAxis.horizontal,
-                                        alignment: TimelineAlign.center,
-                                        indicatorStyle: IndicatorStyle(
-                                          height: 18,
-                                          color: controller.is_mon == true
-                                              ? Color(0xffEF5432)
-                                              : Colors.white,
-                                        ),
-                                        endChild: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 10),
-                                          child: Text(
-                                            'Mon',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: controller.is_mon == true
-                                                    ? Color(0xffEF5432)
-                                                    : Colors.white,
-                                                // fontFamily: 'segoepr',
-                                                fontSize: 15),
-                                          ),
-                                        ),
-                                        afterLineStyle: const LineStyle(
-                                          color: Colors.white,
-                                          thickness: 4,
-                                        ),
-                                        beforeLineStyle: const LineStyle(
-                                          color: Colors.white,
-                                          thickness: 4,
-                                        )),
-                                  ),
-                                  SizedBox(
-                                    width: 40,
-                                    child: TimelineTile(
-                                        axis: TimelineAxis.horizontal,
-                                        alignment: TimelineAlign.center,
-                                        indicatorStyle: IndicatorStyle(
-                                          height: 18,
-                                          color: controller.is_tue == true
-                                              ? Color(0xffEF5432)
-                                              : Colors.white,
-                                        ),
-                                        endChild: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 10),
-                                          child: Text(
-                                            'Tue',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: controller.is_tue == true
-                                                    ? Color(0xffEF5432)
-                                                    : Colors.white,
-                                                // fontFamily: 'segoepr',
-                                                fontSize: 15),
-                                          ),
-                                        ),
-                                        afterLineStyle: const LineStyle(
-                                          color: Colors.white,
-                                          thickness: 4,
-                                        ),
-                                        beforeLineStyle: const LineStyle(
-                                          color: Colors.white,
-                                          thickness: 4,
-                                        )),
-                                  ),
-                                  SizedBox(
-                                    width: 40,
-                                    child: TimelineTile(
-                                        axis: TimelineAxis.horizontal,
-                                        alignment: TimelineAlign.center,
-                                        indicatorStyle: IndicatorStyle(
-                                          height: 18,
-                                          color: controller.is_wed == true
-                                              ? Color(0xffEF5432)
-                                              : Colors.white,
-                                        ),
-                                        endChild: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 10.0),
-                                          child: Text(
-                                            'Wed',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: controller.is_wed == true
-                                                    ? Color(0xffEF5432)
-                                                    : Colors.white,
-                                                // fontFamily: 'segoepr',
-                                                fontSize: 15),
-                                          ),
-                                        ),
-                                        afterLineStyle: const LineStyle(
-                                          color: Colors.white,
-                                          thickness: 4,
-                                        ),
-                                        beforeLineStyle: const LineStyle(
-                                          color: Colors.white,
-                                          thickness: 4,
-                                        )),
-                                  ),
-                                  SizedBox(
-                                    width: 40,
-                                    child: TimelineTile(
-                                        axis: TimelineAxis.horizontal,
-                                        alignment: TimelineAlign.center,
-                                        indicatorStyle: IndicatorStyle(
-                                          height: 18,
-                                          color: controller.is_thu == true
-                                              ? Color(0xffEF5432)
-                                              : Colors.white,
-                                        ),
-                                        endChild: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 10.0),
-                                          child: Text(
-                                            'Thu',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: controller.is_thu == true
-                                                    ? Color(0xffEF5432)
-                                                    : Colors.white,
-                                                // fontFamily: 'segoepr',
-                                                fontSize: 15),
-                                          ),
-                                        ),
-                                        afterLineStyle: const LineStyle(
-                                          color: Colors.white,
-                                          thickness: 4,
-                                        ),
-                                        beforeLineStyle: const LineStyle(
-                                          color: Colors.white,
-                                          thickness: 4,
-                                        )),
-                                  ),
-                                  SizedBox(
-                                    width: 40,
-                                    child: TimelineTile(
-                                        axis: TimelineAxis.horizontal,
-                                        alignment: TimelineAlign.center,
-                                        indicatorStyle: IndicatorStyle(
-                                          height: 18,
-                                          color: controller.is_fri == true
-                                              ? Color(0xffEF5432)
-                                              : Colors.white,
-                                        ),
-                                        endChild: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 10.0),
-                                          child: Text(
-                                            'Fri',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: controller.is_fri == true
-                                                    ? Color(0xffEF5432)
-                                                    : Colors.white,
-                                                // fontFamily: 'segoepr',
-                                                fontSize: 15),
-                                          ),
-                                        ),
-                                        afterLineStyle: const LineStyle(
-                                          color: Colors.white,
-                                          thickness: 4,
-                                        ),
-                                        beforeLineStyle: const LineStyle(
-                                          color: Colors.white,
-                                          thickness: 4,
-                                        )),
-                                  ),
-                                  SizedBox(
-                                    width: 40,
-                                    child: TimelineTile(
-                                        axis: TimelineAxis.horizontal,
-                                        alignment: TimelineAlign.center,
-                                        indicatorStyle: IndicatorStyle(
-                                          height: 18,
-                                          color: controller.is_sat == true
-                                              ? Color(0xffEF5432)
-                                              : Colors.white,
-                                        ),
-                                        endChild: Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 10.0),
-                                          child: Text(
-                                            'Sat',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: controller.is_sat == true
-                                                    ? Color(0xffEF5432)
-                                                    : Colors.white,
-                                                // fontFamily: 'segoepr',
-                                                fontSize: 15),
-                                          ),
-                                        ),
-                                        beforeLineStyle: const LineStyle(
-                                          color: Colors.white,
-                                          thickness: 4,
-                                        ),
-                                        afterLineStyle: const LineStyle(
-                                          color: Colors.white,
-                                          thickness: 4,
-                                        )),
-                                  ),
+                                  )
                                 ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                              child: Text(
-                                controller.courseinfo!.startHour
-                                        .substring(0, 5) +
-                                    " - " +
-                                    controller.courseinfo!.endHour
-                                        .substring(0, 5),
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'segoepr',
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18),
-                              ),
-                            )
-                          ],
-                        ),
+                              )
+                            : Container(),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
@@ -371,8 +413,8 @@ class StudentHome extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
+                      const Padding(
+                        padding: EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 10),
                         child: Text(
                           'Educational Content :',
@@ -429,8 +471,8 @@ class StudentHome extends StatelessWidget {
                               )
                             : Center(child: CircularProgressIndicator()),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
+                      const Padding(
+                        padding: EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -557,7 +599,7 @@ class StudentHome extends StatelessWidget {
                                 child: CircularProgressIndicator(),
                               ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 40,
                       )
                     ],

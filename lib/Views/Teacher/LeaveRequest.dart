@@ -40,8 +40,8 @@ class LeaveRequest extends GetView<LeaveRequestController> {
                         color: Color(0xff2D527E),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 8.0),
                       child: Center(
                         child: Text(
                           'Leave Request',
@@ -68,7 +68,7 @@ class LeaveRequest extends GetView<LeaveRequestController> {
                   child: Column(
                     //   crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Leave start date',
                         style: TextStyle(
                           color: Color(0xff2D527E),
@@ -198,6 +198,7 @@ class LeaveRequest extends GetView<LeaveRequestController> {
                                   value: controller.selected.value,
                                   items: controller.types.map((selectedType) {
                                     return DropdownMenuItem(
+                                      value: selectedType,
                                       child: new Text(
                                         selectedType,
                                         textAlign: TextAlign.end,
@@ -206,7 +207,6 @@ class LeaveRequest extends GetView<LeaveRequestController> {
                                             fontFamily: 'segoepr',
                                             fontSize: 15),
                                       ),
-                                      value: selectedType,
                                     );
                                   }).toList(),
                                   onChanged: (newValue) {
@@ -218,7 +218,7 @@ class LeaveRequest extends GetView<LeaveRequestController> {
                           ),
                         ),
                       ),
-                      Text(
+                      const Text(
                         'Comment',
                         style: TextStyle(
                           color: Color(0xff2D527E),

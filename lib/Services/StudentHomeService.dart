@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:first/Models/AdvertismentModel.dart';
-import 'package:first/Models/CourseInfoModel.dart';
+
 import 'package:first/Models/CourseLevelsModel.dart';
 
 import 'package:first/global.dart';
 import 'package:http/http.dart' as http;
+
+import '../Models/CourseModel.dart';
 
 class StudentHomeService {
   static StudentHomeAdvertisment(endpoint) async {
@@ -26,8 +28,9 @@ class StudentHomeService {
         list.add(AdvertismentModel.fromJson(i));
       }
       return list;
-    } else
+    } else {
       return null;
+    }
   }
 
   static getCourseInfo(endpoint) async {
@@ -42,8 +45,12 @@ class StudentHomeService {
     print(response.body);
 
     if (response.statusCode == 200) {
-      var obj = response.body;
-      return courseInfoFromJson(obj);
+      if (response.body.isEmpty) {
+        var obj = response.body;
+        return courseModelFromJson(obj);
+      } else {
+        return 'No Course now';
+      }
     } else
       return null;
   }

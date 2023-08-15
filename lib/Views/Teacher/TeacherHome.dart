@@ -79,7 +79,7 @@ class TeacherHome extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   color: Color(0xff2D527E),
                                   blurRadius: 5.0,
@@ -87,7 +87,7 @@ class TeacherHome extends StatelessWidget {
                               ],
                               border: Border.all(
                                   color: Color(0xff2D527E), width: 2)),
-                          child: Center(
+                          child: const Center(
                             child: Text(' Resignation\n Request',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -105,7 +105,7 @@ class TeacherHome extends StatelessWidget {
                           );
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       InkWell(
@@ -115,7 +115,7 @@ class TeacherHome extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   color: Color(0xff2D527E),
                                   blurRadius: 5.0,
@@ -123,7 +123,7 @@ class TeacherHome extends StatelessWidget {
                               ],
                               border: Border.all(
                                   color: Color(0xff2D527E), width: 2)),
-                          child: Center(
+                          child: const Center(
                             child: Text('Vacation \n Request',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -143,9 +143,9 @@ class TeacherHome extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30.0, vertical: 10),
+                  const Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 30.0, vertical: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -167,7 +167,7 @@ class TeacherHome extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             color: Color(0xff2D527E),
                             blurRadius: 4.0,
@@ -192,7 +192,7 @@ class TeacherHome extends StatelessWidget {
                                             color: Color(0xff2D527E),
                                             borderRadius:
                                                 BorderRadius.circular(10),
-                                            boxShadow: [
+                                            boxShadow: const [
                                               BoxShadow(
                                                 color: Color(0xff2D527E),
                                                 blurRadius: 4.0,
@@ -206,7 +206,7 @@ class TeacherHome extends StatelessWidget {
                                             controller
                                                 .teachercourses_list[index]
                                                 .name,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.white,
                                                 fontFamily: 'segoepr',
                                                 fontWeight: FontWeight.w600,
@@ -222,12 +222,12 @@ class TeacherHome extends StatelessWidget {
                                     ),
                                   );
                                 })
-                            : Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 10),
+                            : const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
                                 child: Center(
                                   child: Text(
                                     'you do not have classes right now..',
+                                    textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontSize: 25,
                                       color: Color(0xff2D527E),
@@ -236,7 +236,7 @@ class TeacherHome extends StatelessWidget {
                                   ),
                                 ),
                               )
-                        : Center(child: CircularProgressIndicator())),
+                        : const Center(child: CircularProgressIndicator())),
                     /*
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 15),

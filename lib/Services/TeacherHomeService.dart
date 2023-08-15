@@ -1,9 +1,5 @@
 import 'dart:convert';
 
-import 'package:first/Models/AdvertismentModel.dart';
-import 'package:first/Models/CourseInfoModel.dart';
-import 'package:first/Models/CourseLevelsModel.dart';
-
 import 'package:first/global.dart';
 import 'package:http/http.dart' as http;
 

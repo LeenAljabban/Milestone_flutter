@@ -28,21 +28,25 @@ class CourseModel {
   CourseModel();
 
   CourseModel.fromJson(Map<String, dynamic> json) {
-    id = json["id"];
+    if (json["id"] != null) id = json["id"];
     if (json["start_hour"] != null) startHour = json["start_hour"];
     if (json["end_hour"] != null) endHour = json["end_hour"];
-    startDay = DateTime.parse(json["start_day"]);
-    endDay = DateTime.parse(json["end_day"]);
+    if (json["start_day"] != null) startDay = DateTime.parse(json["start_day"]);
+    if (json["end_day"] != null) endDay = DateTime.parse(json["end_day"]);
 
     if (json["qr_code"] != null) qrCode = json["qr_code"];
-    classId = json["class_id"];
-    courseNameId = json["course_name_id"];
-    if (json["created_at"] != null)
+    if (json["class_id"] != null) classId = json["class_id"];
+    if (json["course_name_id"] != null) courseNameId = json["course_name_id"];
+    if (json["created_at"] != null) {
       createdAt = DateTime.parse(json["created_at"]);
-    if (json["updated_at"] != null)
+    }
+    if (json["updated_at"] != null) {
       updatedAt = DateTime.parse(json["updated_at"]);
-    days = List<Day>.from(json["days"].map((x) => Day.fromJson(x)));
-    course_name = json["course_name"];
+    }
+    if (json["days"] != null) {
+      days = List<Day>.from(json["days"].map((x) => Day.fromJson(x)));
+    }
+    if (json["course_name"] != null) course_name = json["course_name"];
   }
 
   Map<String, dynamic> toJson() => {

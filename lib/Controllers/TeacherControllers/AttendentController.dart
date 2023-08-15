@@ -1,12 +1,44 @@
+import 'package:first/Models/AttendendModel.dart';
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
-class AttendentController extends GetxController {
-  RxInt SelectedSession = 1.obs;
+import '../../Services/AttendedService.dart';
 
-  List<Map<String, dynamic>> myList = [
-    {'id': 1, 'name': 'Ahmad almasri', 'Attendent': 'present'},
-    {'id': 2, 'name': 'Usama alserawan', 'Attendent': 'present'},
-    {'id': 3, 'name': 'abd alrahman aljabban ', 'Attendent': 'absent'}
-  ];
+class AttendentController extends GetxController {
+  RxInt selectedSession = 1.obs;
+
+  List<AttendedModel> list = <AttendedModel>[];
+
+  List<List<Attendance>> attendanceList = <List<Attendance>>[];
+  List<Map<dynamic, dynamic>> myList = [];
+  RxBool isloading = false.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    CallgetAttendend();
+  }
+
+  CallgetAttendend() async {
+    try {
+      var data = await AttendendService.getAttendend('dayByDay', 3);
+      if (data != null) {
+        list = data;
+
+        list.forEach((e) => attendanceList.add(e.attendance));
+
+        // for (int i = 0; i < list.length; i++) {
+        //   var map = {};
+        //   map['id'] = i;
+        //   map['name'] = list[i].attendance;
+        //   myList.add(map);
+        // }
+        print(attendanceList);
+      } else {}
+    } finally {
+      isloading(true);
+    }
+  }
 }

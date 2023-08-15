@@ -122,7 +122,7 @@ class VerificationCode extends GetView<VerificationCodeController> {
                             ///your flushbar
                           } else {
                             ///confirm OTP
-                            controller.CallGuestInformation();
+                            controller.Callverify();
                             // Get.defaultDialog(
                             //     title: 'CODE DID NOT MATCH !',
                             //     titlePadding: EdgeInsets.only(top: 50),
@@ -148,7 +148,7 @@ class VerificationCode extends GetView<VerificationCodeController> {
                             //     ));
                           }
                         },
-                        child: Text(
+                        child: const Text(
                           'Verify',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -169,7 +169,7 @@ class VerificationCode extends GetView<VerificationCodeController> {
                     ),
                     InkWell(
                       onTap: () {},
-                      child: Text(
+                      child: const Text(
                         'Resend Code',
                         style: TextStyle(
                           fontWeight: FontWeight.w600,

@@ -138,7 +138,7 @@ class StudentSideBar extends StatelessWidget {
               Icons.logout,
               color: Color(0xff2D527E),
             ),
-            title: Text(
+            title: const Text(
               'Log out',
               style: TextStyle(
                 fontFamily: 'segoepr',
@@ -146,7 +146,7 @@ class StudentSideBar extends StatelessWidget {
               ),
             ),
             onTap: () {
-              //clearToken();
+              clearToken();
               Get.offAllNamed('/WhoAreYou');
             },
           ),
