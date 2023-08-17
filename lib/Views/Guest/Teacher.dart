@@ -87,6 +87,14 @@ class Teacher extends StatelessWidget {
                                     //fontFamily: 'segoepr',
                                     fontWeight: FontWeight.bold,
                                     fontSize: 25)),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: List.generate(
+                                controller.teacher?.rate.round(),
+                                (index) =>
+                                    Icon(Icons.star, color: Colors.yellow),
+                              ),
+                            ),
                             Divider(
                               height: 35,
                               thickness: 2,
