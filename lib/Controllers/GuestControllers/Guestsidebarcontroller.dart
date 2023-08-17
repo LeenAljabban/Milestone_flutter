@@ -7,8 +7,7 @@ import 'package:get/get.dart';
 import '../../Services/JobAdvertismentService.dart';
 import '../../Services/StudentProfileService.dart';
 
-class StudentProfileController extends GetxController {
-  UserModel user = UserModel();
+class Guestsidebarcontroller extends GetxController {
   FilePickerResult? result;
   PlatformFile? file;
   String path = '';
@@ -16,9 +15,7 @@ class StudentProfileController extends GetxController {
   RxString token = ''.obs;
 
   @override
-  void onInit() {
-    CallStudentProfile();
-  }
+  void onInit() {}
 
   Future pickfile() async {
     result = await FilePicker.platform.pickFiles();
@@ -29,7 +26,8 @@ class StudentProfileController extends GetxController {
 
   CallUploadCv() async {
     try {
-      var data = await JobAdvertismentService.UploadCv('uploadCv', path, null);
+      var data =
+          await JobAdvertismentService.UploadCv('uploadCv', path, "null");
       if (data != null) {
         Get.defaultDialog(
           title: 'Cv Uploaded Secssuflly',
@@ -77,21 +75,5 @@ class StudentProfileController extends GetxController {
         print('there is a problem');
       }
     } finally {}
-  }
-
-  CallStudentProfile() async {
-    try {
-      isLoading(false);
-      var data = await StudentProfileService.StudentProfile(
-        'student/viewprofile',
-      );
-      if (data != null) {
-        user = data;
-      } else {
-        print('Try again');
-      }
-    } finally {
-      isLoading(true);
-    }
   }
 }

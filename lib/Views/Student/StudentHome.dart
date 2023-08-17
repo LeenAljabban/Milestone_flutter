@@ -471,7 +471,7 @@ class StudentHome extends StatelessWidget {
                               )
                             : Center(child: CircularProgressIndicator()),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 10),
                         child: Row(

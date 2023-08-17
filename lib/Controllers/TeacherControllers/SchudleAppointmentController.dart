@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:first/Services/LeaveRequeatService.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,16 +7,19 @@ import 'package:intl/intl.dart';
 
 import '../../Models/TeacherCourses.dart';
 import '../../Services/SchudleAppointmentService.dart';
+import '../../Services/TeacherHomeService.dart';
 import 'TeacherHomeController.dart';
 
 class SchudleAppointmentController extends GetxController {
   var selectedDate = DateTime.now().obs;
   late TextEditingController startdateController, commentController;
-  late TeacherHomeController teacherHomeController;
+
+  List<TeacherCourses> teachercourses_list = [];
+  List<String> courses = [];
+  var selectedcourse = "A1".obs;
+  var isLoading3 = false.obs;
 
   var selected = "10:00".obs;
-  late var selectedcourse;
-  late List<TeacherCourses> courses;
   List<String> types = [
     '10:00',
     '10:30',
@@ -37,10 +42,12 @@ class SchudleAppointmentController extends GetxController {
 
   @override
   void onInit() {
+    CallActiveCourses();
     startdateController = TextEditingController();
     commentController = TextEditingController();
-    teacherHomeController = TeacherHomeController();
-    courses = teacherHomeController.teachercourses_list;
+    //teacherHomeController = TeacherHomeController();
+    print(courses.length);
+    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
   }
 
   chooseDate(controll) async {
@@ -61,15 +68,15 @@ class SchudleAppointmentController extends GetxController {
     selected.value = value;
   }
 
-  void setSelectedcourse(int value) {
-    selectedcourse.value = value;
+  void setSelectedcourse(Object value) {
+    selectedcourse.value = value as String;
   }
 
   void CallSendSchudle() async {
     try {
       var data = await SchudleAppointmentService.SendAppointmentRequest(
           'teacher/send/ZoomNotification',
-          selectedcourse,
+          "A1",
           startdateController.text,
           selected.toString(),
           commentController.text);
@@ -87,5 +94,31 @@ class SchudleAppointmentController extends GetxController {
             colorText: Colors.white);
       }
     } finally {}
+  }
+
+  CallActiveCourses() async {
+    try {
+      var data = await TeacherHomeService.getAllCourses(
+        'teacher/get/ActiveCourse/forTeacher',
+      );
+      if (data != null) {
+        teachercourses_list.addAll(data);
+        print('***************************');
+        print(teachercourses_list.length);
+        for (int i = 0; i < teachercourses_list.length; i++) {
+          courses.add(teachercourses_list[i].name);
+          print('///////////////////////////////////');
+          print(teachercourses_list[i].name);
+        }
+      } else {
+        print('there is a problem');
+      }
+    } finally {
+      isLoading3(true);
+      for (int i = 0; i < teachercourses_list.length; i++) {
+        print('///////////////////////////////////--------------------------');
+        print(teachercourses_list[i].name);
+      }
+    }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:first/Controllers/NotificationControler.dart';
+import 'package:first/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:get/get.dart';
@@ -63,7 +64,7 @@ class AllAds extends StatelessWidget {
                                                   width: 330,
                                                   fit: BoxFit.fill,
                                                   image: NetworkImage(
-                                                      'http://192.168.1.8:8000/${controller.advertisments[index].image}'),
+                                                      '$imageurl${controller.advertisments[index].image}'),
                                                 ),
                                               ),
                                               Container(

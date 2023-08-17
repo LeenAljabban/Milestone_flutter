@@ -2,7 +2,10 @@ import 'package:first/Views/AboutUs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../Controllers/GuestControllers/Guestsidebarcontroller.dart';
+
 class GuestSideBar extends StatelessWidget {
+  Guestsidebarcontroller controller = new Guestsidebarcontroller();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -71,32 +74,21 @@ class GuestSideBar extends StatelessWidget {
             },
           ),
           ListTile(
-            // trailing: InkWell(
-            //   onTap: () {
-            //     Get.changeTheme(
-            //         Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
-            //   },
-            //   child: Icon(
-            //     Get.isDarkMode ? Icons.dark_mode : Icons.dark_mode_outlined,
-            //   ),
-            // ),
-            // Switch.adaptive(
-            //     value: ,
-            //     onChanged: (d) {
-            //
-            //     }),
             leading: Icon(
-              Icons.dark_mode,
+              Icons.upload,
               color: Color(0xff2D527E),
             ),
             title: Text(
-              'Dark Mode',
+              'Upload CV',
               style: TextStyle(
                 fontFamily: 'segoepr',
                 color: Color(0xff2D527E),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              controller.pickfile();
+              controller.CallUploadCv();
+            },
           ),
         ],
       ),

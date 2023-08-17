@@ -2,6 +2,7 @@ import 'package:first/Component/RoundedAppbar.dart';
 
 import 'package:first/Views/GuestSideBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import '../Component/IconContainer.dart';
@@ -241,9 +242,6 @@ class GuestHome extends GetView<GuestHomeController> {
                                                     width: 12,
                                                   ),
                                                   Container(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            top: 5),
                                                     child: Column(
                                                       crossAxisAlignment:
                                                           CrossAxisAlignment
@@ -280,6 +278,19 @@ class GuestHome extends GetView<GuestHomeController> {
                                                               fontSize: 14.0,
                                                               color: Colors.grey
                                                                   .shade600),
+                                                        ),
+                                                        Row(
+                                                          children:
+                                                              List.generate(
+                                                            controller
+                                                                .teachers[index]
+                                                                .rate
+                                                                .round(),
+                                                            (index) => Icon(
+                                                                Icons.star,
+                                                                color: Colors
+                                                                    .yellow),
+                                                          ),
                                                         ),
                                                       ],
                                                     ),

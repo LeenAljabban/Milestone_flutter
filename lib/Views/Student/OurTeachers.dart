@@ -17,27 +17,6 @@ class OurTeachers extends GetView<OueTeacherController> {
       child: Scaffold(
         body: Stack(
           children: [
-            // Positioned(
-            //     bottom: 60,
-            //     right: -380,
-            //     child: ClipOval(
-            //       child: Container(
-            //         color: Colors.grey.shade400,
-            //         height: 400.0, // height of the button
-            //         width: 420.0, // width of the button
-            //       ),
-            //     )),
-            // Positioned(
-            //     bottom: -60,
-            //     right: -380,
-            //     child: ClipOval(
-            //       child: Container(
-            //         color: Color(0xff2D527E),
-            //         height: 400.0, // height of the button
-            //         width: 420.0, // width of the button
-            //       ),
-            //     )),
-
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(top: 100),
@@ -117,7 +96,15 @@ class OurTeachers extends GetView<OueTeacherController> {
                                                 color: Colors.grey.shade500,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 14,
-                                              ))
+                                              )),
+                                          Row(
+                                            children: List.generate(
+                                              controller.teachers[index].rate
+                                                  .round(),
+                                              (index) => Icon(Icons.star,
+                                                  color: Colors.yellow),
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),

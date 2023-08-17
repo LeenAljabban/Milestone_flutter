@@ -143,7 +143,7 @@ class TeacherHome extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Padding(
+                  Padding(
                     padding:
                         EdgeInsets.symmetric(horizontal: 30.0, vertical: 10),
                     child: Row(

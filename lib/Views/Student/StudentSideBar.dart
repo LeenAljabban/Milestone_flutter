@@ -106,32 +106,69 @@ class StudentSideBar extends StatelessWidget {
             },
           ),
           ListTile(
-            // trailing: InkWell(
-            //   onTap: () {
-            //     Get.changeTheme(
-            //         Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
-            //   },
-            //   child: Icon(
-            //     Get.isDarkMode ? Icons.dark_mode : Icons.dark_mode_outlined,
-            //   ),
-            // ),
-            // Switch.adaptive(
-            //     value: ,
-            //     onChanged: (d) {
-            //
-            //     }),
             leading: Icon(
-              Icons.dark_mode,
+              Icons.upload,
               color: Color(0xff2D527E),
             ),
             title: Text(
-              'Dark Mode',
+              'Upload CV',
               style: TextStyle(
                 fontFamily: 'segoepr',
                 color: Color(0xff2D527E),
               ),
             ),
-            onTap: () {},
+            onTap: () {
+              Obx(
+                () => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 50.0),
+                  child: SizedBox(
+                    height: 50,
+                    width: 250,
+                    child: TextButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                          Color(0xff2D527E),
+                        ),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(22),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        controller.pickfile();
+                        controller.CallUploadCv();
+                      },
+                      child: Text(
+                        'upload cv',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontFamily: 'segoepr',
+                            fontSize: 20),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.logout,
+              color: Color(0xff2D527E),
+            ),
+            title: const Text(
+              'Log out',
+              style: TextStyle(
+                fontFamily: 'segoepr',
+                color: Color(0xff2D527E),
+              ),
+            ),
+            onTap: () {
+              clearToken();
+              Get.offAllNamed('/WhoAreYou');
+            },
           ),
           ListTile(
             leading: Icon(
