@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../Models/QuestionDataModel.dart';
 import '../../Services/PlacementTestService.dart';
 
+
 class PlacementTestController extends GetxController {
   Color blue = Color(0xff2D527E);
 
@@ -35,7 +36,7 @@ class PlacementTestController extends GetxController {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
   @override
-  void onInit() {
+  Future<void> onInit() async {
     super.onInit();
 
     pageController = PageController(initialPage: 0);

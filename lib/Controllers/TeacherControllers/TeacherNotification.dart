@@ -29,7 +29,6 @@ class TeacherNotificationController extends GetxController {
         notification_list.value = data;
         print(data);
       } else {
-        print("iiiiiiiiiiiiiiiiiiiiiiiiii");
         print(data);
       }
     } finally {

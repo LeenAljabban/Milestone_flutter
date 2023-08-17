@@ -14,96 +14,86 @@ class Notifications extends StatelessWidget {
               body: Stack(
               children: [
                 controller.notification_list.length != 0
-                    ? SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 96),
-                              child: ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
-                                  itemCount:
-                                      controller.notification_list.length,
-                                  itemBuilder: (context, index) {
-                                    return Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          20, 14, 20, 2),
-                                      child: Container(
-                                          width: double.infinity,
-                                          height: 80,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.grey.shade400,
-                                                blurRadius: 5.0,
-                                              )
-                                            ],
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(
-                                                top: 5, left: 20),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
+                    ? RefreshIndicator(
+                        onRefresh: () {
+                          return controller.CallGetNotification();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 96, bottom: 20),
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: controller.notification_list.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(20, 14, 20, 2),
+                                  child: Container(
+                                      width: double.infinity,
+                                      height: 80,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.shade400,
+                                            blurRadius: 5.0,
+                                          )
+                                        ],
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 5, left: 20),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                                controller
+                                                    .notification_list[index]
+                                                    .data
+                                                    .toString(),
+                                                //textAlign: TextAlign.center,
+                                                style: const TextStyle(
+                                                  fontFamily: 'segoepr',
+                                                  color: Color(0xff2D527E),
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16,
+                                                  //height: -1.5
+                                                )),
+                                            Text(
+                                                controller
+                                                        .notification_list[
+                                                            index]
+                                                        .createdAt
+                                                        .day
+                                                        .toString() +
+                                                    '-' +
                                                     controller
                                                         .notification_list[
                                                             index]
-                                                        .data
-                                                        .toString(),
-                                                    //textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      fontFamily: 'segoepr',
-                                                      color: Color(0xff2D527E),
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 16,
-                                                      //height: -1.5
-                                                    )),
-                                                Text(
+                                                        .createdAt
+                                                        .month
+                                                        .toString() +
+                                                    '-' +
                                                     controller
-                                                            .notification_list[
-                                                                index]
-                                                            .createdAt
-                                                            .day
-                                                            .toString() +
-                                                        '-' +
-                                                        controller
-                                                            .notification_list[
-                                                                index]
-                                                            .createdAt
-                                                            .month
-                                                            .toString() +
-                                                        '-' +
-                                                        controller
-                                                            .notification_list[
-                                                                index]
-                                                            .createdAt
-                                                            .year
-                                                            .toString(),
-                                                    //textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      //fontFamily: 'segoepr',
-                                                      color:
-                                                          Colors.grey.shade500,
-                                                      // fontWeight: FontWeight.bold,
-                                                      fontSize: 16,
-                                                      //height: -1.5
-                                                    ))
-                                              ],
-                                            ),
-                                          )),
-                                    );
-                                  }),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                          ],
+                                                        .notification_list[
+                                                            index]
+                                                        .createdAt
+                                                        .year
+                                                        .toString(),
+                                                //textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  //fontFamily: 'segoepr',
+                                                  color: Colors.grey.shade500,
+                                                  // fontWeight: FontWeight.bold,
+                                                  fontSize: 16,
+                                                  //height: -1.5
+                                                ))
+                                          ],
+                                        ),
+                                      )),
+                                );
+                              }),
                         ),
                       )
                     : Center(

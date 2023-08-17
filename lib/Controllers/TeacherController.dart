@@ -10,6 +10,7 @@ class TeacherController extends GetxController {
   @override
   void onInit() {
     teacher = Get.arguments;
+    print(teacher?.lastName);
     super.onInit();
   }
 }
