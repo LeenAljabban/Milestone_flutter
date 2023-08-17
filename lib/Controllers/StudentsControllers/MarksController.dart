@@ -10,6 +10,7 @@ class MarksController extends GetxController {
   RxBool isloading = false.obs;
 
   List<MarksModel> marks = [];
+  List<MarksModel> markDetails = [];
 
   @override
   void onInit() {
@@ -27,5 +28,22 @@ class MarksController extends GetxController {
     } finally {
       isloading(true);
     }
+  }
+
+  Future<void> viewMarkDetails(courseId) async {
+    try {
+      var data = await MarksService.viewMarkDetails(
+          'student/get/MarksForSpecificCourse', courseId);
+      if (data != null) {
+        if (data['message'] == "Cannot watch the marks before making rate") {
+          Get.toNamed('/Rate', arguments: markDetails);
+        } else {
+          markDetails = data;
+          await Get.toNamed('/MarkDetailes', arguments: markDetails);
+        }
+      } else {
+        print('there is a problem');
+      }
+    } finally {}
   }
 }

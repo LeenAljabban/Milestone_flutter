@@ -105,7 +105,9 @@ class PlacementTestRules extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Get.toNamed('/GuestInformation');
+                  controller.token.value == ''
+                      ? Get.toNamed('/GuestInformation')
+                      : Get.toNamed('/PlacementTest');
                 },
                 child: Text(
                   'Do The Test',

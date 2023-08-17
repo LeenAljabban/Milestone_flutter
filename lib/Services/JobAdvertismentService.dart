@@ -5,12 +5,13 @@ import 'package:http/http.dart' as http;
 class JobAdvertismentService {
   static UploadCv(endpoint, file, advertisment_id) async {
     var diviceId = await getFromSharedPreferences('deviceId');
+    print(advertisment_id);
     var request = http.MultipartRequest('POST', Uri.parse(baseApi + endpoint));
     debugPrint('the file is ${file}');
     if ('${file}' != '') {
       request.files.add(await http.MultipartFile.fromPath('file', file));
       request.fields['device_id'] = diviceId;
-      request.fields['advertisment_id'] = advertisment_id;
+      request.fields['advertisment_id'] = advertisment_id.toString();
       request.headers.addAll({
         "content-type": "application/json",
         "Accept": "application/json",

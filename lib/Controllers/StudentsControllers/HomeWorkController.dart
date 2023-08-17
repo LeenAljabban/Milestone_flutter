@@ -34,6 +34,7 @@ class HomeWorkController extends GetxController {
   }
 
   void downloadFile(url) async {
+    print(url);
     final status = await Permission.storage.request();
     if (status != PermissionStatus.granted) {
       throw Exception('Permission denied to access storage');
@@ -41,13 +42,16 @@ class HomeWorkController extends GetxController {
 
     final response = await http.get(Uri.parse(url));
     final bytes = response.bodyBytes;
-    final fileName = url.split('\\').last;
+    final fileName = url.split('/').last;
     final downloadDir = Directory('/storage/emulated/0/Download');
+
+    print(downloadDir);
     if (!await downloadDir.exists()) {
       await downloadDir.create(recursive: true);
     }
-
+    print('lolo');
     final file = File('${downloadDir.path}/$fileName');
+    print(file);
     await file.writeAsBytes(bytes);
 
     final isFileExist = await file.exists();

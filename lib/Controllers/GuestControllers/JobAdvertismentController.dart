@@ -58,8 +58,8 @@ class JobAdvertismentController extends GetxController {
                   onPressed: () {
                     Get.back();
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30.0),
                     child: Text(
                       'OK',
                       style: TextStyle(

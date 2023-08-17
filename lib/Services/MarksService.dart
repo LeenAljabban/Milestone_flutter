@@ -20,4 +20,28 @@ class MarksService {
     } else
       return null;
   }
+
+  static viewMarkDetails(endpoint,
+      courseId,) async {
+    var token = await getFromSharedPreferences('token');
+    http.Response response = await http.post(Uri.parse(baseApi + endpoint),
+        body: jsonEncode({
+          'course_id': courseId,
+        }),
+        headers: {
+          'Content-type': 'application/json',
+          'Accept': 'application/json',
+          "Authorization": "Bearer ${token}",
+        });
+
+    print(response.body);
+
+
+    if (response.statusCode == 200) {
+      var obj = jsonDecode(response.body);
+
+      return obj;
+    } else
+      return null;
+  }
 }
